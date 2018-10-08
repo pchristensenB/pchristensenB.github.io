@@ -49,7 +49,7 @@
             console.log("success:" + JSON.stringify(response));
             preview = new Box.Preview();
             preview.show(params.get('fileID'),response.token, {
-            	container:'.preview-container',
+            	container:'.one',
             	showDownload:true
             });
             
@@ -63,7 +63,6 @@
 
 </script>
 <body>
- <div class="preview-container"></div>  
 <section class="container">
     <div class="one">
         <script>
