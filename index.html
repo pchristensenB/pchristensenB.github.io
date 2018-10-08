@@ -1,183 +1,38 @@
-
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
-<title>Translate Landing Page</title>
-<!-- for-mobile-apps -->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style.css"/>
+  
 
-<!-- //for-mobile-apps -->
-<link href='//fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="css/j-forms.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script>
+  <meta charset="utf-8" />
+    <title>Box Content Preview Demo</title>
+    <!-- polyfill.io only loads the polyfills your browser needs -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
+    <!-- Alternatively, use polyfills hosted on the Box CDN
+    <script src="https://cdn01.boxcdn.net/polyfills/bluebird/3.5.1/bluebird.min.js"></script>
+    -->
 
-  var appId = '7rc8bv12';
-  var url = 'https://ec2-35-177-122-120.eu-west-2.compute.amazonaws.com';
-  var params = new URLSearchParams(window.location.search);
-//get auth code and //ID
-  //Send request to lamdba? or to EC2
-  $(document).ready(function(){
-
-    var entries = params.entries();
-    for(pair of entries) {
-      $("#test").append(pair[0] + "=" + pair[1] + "<br/>");
-    }
-    var transform = document.getElementById("transform");
-    transform.addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      var lang = $("#lang").val();
-      //Grab data from the HTML form
-      $.ajax({
-          method : 'get',
-          url: url,
-          data: {authCode:params.get('auth'),id:params.get('id'),userId:params.get('userId'),action:'translate',language:lang},
-          crossDomain: true,
-          timeout:120000,
-          dataType:'jsonp',
-          cache: false,
-          beforeSend: function() {
-              $('#loader').show();
-              $("#foot").hide();
-           },
-           complete: function(){
-              $('#loader').hide();
-              $("#foot").show();
-          },
-          success : function(response){
-            console.log("Success:" + response);
-            $("#transform").html('translation done and saved to your Box folder - close window');
-          },
-          error : function(err){
-            console.log(JSON.stringify(err));
-            console.log("error:" + err.message);
-              $("#transform").html('translation done - close window');
-          }
-      });
-   });
-   $("#foot").hide();
-   $
-      $.ajax({
-          method : 'get',
-          url: url,
-          data: {authCode:params.get('auth'),id:params.get('id'),userId:params.get('userId'),action:'detectLanguage'},
-          crossDomain: true,
-          timeout:120000,
-          dataType:'jsonp',
-          cache: false,
-          beforeSend: function() {
-              $('#loader').show();
-           },
-           complete: function(){
-              $('#loader').hide();
-              $("#foot").show();
-          },
-          success : function(response){
-            console.log(JSON.stringify(response));
-            $("#detected").html("Detected language: " + response);
-              $("#price").html("Estimated price: £4.50");
-          },
-          error : function(err){
-            console.log(JSON.stringify(err));
-            console.log("error:" + err.message);
-          }
-      });
-
-
-  });
-
-</script>
-
+    <!-- Latest version of Box Content Preview for en-US locale -->
+<script src="https://cdn01.boxcdn.net/platform/preview/1.53.1/en-US/preview.js"></script>
+ <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/preview/1.53.1/en-US/preview.css" /> 
 </head>
 <body>
-  <div class="content" id='main'>
-  		<h1>Translate the document</h1>
-  		<div class="main">
-  			<div class="txt-center">
-  				<img class="logo" src="images/wezen.png"/>
-  			</div>
-  			<form class="contact-forms" id="transform">
 
-  					<!-- first row of fields -->
-  					<div class="first-line">
-  						<div class="span6 main-row">
-  							<div class="input">Name:
-  								<input type="text" id="name" name="name" value="Peter1 Christensen">
-  							</div>
-  						</div>
-  						<div class="span6 main-row">
-  							<div class="input">Account number:
-  								<input type="text" id="acct" name="acct" value="9733134">
-  							</div>
-  						</div>
-  					</div>
-  					<!-- end first row of fields -->
-
-  					<!-- second row of fields -->
-  					<div class="first-line">
-  						<div class="span6 main-row">
-  							<div class="input" id="detected">
-  							</div>
-  						</div>
-              <div class="span6 main-row">
-                <div class="input">Target language:
-                  <select  id="lang" name="lang" placeholder="Target Language">
-
-                    <option value='fr'>French</option>
-                    <option value='en'>English</option>
-                    <option value='sv'>Swedish</option>
-                    <option value='da'>Danish</option>
-                    <option value='es'>Spanish</option>
-                    <option value='af'>Afrikaans</option>
-                    <option value='el'>Greek</option>
-                  </select>
-
-
-                </div>
-
-              </div>
-            </div>
-              <div class="first-line">
-    						<div class="span6 main-row">
-    							<div class="input" id="price">
-    							</div>
-    						</div>
-
-              </div>
-  					<!-- end second row of fields -->
-
-  					<!-- start file upload field -->
-
-  					<!-- end files -->
-
-  				<!-- footer -->
-  				<div class="footer" id="foot">
-  					<button type="submit" class="primary-btn">Accept & Send</button>
-  				</div>
-          <div  id="loader">
-  					<img src="images/ajax-loader-gif-1.gif"/>
-  				</div>
-  				<!-- footer -->
-
-  			</form>
-  		</div>
-  		<p class="copy_rights" id='test'>&copy; 2017 Stamplay. All Rights Reserved</p>
-  </div>
+<section class="container">
+    <div class="one">
+        <script>
+        var preview = new Box.Preview();
+      	preview.show('308478268209', '8XOxcYfk6gvRTeGzi6UsTHBHujyB6Rcz', {
+            container: '.preview-container',
+            showDownload: true
+        });
+    </script>
+    <div class="preview-container"></div>  
+    </div>
+    <div class="two">
+<span class="skype-button rounded" data-contact-id="john.mahedy@gmail.com" data-text="We need to veriy your details" data-color="#0060d4"></span>
+<script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
+</section>
+    </div>
 </body>
 </html>
