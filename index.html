@@ -49,7 +49,7 @@
             console.log("success:" + JSON.stringify(response));
             preview = new Box.Preview();
             preview.show(params.get('fileID'),response.token, {
-            	container:'.one',
+            	container:'.preview-container',
             	showDownload:true
             });
             
@@ -63,6 +63,7 @@
 
 </script>
 <body>
+
 <section class="container">
     <div class="one">
         <script>
@@ -72,7 +73,7 @@
          //   showDownload: true
        // });
     </script>
-   
+    <div class="preview-container"></div>  
     </div>
     <div class="two">
 <span class="skype-button rounded" data-contact-id="john.mahedy@gmail.com" data-text="We need to veriy your details" data-color="#0060d4"></span>
