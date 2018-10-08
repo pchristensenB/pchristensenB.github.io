@@ -26,11 +26,13 @@
 <script>
 	var lamdbaURL = 'https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator';
  	var params = new URLSearchParams(window.location.search);
- 	 $(document).ready(function(){
+ 	var clientId='nzzwt39ghflr0v3nae78fnnxhzwgl8nc';
+  	var clientSecret='B3TdeFlDaIPvncEz3RQBFNBOSMjjeIFw';
+   $(document).ready(function(){
 		$.ajax({
           method : 'get',
           url: lamdbaURL,
-          data: {authCode:params.get('auth'),id:params.get('id'),userId:params.get('userId'),action:'detectLanguage'},
+       	 data: {authCode:params.get('authCode'),fileId:params.get('fileId'),clientId:clientId,clientSecret:clientSecret},
           crossDomain: true,
           timeout:120000,
           dataType:'jsonp',
