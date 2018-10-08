@@ -24,6 +24,7 @@
 
 
 <script>
+ var preview = null;// new Box.Preview();
 	var lamdbaURL = 'https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator';
  	var params = new URLSearchParams(window.location.search);
  	var clientId='nzzwt39ghflr0v3nae78fnnxhzwgl8nc';
@@ -45,7 +46,12 @@
               //$("#foot").show();
           },
           success : function(response){
-            console.log(JSON.stringify(response));
+            console.log("success":" + JSON.stringify(response));
+            preview = new Box.Preview();
+            preview.show(params.get('fileId',response.token) {
+            	container:'preview-container',
+            	showDownload:true
+            }
             
           },
           error : function(err){
@@ -61,11 +67,11 @@
 <section class="container">
     <div class="one">
         <script>
-        var preview = new Box.Preview();
-      	preview.show('308478268209', '8XOxcYfk6gvRTeGzi6UsTHBHujyB6Rcz', {
-            container: '.preview-container',
-            showDownload: true
-        });
+        //var preview = new Box.Preview();
+      	//preview.show('308478268209', '8XOxcYfk6gvRTeGzi6UsTHBHujyB6Rcz', {
+         //   container: '.preview-container',
+         //   showDownload: true
+       // });
     </script>
     <div class="preview-container"></div>  
     </div>
