@@ -46,7 +46,7 @@
               //$("#foot").show();
           },
           success : function(response){
-            console.log("success":" + JSON.stringify(response));
+            console.log("success:" + JSON.stringify(response));
             preview = new Box.Preview();
             preview.show(params.get('fileId'),response.token) {
             	container:'preview-container',
