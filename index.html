@@ -15,7 +15,45 @@
     <!-- Latest version of Box Content Preview for en-US locale -->
 <script src="https://cdn01.boxcdn.net/platform/preview/1.53.1/en-US/preview.js"></script>
  <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/preview/1.53.1/en-US/preview.css" /> 
+ <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  
 </head>
+
+
+<script>
+	var lamdbaURL = 'https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator';
+ 	var params = new URLSearchParams(window.location.search);
+ 	 $(document).ready(function(){
+		$.ajax({
+          method : 'get',
+          url: lamdbaURL,
+          data: {authCode:params.get('auth'),id:params.get('id'),userId:params.get('userId'),action:'detectLanguage'},
+          crossDomain: true,
+          timeout:120000,
+          dataType:'jsonp',
+          cache: false,
+          beforeSend: function() {
+              //$('#loader').show();
+           },
+           complete: function(){
+              //$('#loader').hide();
+              //$("#foot").show();
+          },
+          success : function(response){
+            console.log(JSON.stringify(response));
+            
+          },
+          error : function(err){
+            console.log(JSON.stringify(err));
+            console.log("error:" + err.message);
+          }
+      });
+	});
+
+</script>
 <body>
 
 <section class="container">
