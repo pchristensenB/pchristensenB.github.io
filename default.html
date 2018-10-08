@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+  
+
+  <meta charset="utf-8" />
+    <title>Box Content Preview Demo</title>
+    <!-- polyfill.io only loads the polyfills your browser needs -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
+    <!-- Alternatively, use polyfills hosted on the Box CDN
+    <script src="https://cdn01.boxcdn.net/polyfills/bluebird/3.5.1/bluebird.min.js"></script>
+    -->
+
+    <!-- Latest version of Box Content Preview for en-US locale -->
+<script src="https://cdn01.boxcdn.net/platform/preview/1.53.1/en-US/preview.js"></script>
+ <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/preview/1.53.1/en-US/preview.css" /> 
+</head>
+<body>
+<div class="preview-container"></div>
+<section class="container">
+    <div class="one">
+        <script>
+        var preview = new Box.Preview();
+      	preview.show('308478268209', '8XOxcYfk6gvRTeGzi6UsTHBHujyB6Rcz', {
+            container: '.preview-container',
+            showDownload: true
+        });
+    </script>  
+    </div>
+    <div class="two">
+<span class="skype-button rounded" data-contact-id="john.mahedy@gmail.com" data-text="We need to veriy your details" data-color="#0060d4"></span>
+<script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
+</section>
+    </div>
+</body>
+</html>
