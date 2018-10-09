@@ -29,33 +29,33 @@
  	var params = new URLSearchParams(window.location.search);
  	var clientId='nzzwt39ghflr0v3nae78fnnxhzwgl8nc';
   	var clientSecret='B3TdeFlDaIPvncEz3RQBFNBOSMjjeIFw';
-   $(document).ready(function(){
+   	$(document).ready(function(){
 		$.ajax({
-          method : 'get',
-          url: lamdbaURL,
-       	 data: {authCode:params.get('authCode'),fileId:params.get('fileId'),clientId:clientId,clientSecret:clientSecret},
-          crossDomain: true,
-          timeout:120000,
-          dataType:'jsonp',
-          cache: false,
-          beforeSend: function() {
-              //$('#loader').show();
-           },
-           complete: function(){
+         	method : 'get',
+          	url: lamdbaURL,
+       	 	data: {authCode:params.get('authCode'),fileId:params.get('fileId'),clientId:clientId,clientSecret:clientSecret},
+          	crossDomain: true,
+         	timeout:120000,
+          	dataType:'jsonp',
+          	cache: false,
+          	beforeSend: function() {
+            	//$('#loader').show();
+           	},
+           	complete: function(){
               //$('#loader').hide();
               //$("#foot").show();
-          },
-          success : function(response){
-            console.log("success:" + JSON.stringify(response));
-            preview = new Box.Preview();
-            preview.show(params.get('fileID'),response.token, {
+          	},
+          	success : function(response){
+            	console.log("success:" + JSON.stringify(response));
+            	preview = new Box.Preview();
+            	preview.show(params.get('fileID'),response.token, {
             	container:'.preview-container',
             	showDownload:true
             });
             
           },
           error : function(err){
-            console.log(JSON.stringify(err));
+           ß console.log(JSON.stringify(err));
             console.log("error:" + err.message);
           }
       });
@@ -76,7 +76,7 @@
     <div class="preview-container"></div>  
     
    
-<span class="skype-button rounded" data-contact-id="john.mahedy@gmail.com" data-text="We need to veriy your details" data-color="#0060d4"></span>
+<span class="skype-button rounded" data-contact-id="peterchristensen31@hotmail.com" data-text="We need to veriy your details" data-color="#0060d4"></span>
 <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
  
 </section>
