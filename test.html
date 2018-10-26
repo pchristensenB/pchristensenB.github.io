@@ -5,7 +5,7 @@
   
 
   <meta charset="utf-8" />
-    <title>Box Content Preview Demo 1</title>
+    <title>Box sample for 3rd party app</title>
     <!-- polyfill.io only loads the polyfills your browser needs -->
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
     <!-- Alternatively, use polyfills hosted on the Box CDN
@@ -13,8 +13,6 @@
     -->
 
     <!-- Latest version of Box Content Preview for en-US locale -->
-<script src="https://cdn01.boxcdn.net/platform/preview/1.53.1/en-US/preview.js"></script>
- <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/preview/1.53.1/en-US/preview.css" /> 
  <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -47,10 +45,9 @@
           	},
           	success : function(response){
             	console.log("success:" + JSON.stringify(response));
-            	preview = new Box.Preview();
-            	preview.show(params.get('fileID'),response.token, {
-            	container:'.preview-container',
-            	showDownload:true
+            	$("#auth").text(params.get('authCode'));
+            	$("#token").text(response.token);
+            	
             });
             
           },
@@ -63,22 +60,14 @@
 
 </script>
 <body>
+<div id=auth/>
+<br/>
+<div id=cid/>
+<br/>
 
-<section class="container">
-   
-        <script>
-        //var preview = new Box.Preview();
-      	//preview.show('308478268209', '8XOxcYfk6gvRTeGzi6UsTHBHujyB6Rcz', {
-         //   container: '.preview-container',
-         //   showDownload: true
-       // });
-    </script>
-    <div class="preview-container"></div>  
-    
-   
-<span class="skype-button rounded" data-contact-id="john.mahady.mydentist@gmail.com" data-text="We need to verify your details" data-color="#0060d4"></span>
-<script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
- 
+<div id=token/>
+<br/>
+
 </section>
    
 </body>
