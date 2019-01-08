@@ -1,0 +1,27 @@
+<html>
+<title>Hiscox Portal Main</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<style>
+  body {
+    color: #050505;
+    font-family: "Lato", "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+
+  }
+
+</style>
+<script>
+$(document).ready(function() {
+  var msg = "User: " + sessionStorage.getItem("userLogin") + "<br>Role: Temporary Employee";
+
+  $("#user").html(msg);
+
+});
+</script>
+<body style="background-color:#050505">
+<img src="logo.png" alt="Hiscox Logo" position="_top" margin-top="25px">
+<div id="user" style="float:right;margin-right:20px;color:white;">
+</div>
+</body>
+</html>

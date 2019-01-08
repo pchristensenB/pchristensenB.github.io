@@ -1,0 +1,22 @@
+<head>
+    <meta charset="utf-8">
+    <title>Box DICOM Viewer</title>
+    <meta http-equiv="X-UA-Compatible"content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<script>
+var ACCESS_TOKEN = "EqFyi1Yq1tD9mxY8F38sxDfp73pFd7FP";
+var FILE_ID = "163941235375";
+var containerEl = document.querySelector('.box-dicom-viewer-body');
+
+box.dicom.createViewer(containerEl, {
+    accessToken: ACCESS_TOKEN,
+    studies: [{ fileId: FILE_ID }]
+});
+</script>
+
+<body>
+    <div class="box-dicom-viewer-body"></div>
+</body>
