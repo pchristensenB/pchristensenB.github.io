@@ -15,7 +15,7 @@ for(var i = 0; i < links.length; i++) {
   links[i].addEventListener("click", function() {
     var current = document.getElementsByClassName("active");
     var currentp = document.getElementsByClassName("activep");
-    console.log(this.innerHTML);
+    console.log(this.innerHTML + " - " + current[0]);
     current[0].className = current[0].className.replace("active", "");
     currentp[0].className = currentp[0].className.replace("activep", "");
     this.className = "active";
@@ -103,7 +103,7 @@ p {
 <ul>
 
 
-  <li width="140px"><p class="activep"><a href="documents.html" target="main">Broker</a></p></li>
+  <li width="140px"><p class="activep"><a class="active" href="documents.html" target="main">Broker</a></p></li>
   <li width="140px"><p><a href="doctor.html" target="main">Doctor</a></p></li>
   <li width="140px"><p><a href="dicom.html" target="main">Medical Imaging</a></p></li>
   <li width="140px"><p><a href="cast.html" target="main">Cast Member</a></p></li>

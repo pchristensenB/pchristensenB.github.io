@@ -18,7 +18,7 @@
     <div class="preview-container" style="height:1000px; width:100%;"></div>
     <script>
         var preview = new Box.Preview();
-      	preview.show('379921691423', 'E8f2me24w93kmJsqwANX14KEK0dN8eEi', {
+      	preview.show('379921691423', sessionStorage.getItem("accessToken"), {
             container: '.preview-container',
             showDownload: true,
             logoUrl: 'http://localhost:8080/hiscox/round.jpg',
