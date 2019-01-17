@@ -30,7 +30,18 @@
             canRename: 'false',
             canUpload: 'false',
             canCreateNewFolder: 'false',
-            canShare: 'false'
+            canShare: 'false',
+            contentPreviewProps: {
+              contentSidebarProps: {
+                container: '.sb',
+                //defaultView: 'metadata',
+                hasMetadata: true,
+                hasSkills: true,
+                hasProperties: true,
+                hasAccessStats: true,
+                defaultView: 'skills'
+              }
+            }
         });
     </script>
 </body>
