@@ -19,11 +19,23 @@
     <script src="https://cdn01.boxcdn.net/platform/elements/7.2.0/en-US/explorer.js"></script>
     <script>
       	var folderId = '64056086378';
-      	var accessToken = 'ERtaeEtF6SAIf6yBAwFeqKaHBCAAzcox';
+        var accessToken = sessionStorage.getItem("accessToken");
       	var contentExplorer = new Box.ContentExplorer();
       	contentExplorer.show(folderId, accessToken, {
             container: '.container',
-            logoUrl: 'logo.png'
+            logoUrl: 'logo.png',
+            contentPreviewProps: {
+        contentSidebarProps: {
+          container: '.sb',
+           //defaultView: 'metadata',
+          hasMetadata: false,
+        hasSkills: true,
+        hasProperties: true,
+        hasAccessStats: true,
+          hasActivityFeed: true,
+        defaultView:'activityFeed'
+      }}
+
 
         });
     </script>

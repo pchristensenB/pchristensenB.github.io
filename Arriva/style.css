@@ -14,14 +14,14 @@ a{color:inherit;text-decoration:none}
 	min-height:670px;
 	position:relative;
 	background:url(background.jpg) no-repeat center;
-	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.15),0 17px 50px 0 rgba(0,0,0,.19);
 }
 .login-html{
 	width:100%;
 	height:100%;
 	position:absolute;
 	padding:90px 70px 50px 70px;
-	background:rgba(23,27,65,.87);
+	background:rgba(22,116,116,.45);
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm{
