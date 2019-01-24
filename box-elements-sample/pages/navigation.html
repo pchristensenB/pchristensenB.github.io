@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<title>Box Sample Application Framework</title>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script>
+  $(document).ready(function() {
+    var links = document.getElementsByTagName("a");
+
+//John Mahedy - Set your navigation label names here:
+
+ {
+    var navlabel1 = "";
+    var navlabel2 = "";
+    var navlabel3 = "";
+    var navlabel4 = "";
+    var navlabel5 = "";
+    var navlabel6 = "";
+
+// John Mahedy - Set youe pagenames for each navlabel# item here:
+
+    var navpage1 = "";
+    var navpage2 = "";
+    var navpage3 = "";
+    var navpage4 = "";
+    var navpage5 = "";
+    var navpage6 = ""
+
+}
+
+console.log(links.length);
+for(var i = 0; i < links.length; i++) {
+  console.log(links[i].innerHTML);
+  links[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    var currentp = document.getElementsByClassName("activep");
+    console.log(this.innerHTML);
+    current[0].className = current[0].className.replace("active", "");
+    currentp[0].className = currentp[0].className.replace("activep", "");
+    this.className = "active";
+    this.parentNode.className='activep';
+  });
+}
+});
+</script>
+<style>
+ul {
+    border: 1px solid #cdd4de;
+}
+
+li {
+    text-align: centre;
+    border-bottom: 1px solid #cdd4de;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+.active{
+    background-color: #343859;
+    color: white;
+}
+.activep {
+    background-color: #343859; !important
+    color: white;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #FAFAFA;
+
+}
+
+li a {
+    display: block;
+    color: #54698D;
+    text-align: left;
+    padding: 4px 12px;
+    text-decoration: none;
+    border: 1px;
+}
+
+/* Change the link color on hover */
+li a:hover {
+    background-color: #343759;
+    color: white;
+
+}
+li p:hover {
+    background-color: #343759;
+    color: white;
+
+}
+
+
+p {
+    color: #54698D;
+    font-family: "Lato", "Helvetica", "Arial", sans-serif;
+    margin-block-start:0em;
+    margin-block-end:0em;
+    padding-top:16px;
+    padding-bottom: 16px;
+
+}
+
+</style>
+</head>
+<body style= "height:100%" bgcolor="#F4F6F9">
+
+<ul>
+
+  <li width="140px"><p class='activep'><a class="active" height='27px' href="upload.html" target="main">Upload Evidence</a></p></li>
+
+  <li width="90px"><p><a  href="https://box-162828.workflowcloud.com/forms/83b90de6-07da-423b-998d-c3f144babd5d" target="main">Create Case</a></p></li>
+  <li width="140px"><p><a href="cases.html"  target="main">My Cases</a></p></li>
+  <li width="140px"><p><a href="associate.html" target="main">Associate Evidence</a></p></li>
+  <li width="140px"><p><a href="evidence-map.html" target="main">Suggested Evidence</a></p></li>
+  <li width="140px"><p><a href="search.html" target="main">Search Evidence</a></p></li>
+  <li width="140px"><p><a href="collaborations.html" target="main">External Agencies</a></p></li>
+  <li width="140px"><p><a href="events.html" target="main">Case Events</a></p></li>
+  <li width="140px"><p><a href="help.html" target="main">Help</a></p></li>
+  <li width="140px"><p><a href="login.html" target="_top">Logout</a></p></li>
+
+
+  </ul>
+
+  </div>
+
+  </body>
+  </html>
