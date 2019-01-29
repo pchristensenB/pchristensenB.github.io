@@ -1,4 +1,68 @@
-<% include ../partials/common/header %>
+<!doctype html>
+<html lang="en">
+<head>
+
+<title>Box Insurance</title>
+  <meta charset="UTF-8">
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <!-- Box preview SDK -->
+  <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/preview/1.13.0/en-US/preview.css">
+  <script src="https://cdn01.boxcdn.net/platform/preview/1.13.0/en-US/preview.js"></script>
+  <!-- foundation 6 style + js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+  <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
+  <!-- Auth0 js -->
+  <script src="https://cdn.auth0.com/js/auth0/8.3.0/auth0.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Questrial|Quicksand" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <!-- local css and js -->
+  <link rel="stylesheet" href="/boxinsurance/css/custom.css">
+  <link rel="stylesheet" href="/boxinsurance/icons/foundation-icons/foundation-icons.css">
+  <link rel="stylesheet" href="/boxinsurance/css/page_loader.css">
+</head>
+<body>
+
+  <!-- Start Top Bar -->
+  <div class="top-bar top-bar-override">
+    <div class="top-bar-left top-bar-override">
+      <ul class="white-background menu separate top-bar-override">
+
+            <li class="menu-text"><img class="company-logo" src="logo.png"></li>
+
+            <li class="menu-text"><a href="" style="font-size:20px" class="quicksand-font">Box Insurance</a></li>
+
+          <li class="lato-font" style="font-size:15px"><a href="">My claims</a></li>
+          <li class="lato-font" style="font-size:15px"><a href="">Find an agent</a></li>
+          <li class="lato-font" style="font-size:15px"role="menuitem"><a href="/dashboard">Customer care</a></li>
+          <li class="lato-font" style="font-size:15px"><a href="">Get a quote</a></li>
+      </ul>
+    </div>
+    <div style="padding-top:5px;" class="top-bar-right login">
+      <ul class="menu  top-bar-override">
+        <i style="color:#F96F67;padding-right:1px;" class="fa fa-user-o" aria-hidden="true"></i>
+        <span style="font-size:17px;cursor:pointer;color:#2B9DE8;" class="lato-font" onclick="openNav()">Log in</span>
+      </ul>
+    </div>
+  </div>
+  <div id="loader" style="display:none" class="loading">Loading...</div>
+  <!-- End Top Bar -->
+
+  <style>
+    @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+    .poppins-font{
+      font-family: 'Poppins', sans-serif;
+    }
+    .quicksand-font{
+      font-family: 'Quicksand', sans-serif;
+    }
+    .lato-font{
+      font-family: 'Lato', sans-serif;
+    }
+  </style>
+
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -18,7 +82,7 @@
       <button style="z-index:1" class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
       <li class="orbit-slide is-active">
         <figure class="orbit-figure">
-          <img class="orbit-image" src="/img/banner_1.jpg">
+          <img class="orbit-image" src="/boxinsurance/img/banner_1.jpg">
           <h3>Get insurance quotes.<br />Find local agents instantly.</h3>
           <button style="width:150px" class="button button1 expanded">Get the app</button>
         </figure>
@@ -69,7 +133,7 @@
 <div class="row small-up-2 large-up-4">
   <div class="column">
     <div style="padding-left:70px">
-      <img src="/img/suv.png">
+      <img src="/boxinsurance/img/suv.png">
     </div>
     <div class="lato-font" style="text-align:center;color:#888888;">
       <span style="font-size:17px;">For your auto needs</span>
@@ -78,7 +142,7 @@
   </div>
   <div class="column">
     <div style="padding-left:70px">
-      <img src="/img/motor-sports.png">
+      <img src="/boxinsurance/img/motor-sports.png">
     </div>
     <div class="lato-font" style="text-align:center;color:#888888;">
       <span style="font-size:17px;">Get a quote instantly</span>
@@ -87,7 +151,7 @@
   </div>
   <div class="column">
     <div style="padding-left:100px;padding-top:39px;">
-      <img style="padding-bottom:25px;" src="/img/fireplace_1.png">
+      <img style="padding-bottom:25px;" src="/boxinsurance/img/fireplace_1.png">
     </div>
     <div class="lato-font" style="text-align:center;color:#888888;">
       <span style="font-size:17px;">Homeowner's guide</span>
@@ -96,7 +160,7 @@
   </div>
   <div class="column">
     <div style="padding-left:100px;padding-top:39px;">
-      <img style="padding-bottom:25px;" src="/img/maps-and-flags.png">
+      <img style="padding-bottom:25px;" src="/boxinsurance/img/maps-and-flags.png">
     </div>
     <div class="lato-font" style="text-align:center;color:#888888;">
       <span style="font-size:17px;">Renter's insurance</span>
@@ -111,7 +175,7 @@
     <button style="z-index:1" class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
     <li class="orbit-slide is-active">
       <figure class="orbit-figure">
-        <img class="orbit-image" src="/img/banner_2.jpg">
+        <img class="orbit-image" src="/boxinsurance/img/banner_2.jpg">
         <h3>Ask about our mobile app.<br />Manage your claims. Anywhere anytime.</h3>
         <button style="width:150px" class="button button1 expanded">Get the app</button>
       </figure>
@@ -267,8 +331,205 @@ function closeNav() {
 // SideNav Initialization
 $(".button-collapse").sideNav();
 </script>
-<% include ../partials/common/footer %>
+<footer>
+  <div class="row column">
+    <hr>
+    <div class="row">
+      <div class="medium-6 column">
+        <ul class="menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="medium-6 column">
+      </div>
+    </div>
+  </div>
+</footer>
 
+<div class="edit-icon btn hide_mobile" style="z-index:1000;">
+  <span style="color: #222222; position: relative; font-size: 12px;">
+    <i class="fi-page-edit edit-icon-style" style="font-size: 18px; color: #F96F67;"></i>
+    <div class="row">
+      <div class="medium-12 columns">
+        </br>
+        <form method="post" action="/set-customization">
+          <label>Company
+            <input type="text" name="company" placeholder="Box">
+          </label>
+          <label>Salesforce Opportunity Link
+            <input type="text" name="salesforce" placeholder="">
+          </label>
+          <label>Company logo URL
+            <input type="text" name="logo" placeholder="logo url">
+          </label>
+          <span class="icon-mr">Is this demo attached to a real opportunity?</span>
+          <input type="radio" name="real_demo" value=true id="real_demo_yes"><label for="real_demo_yes">Yes</label>
+          <input type="radio" name="real_demo" value=false id="real_demo_no" required><label for="real_demo_no">No</label>
+          <button type="submit" class="button" value="Submit">Submit</button>
+        </form>
+        <!-- <div>
+          <input type="checkbox" name="edit" value="edit" id="edit_btn">
+          <label for="edit_btn" cursor="none" style="font-size: 12px;"> Edit mode </label>
+        </div> -->
+        <a class="alert button" style="float:left;" onclick="deleteAllCookies()" href="/reset-customization">Reset Customization</a>
+        <% if(locals.user) { %>
+          <a href="/reset" class="alert button" style="float:right;" onclick="preloader()">Reset Demo</a>
+        <% } %>
+      </div>
+    </div>
+  </span>
+</div>
+<script>
+
+
+  function preloader() {
+    document.getElementById("loader").style.display = 'block';
+  }
+
+  checkEdits();
+
+  $(function() {
+    // When edit button is checked, make content editable, call saveEdits
+    $('#edit_btn').change(function() {
+      if($(this).is(":checked")) {
+        var editableElems = $(".editable");
+        editableElems.attr("contenteditable", "true").attr("oninput", "saveEdits(this)");
+        // $(".edit-icon").css("width", "180px");
+        // $(".edit-icon").css("height", "60px");
+      }
+      // When not checked, remove editable attributes
+      else {
+        var editableElems = $(".editable");
+        editableElems.removeAttr("contenteditable", "true").removeAttr("oninput", "saveEdits(this)");
+        // $(".edit-icon").css("width", "35px");
+        // $(".edit-icon").css("height", "30px");
+      }
+    });
+  })
+  function saveEdits(element) {
+
+    var url = window.location.pathname
+    var elementId = element.id
+    var elementHtml = element.innerHTML.replace(/&nbsp;/gi,'').replace(/&amp;/gi,'&')
+    // check if storage object exists
+    // if it does, add to it
+    // if it doesn't create new
+    if(readCookie("text_replace")) {
+      var cookie = replacePlus(readCookie("text_replace"))
+      cookie = decodeURIComponent(cookie)
+      cookie = decodeURLRecursively(cookie)
+      //cookie = replaceEqualSign(cookie)
+      cookie = $.parseJSON(cookie)
+    }
+    if(cookie != null && cookie[url] != null) {
+      obj = cookie[url]
+      obj[elementId] = elementHtml
+      var newObj = {}
+      newObj[url] = obj
+    }
+    else {
+      var obj = {}
+      obj[elementId] = elementHtml
+      var newObj = {}
+      newObj[url] = obj
+    }
+    newObj = JSON.stringify(newObj)
+    createCookie("text_replace", encodeURIComponent(newObj))
+  }
+
+  function checkEdits() {
+    var url = window.location.pathname
+    // On page load, check elements that are editable
+    var editElem = $(".editable");
+    editElem = [].slice.call(editElem)
+    // For each, replace element html with session stored text
+    if(readCookie("text_replace")) {
+      var cookie = readCookie("text_replace")
+      cookie = decodeURIComponent(cookie)
+      cookie = replacePlus(cookie)
+      cookie = decodeURLRecursively(cookie)
+      //cookie = replaceEqualSign(cookie)
+      cookie = $.parseJSON(cookie)
+    }
+    else {
+    var cookie = {}
+    }
+    if(readCookie("text_replace") != null && cookie[url] != null) {
+      newObj = cookie[url]
+      editElem.forEach(function (item, index) {
+        console.log(item);
+        var itemId = item.id
+        if(newObj[item.id]!=null){
+          var storedEdit = newObj[item.id]
+          item.innerHTML = storedEdit;
+        }
+      })
+    }
+  }
+
+  function createCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+  }
+
+  function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+
+  function deleteAllCookies() {
+      var cookies = document.cookie.split(";");
+      for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i];
+          var eqPos = cookie.indexOf("=");
+          var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+          document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      }
+      location.reload();
+  }
+
+  function eraseCookie(name) {
+    createCookie(name,"",-1);
+  }
+
+  function replacePlus(str) {
+    return str.replace(/\+/g, " ");
+  }
+
+  function decodeURLRecursively(url) {
+    if(ValidURL(url)) {
+      return decodeURLRecursively(decodeURIComponent(url));
+    }
+    return url;
+  }
+
+  function ValidURL(str) {
+    var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+    if(!regex .test(str)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+</script>
+
+
+</body>
 </html>
 
 
+</html>
