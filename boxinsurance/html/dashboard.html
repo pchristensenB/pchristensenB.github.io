@@ -1,0 +1,296 @@
+<% include ../partials/common/claims-header%>
+
+<div class="row">
+
+</div>
+
+<div class="row">
+  <%- include ../partials/box/folder-path %>
+  <div class="medium-4 columns">
+    <div></div><nav class="main-menu" style="padding-top:75px">
+      <ul>
+        <li>
+          <a href="#" style="margin-top:10%;margin-bottom:5%;">
+            <i class="fa fa-home fa-2x"></i>
+            <span class="nav-text">
+              Dashboard
+            </span>
+          </a>
+
+        </li>
+        <li class="has-subnav">
+          <a href="#" style="margin-bottom:5%;">
+            <i class="fa fa-laptop fa-2x"></i>
+            <span class="nav-text">
+              Contact Info
+            </span>
+          </a>
+
+        </li>
+        <li class="has-subnav">
+          <a href="#" style="margin-bottom:5%;">
+            <i class="fa fa-list fa-2x"></i>
+            <span class="nav-text">
+              Claims Forms
+            </span>
+          </a>
+
+        </li>
+        <li class="has-subnav">
+          <a href="#" style="margin-bottom:5%;">
+            <i class="fa fa-folder-open fa-2x"></i>
+            <span class="nav-text">
+              Client Documents
+            </span>
+          </a>
+
+        </li>
+        <li>
+          <a href="#" style="margin-bottom:5%;">
+            <i class="fa fa-bar-chart-o fa-2x"></i>
+            <span class="nav-text">
+              Graphs and Statistics
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#" style="margin-bottom:5%;">
+            <i class="fa fa-table fa-2x"></i>
+            <span class="nav-text">
+              Tables
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#" style="margin-bottom:5%;">
+            <i class="fa fa-map-marker fa-2x"></i>
+            <span class="nav-text">
+              Coordinates
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#" style="margin-bottom:5%;">
+            <i class="fa fa-info fa-2x"></i>
+            <span class="nav-text">
+              Help
+            </span>
+          </a>
+        </li>
+      </ul>
+      <ul class="logout">
+        <li>
+          <a href="#">
+            <i class="fa fa-power-off fa-2x"></i>
+            <span class="nav-text">
+                <%= user.displayName %>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <%- include ../partials/box/folders %>
+  </div>
+  <div class="medium-4 columns" style="padding-right:450px;padding-top:-300px;">
+    <%- include ../partials/box/files %>
+  </div>
+</div>
+
+<div class="modal-wrapper">
+  <div class="modal">
+    <form method="post" action="/dashboard/claims">
+    <div class="head">
+      <a class="btn-close trigger" style="margin-top:-20px" href="javascript:;"></a>
+    </div>
+    <div class="content">
+      <input type="hidden" name="folderId" id="myField" value="" />
+        <label>Client Phone Number
+          <input name="clientNumber" style="width:60%" type="text" placeholder="650-123-4567" />
+        </label>
+        <div class="row">
+            <label>What do you want to talk about?
+              <textarea name="message" style="height:150px;" placeholder="Need more information..."></textarea>
+            </label>
+        </div>
+        <button type='submit' style="float:right;" class="button">Contact</button>
+    </div>
+  </form>
+  </div>
+</div>
+
+<style>
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+}
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web:300);
+
+.fa-2x {
+  font-size: 2em;
+}
+.fa {
+  position: relative;
+  display: table-cell;
+  width: 60px;
+  height: 36px;
+  text-align: center;
+  vertical-align: middle;
+  font-size:20px;
+}
+
+
+.main-menu:hover,nav.main-menu.expanded {
+  width:250px;
+  overflow:visible;
+}
+
+.main-menu {
+  background:#fbfbfb;
+  border-right:1px solid #e5e5e5;
+  position:absolute;
+  top:0;
+  bottom:0;
+  height:353%;
+  left:0;
+  width:60px;
+  overflow:hidden;
+  -webkit-transition:width .05s linear;
+  transition:width .05s linear;
+  -webkit-transform:translateZ(0) scale(1,1);
+  z-index:1000;
+}
+
+.main-menu>ul {
+  margin:7px 0;
+}
+
+.main-menu li {
+  position:relative;
+  display:block;
+  width:250px;
+}
+
+.main-menu li>a {
+  position:relative;
+  display:table;
+  border-collapse:collapse;
+  border-spacing:0;
+  color:#999;
+  font-family: arial;
+  font-size: 14px;
+  text-decoration:none;
+  -webkit-transform:translateZ(0) scale(1,1);
+  -webkit-transition:all .1s linear;
+  transition:all .1s linear;
+
+}
+
+.main-menu .nav-icon {
+  position:relative;
+  display:table-cell;
+  width:60px;
+  height:36px;
+  text-align:center;
+  vertical-align:middle;
+  font-size:18px;
+}
+
+.main-menu .nav-text {
+  position:relative;
+  display:table-cell;
+  vertical-align:middle;
+  width:190px;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.main-menu>ul.logout {
+  position:absolute;
+  left:0;
+  bottom:0;
+}
+
+.no-touch .scrollable.hover {
+  overflow-y:hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+  overflow-y:auto;
+  overflow:visible;
+}
+
+a:hover,a:focus {
+  text-decoration:none;
+}
+
+nav {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+}
+
+nav ul,nav li {
+  outline:0;
+  margin:0;
+  padding:0;
+}
+.main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+  color:#fff;
+  background-color:#5fa2db;
+}
+.area {
+  float: left;
+  background: #e2e2e2;
+  width: 100%;
+  height: 100%;
+}
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+
+</style>
+
+<script type="text/javascript">
+var accessToken = "<%= user.accessToken %>";
+
+var form = document.getElementById('file-form');
+var fileSelect = document.getElementById('file-select');
+var uploadButton = document.getElementById('upload-button');
+
+form.onsubmit = function(event){
+  event.preventDefault();
+  uploadButton.innerHTML = 'Uploading...';
+  var files = fileSelect.files;
+  var formData = new FormData();
+
+  // The Box Auth Header. Add your access token.
+  var headers = { Authorization: 'Bearer ' + accessToken};
+  var uploadUrl = 'https://upload.box.com/api/2.0/files/content';
+
+  formData.append('files', files[0], files[0].name);
+
+  // Add the destination folder for the upload to the form
+  formData.append('parent_id', '<%= currentFolder %>');
+
+  $.ajax({
+    url: uploadUrl,
+    headers: headers,
+    type: 'POST',
+    // This prevents JQuery from trying to append the form as a querystring
+    processData: false,
+    contentType: false,
+    data: formData
+  }).complete(function ( data ) {
+    uploadButton.innerHTML = 'Upload';
+    // Log the JSON response to prove this worked
+    console.log(data.responseText);
+    location.reload(true);
+  });
+}
+
+
+</script>
+
+<% include ../partials/common/dashboardFooter %>
