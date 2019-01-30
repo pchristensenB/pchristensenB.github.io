@@ -17,13 +17,13 @@
   <script src="https://cdn.auth0.com/js/auth0/8.3.0/auth0.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"></head>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
   <!-- local css and js -->
-  <link rel="stylesheet" href="/boxinsurance/css/custom.css">
-  <link rel="stylesheet" href="/boxinsurance/icons/foundation-icons/foundation-icons.css">
-  <script src="/js/GoogleAnalytics.js"></script>
-  <link rel="stylesheet" href="/boxinsurance/css/page_loader.css">
+  <link rel="stylesheet" href="/boxinsurance/css/custom.css"/>
+  <link rel="stylesheet" href="/boxinsurance/icons/foundation-icons/foundation-icons.css"/>
+  <link rel="stylesheet" href="/boxinsurance/css/page_loader.css"/>
+  <script src="/boxinsurance/js/claim_snip.js"></script>
 </head>
 <body>
   <!-- <div style="padding-top: 15px;padding-bottom: 15px; padding-left:83%; font-size:14px" class="poppins-font">
@@ -359,26 +359,7 @@
 </div>
 
 <div class="row">
-  <ul class="breadcrumbs medium-12 columns">
-    <% path.forEach(function(pathItem, index) { %>
-      <% if((path.length - 1) === index) { %>
-        <li>
-          <span id="rootFolder" data-id="<%= pathItem.id %>" class="path-item">
-            <strong><%= pathItem.name %></strong>
-          </span>
-        </li>
-      <% } else { %>
-        <li>
-          <a href="<%= domain %>/dashboard/<%= pathItem.id %>">
-              <%= pathItem.name %>
-          </a>
-        </li>
-      <% } %>
-      <% if (!(path.length - 1  === index)) { %>
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      <% } %>
-    <% }); %>
-  </ul>
+
 
   <div class="medium-4 columns">
     <div></div><nav class="main-menu" style="padding-top:75px">
@@ -472,89 +453,11 @@
 
     <div id="folders" class="col-md-3" style="padding-left:-2.0rem">
       <div id="foldersUi">
-        <% if(folders.length === 0) { %>
-          <p id="noFolders">No subfolders found.</p>
-          <% } %>
+
           <ul id="folderGroup" class="medium-12 columns tile-padding">
-            <% folders.forEach(function(folder) { %>
-              <div class="wrapper">
-                <div class="card radius shadowDepth1">
-                  <div class="card__content card__padding">
-                    <div class="card__share">
-                      <div class="card__social">
-                        <a class="share-icon facebook" href="/claims/file_view/<%= folder.id %>"><span class="fa fa-file icon-padding"></span></a>
-                        <a class="share-icon twitter" href="" data-toggle="modal" data-id="107"><span class="fa fa-phone icon-padding trigger" data-toggle="modal" data-id="<%= folder.id %>"></span></a>
-                        <a class="share-icon googleplus" href="/claims/approve/<%= folder.id %>"><span class="fa fa-thumbs-o-up icon-padding"></span></a>
-                      </div>
-                    <a id="share" class="share-toggle share-icon" href="#"></a>
-                  </div>
-                  <div class="card__action">
-                    <div class="card__author">
-                      <% if(folder.metadata.claimtype == "Auto Physical Damage Claim") { %>
-                        <img style="margin-left:-20px;" src="/boxinsurance/img/car_policy.png">
-                      <% } else if(folder.metadata.claimtype == "Homeowner Damage Claim"){ %>
-                        <img style="margin-left:-20px;" src="/boxinsurance/home_policy.png">
-                      <% } else if(folder.metadata.claimtype == "Commercial Claim"){ %>
-                        <img style="margin-left:-20px;background:#F38A6D" src="../img/commercial_policy.png">
-                      <% } else if(folder.metadata.claimtype == "Health Insurance Claim"){ %>
-                        <img style="margin-left:-20px;" src="/boxinsurance/health_policy.png">
-                      <% } %>
-                      <div class="card__author-content lato-font" style="font-size:15px;">
-                        Claim Number
-                      </br>
-                        <a style="color:#888888;font-size:14px;padding-left:6px;" class="lato-font"><%= folder.id%></a>
-                      </div>
-                      <div style="float:right;padding-top:12px;" class="lato-font">
-                        Claim Type
-                      </br>
-                        <a style="color:#888888;font-size:14px;padding-left:0px;" class="lato-font"><%= folder.metadata.claimtype %></a>
-                      </div>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="card__meta" style="font-size:15px">
-                    <time><%=folder.creationDate%></time>
-                  </div>
-                  <article style="font-size:15px;" class="card__article">
-                    <div id="contentBox">
-                        <div style="margin-left:-30%;"class="column leftpush">
-                          <i class="fa fa-id-card-o" style="width:0!important;color:#039BE5;padding-top:2px;" aria-hidden="true"><span style="font-size:13px;padding-left:5px;" class="lato-font"> Policy Number: </span><span style="font-size:13px;color:#888888;" class="lato-font"><%= folder.metadata.policynumber %></span></i>
-                          <i class="fa fa-user-circle" style="width:0!important;color:#039BE5;padding-top:2px;" aria-hidden="true"><span style="font-size:13px; padding-left:8px;" class="lato-font">  Policy Holder: </span><span style="font-size:13px;color:#888888" class="lato-font"><%= folder.name %></span></i>
-                        </div>
-                        <div style="padding-left:20%;" class="column">
-                          <%if (folder.metadata.claimStage == "Waiting for review") { %>
-                            <i class="fa fa-check-circle" style="width:0!important;color:#F96F67;padding-top:2px;" aria-hidden="true"><span style="font-size:13px;padding-left:5px;" class="lato-font"> Status: <%= folder.metadata.claimStage %></span></i>
-                          <% } else if(folder.metadata.claimStage == "Need More Info"){ %>
-                            <i class="fa fa-check-circle" style="width:0!important;color:#F96F67;padding-top:2px;" aria-hidden="true"><span style="font-size:13px;padding-left:5px;" class="lato-font"> Status: <%= folder.metadata.claimStage %></span></i>
-                          <% } else{ %>
-                            <i class="fa fa-check-circle" style="width:0!important;color:#54D6C7;padding-top:2px;" aria-hidden="true"><span style="font-size:13px;padding-left:5px;" class="lato-font"> Status: <%= folder.metadata.claimStage %></span></i>
-                          <% } %>
-                          <%if (folder.metadata.priority == "high") { %>
-                            <div style="margin-right:43%;">
-                              <i style="font-size:14px;color:#F96F67;width:10%;" class="fa fa-arrow-up" aria-hidden="true"><span class="lato-font" style="margin-left:10%;">High Priority</span></i>
-                            </div>
-                          <% } else{ %>
-                            <div style="margin-right:44%;">
-                              <i style="font-size:14px;color:#54D6C7;width:10%" class="fa fa-arrow-down" aria-hidden="true"><span class="lato-font" style="margin-left:10%;">Low Priority</span></i>
-                            </div>
-                          <% } %>
-                        </div>
-                    </div>
-                    <i class="fa fa-info-circle" style="width:0!important;color:#F96F67;padding-top:2px;" aria-hidden="true"><span style="font-size:13px;;margin-left:9px;" class="lato-font"> Incident Summary </span></i>
-                    <span style="color:#888888;font-size:13px;" class="verela-font"><%= folder.description %></span>
-                    <div style="margin-left:85%;margin-top:1%;">
-                      <% if(folder.name == "Jason Smith") { %>
-                        <a class="button small" href="/claims/full_report/<%= folder.id %>"><span style="color:white">Full Report</span></a>
-                      <% } else { %>
-                        <a disable class="button small disabled"><span style="color:white">Full Report</span></a>
-                      <% } %>
-                    </div>
-                  </article>
-            </div>
-          </div>
-        </div>
-        <!-- <li class=""><a href="/dashboard/<%= folder.id %>"><%= folder.name %></a></li> -->
-        <% }); %>
+
+
+
       </ul>
     </div>
     </div>
@@ -884,6 +787,7 @@
           $('.page-wrapper').toggleClass('blur');
           return false;
         });
+        loadClaim();
       });
       </script>
 
@@ -1475,13 +1379,13 @@ nav ul,nav li {
 </style>
 
 <script type="text/javascript">
-var accessToken = "<%= user.accessToken %>";
+var accessToken = sessionStorage.getItem("accessToken");
 
 var form = document.getElementById('file-form');
 var fileSelect = document.getElementById('file-select');
 var uploadButton = document.getElementById('upload-button');
 
-form.onsubmit = function(event){
+/**form.onsubmit = function(event){
   event.preventDefault();
   uploadButton.innerHTML = 'Uploading...';
   var files = fileSelect.files;
@@ -1510,7 +1414,7 @@ form.onsubmit = function(event){
     console.log(data.responseText);
     location.reload(true);
   });
-}
+}**/
 
 
 </script>
