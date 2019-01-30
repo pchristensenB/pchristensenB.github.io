@@ -37,6 +37,7 @@ function loadClaim() {
           '<div class="card__social">' +
             '<a class="share-icon facebook" href="/claims/file_view/' + myFolder.id + '"><span class="fa fa-file icon-padding"></span></a>' +
             '<a class="share-icon twitter" href="" data-toggle="modal" data-id="107"><span class="fa fa-phone icon-padding trigger" data-toggle="modal" data-id="' + myFolder.id + '"></span></a>' +
+            '<a class="share-icon googleplus" href="/claims/approve/<%= folder.id %>"><span class="fa fa-clipboard-pencil icon-padding"></span></a>' +
             '<a class="share-icon googleplus" href="/claims/approve/<%= folder.id %>"><span class="fa fa-thumbs-o-up icon-padding"></span></a>' +
           '</div>' +
         '<a id="share" class="share-toggle share-icon" href="#"></a>' +
@@ -65,14 +66,30 @@ function loadClaim() {
         '    <div style="margin-left:-30%;"class="column leftpush">' +
         '      <i class="fa fa-id-card-o" style="width:0!important;color:#039BE5;padding-top:2px;" aria-hidden="true"><span style="font-size:13px;padding-left:5px;" class="lato-font"> Policy Number: </span><span style="font-size:13px;color:#888888;" class="lato-font">' + myFolder.policyNumber + '</span></i>' +
         '      <i class="fa fa-user-circle" style="width:0!important;color:#039BE5;padding-top:2px;" aria-hidden="true"><span style="font-size:13px; padding-left:8px;" class="lato-font">  Policy Holder: </span><span style="font-size:13px;color:#888888" class="lato-font">' + myFolder.name + '</span></i>'+
-        '    </div>' +
-        '    <div style="padding-left:20%;" class="column">' +
+        //'    </div>' +
+        //'    <div style="padding-left:20%;" class="column">' +
         '        <i class="fa fa-check-circle" style="width:0!important;color:#F96F67;padding-top:2px;" aria-hidden="true"><span style="font-size:13px;padding-left:5px;" class="lato-font"> Status: ' + myFolder.claimStage+'</span></i>'+
-        '        <div style="margin-right:43%;">'+
+      //  '        <div style="margin-right:43%;">'+
         '          <i style="font-size:14px;color:#F96F67;width:10%;" class="fa fa-arrow-up" aria-hidden="true"><span class="lato-font" style="margin-left:10%;">High Priority</span></i>'+
-        '        </div>'+
+        //'        </div>'+
         '    </div>'+
         '</div>'+
+        '<div>' +
+        '<ul class="steps" style="margin-bottom:5%;">' +
+        '  <li id="step1" class="step step--complete step--active">' +
+        '    <span class="step__icon"></span>' +
+        '    <span class="step__label">Received Processing</span>' +
+        '  </li>' +
+        '  <li id="step2" class="step step--incomplete step--inactive">' +
+        '    <span class="step__icon"></span>' +
+        '    <span class="step__label">Adjustment</span>' +
+        '  </li>' +
+        '  <li id="step3" class="step step--incomplete step--inactive">' +
+        '    <span class="step__icon"></span>' +
+        '    <span class="step__label">Complete</span>' +
+        '  </li>' +
+        '</ul>' +
+        '</div>' +
         '<i class="fa fa-info-circle" style="width:0!important;color:#F96F67;padding-top:2px;" aria-hidden="true"><span style="font-size:13px;;margin-left:9px;" class="lato-font"> Incident Summary </span></i>'+
         '<span style="color:#888888;font-size:13px;" class="verela-font">' + myFolder.description + '</span>'+
         '<div style="margin-left:85%;margin-top:1%;">'+
