@@ -1,13 +1,14 @@
 
 class Policy {
 
-  constructor(id,policyType,creationDate,expiryDate,description,policyHolder,policyNumber,name) {
+  constructor(id,policyType,policyStartDate,expiryDate,vehicleType,vehicleModel,engineSize,policyNumber,name) {
     this.id=id;
     this.policyType=policyType;
-    this.creationDate=creationDate;
+    this.policyStartDate=policyStartDate;
     this.expiryDate=expiryDate;
-    this.description=description;
-    this.policyHolder=policyHolder;
+    this.vehicleType=vehicleType;
+    this.vehicleModel=vehicleModel;
+    this.engineSize=engineSize;
     this.name=name;
     this.policyNumber=policyNumber;
   };
@@ -32,8 +33,8 @@ class Policy {
 //var aFolder = new Folder('65286002498','Auto Physical Damage Claim','29th Jan','Waiting for review','High','I am writing this to file a report for a car accident in which I was involved on the 5th of February. I was driving my Hyundai i10, 9678 in Bandra when a Honda city, 7845 came in a rush and hit me from behind. My car was totally smashed and damaged','John Mahedy');
 
 
-function loadPolicy() {
-  url = "https://api.box.com/2.0/folders/" +folderId + "/items?fields=id,name,metadata.enterprise.claim";
+function loadPolicyData(folderId) {
+  url = "https://api.box.com/2.0/folders/" +folderId + "?fields=id,name,metadata.enterprise.policy";
   var settings = {
         "async": true,
         "crossDomain": true,
@@ -43,30 +44,29 @@ function loadPolicy() {
           "Authorization": "Bearer " + sessionStorage.getItem("accessToken"),
           "Cache-Control": "no-cache"
         }
-      }
-      $.ajax(settings).done(function(response) {
+      };
+      $.ajax(settings).done(function(data) {
 
-        var i = 0;
-        $.each(response.entries, function(k, data) {
-          var claimFolder = new Folder(data.id,
-            data.metadata.enterprise.claim.type,
-            data.metadata.enterprise.claim.claimDate,
-            data.metadata.enterprise.claim.claimStatus,
-            'high',
-            data.metadata.enterprise.claim.claimDescription,
-            data.metadata.enterprise.claim.firstName,
-            data.metadata.enterprise.claim.policyNumber,
-            data.name
-          );
-          loadClaim(claimFolder);
+
+          var claimFolder = new Policy(data.id,
+            data.metadata.enterprise.policy.type,
+            data.metadata.enterprise.policy.policyStartDate,
+            data.metadata.enterprise.policy.policyEndDate,
+            data.metadata.enterprise.policy.vehicleType,
+            data.metadata.enterprise.policy.vehicleModel,
+            data.metadata.enterprise.policy.engineSize,
+            data.metadata.enterprise.policy.policyNumber,
+            data.name);
+
+          loadPolicy(claimFolder);
         });
-});
-}
+      }
 
 
 
 
-function loadClaim(myFolder) {
+
+function loadPolicy(myFolder) {
   console.log(myFolder.getPolicyIcon());
   $("#folderGroup").append('<div class="wrapper">' +
     '<div class="card radius shadowDepth1">'+
@@ -75,8 +75,8 @@ function loadClaim(myFolder) {
           '<div class="card__social">' +
             '<a class="share-icon facebook" href="/claims/file_view/' + myFolder.id + '"><span class="fa fa-file icon-padding"></span></a>' +
             '<a class="share-icon twitter" href="" data-toggle="modal" data-id="107"><span class="fa fa-phone icon-padding trigger" data-toggle="modal" data-id="' + myFolder.id + '"></span></a>' +
-            '<a class="share-icon googleplus" href="/claims/approve/<%= folder.id %>"><span class="fa fa-clipboard icon-padding"></span></a>' +
-            '<a class="share-icon googleplus" href="/claims/approve/<%= folder.id %>"><span class="fa fa-thumbs-o-up icon-padding"></span></a>' +
+            //'<a class="share-icon googleplus" href="/claims/approve/<%= folder.id %>"><span class="fa fa-clipboard icon-padding"></span></a>' +
+            //'<a class="share-icon googleplus" href="/claims/approve/<%= folder.id %>"><span class="fa fa-thumbs-o-up icon-padding"></span></a>' +
           '</div>' +
         '<a id="share" class="share-toggle share-icon" href="#"></a>' +
       '</div>' +
@@ -84,14 +84,15 @@ function loadClaim(myFolder) {
         '<div class="card__author">' +
         '<img style="margin-left:-20px;" src="/boxinsurance/img/' + myFolder.getPolicyIcon() + '">'+
           '<div class="card__author-content lato-font" style="font-size:15px;">' +
-          '  Claim Number' +
+          '  Policy Number' +
           '</br>' +
-          '  <a style="color:#666666;font-size:14px;padding-left:6px;" class="lato-font">' + myFolder.id +'</a>' +
+          '  <a style="color:#666666;font-size:14px;padding-left:6px;" class="lato-font">' + myFolder.policyNumber +'</a>' +
           '<br/>'+
-                '  <time>' + myFolder.creationDate + '</time>' +
+                '  <time>' + myFolder.policyStartDate + '</time>-' +
+                '  <time>' + myFolder.policyEndDate + '</time>' +
           '</div>' +
           '<div style="float:right;padding-top:12px;" class="lato-font">' +
-          '  Claim Type' +
+          '  Policy Type' +
           '</br>' +
           ' <a style="color:#888888;font-size:14px;padding-left:0px;" class="lato-font">' +myFolder.claimType + '</a>' +
           '</div>' +
@@ -110,24 +111,7 @@ function loadClaim(myFolder) {
 
          '    </div>'+
         '</div>' +
-        '<div>' +
-        ' <ul class="steps" style="margin-bottom:5%;padding-top:20px;">' +
-        '   <li id="step1" class="step step--complete step--active lato-font">' +
-        '     <span class="step__icon"></span>' +
-        '     <span class="step__label">Received Processing</span>' +
-        '   </li>' +
-        '    <li id="step2" class="step step--incomplete step--inactive lato-font">' +
-        '     <span class="step__icon"></span>' +
-        '      <span class="step__label">Adjustment</span>' +
-        '    </li>' +
-        '   <li id="step3" class="step step--incomplete step--inactive lato-font">' +
-        '      <span class="step__icon"></span>' +
-        '     <span class="step__label">Complete</span>' +
-        '   </li>' +
-        ' </ul>' +
-        '</div>' +
-        '<i class="fa fa-info-circle" style="width:0!important;color:#F96F67;padding-top:2px;" aria-hidden="true"><span style="font-size:13px;;margin-left:9px;" class="lato-font"> Incident Summary </span></i>'+
-        '<span style="color:#888888;font-size:14px;" class="lato-font">' + myFolder.description + '</span>'+
+
         '<div style="margin-left:95%;margin-top:1%;">'+
         //'<a class="button small" href="/claims/full_report/<%= folder.id %>"><span style="color:white">Full Report</span></a>' +
         //'<button class="button small explorer-toggle" style="font-size:12px">Files <i class="fa fa-angle-double-down"></i></button>' +
