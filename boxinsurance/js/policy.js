@@ -6,7 +6,6 @@ class Policy {
     this.policyType=policyType;
     this.creationDate=creationDate;
     this.expiryDate=expiryDate;
-    this.claimPriority=claimPriority;
     this.description=description;
     this.policyHolder=policyHolder;
     this.name=name;
@@ -14,26 +13,26 @@ class Policy {
   };
 
   getPolicyIcon() {
-    console.log(this.claimType);
-    if(this.claimType == 'Motor') {
+    console.log(this.policyType);
+    if(this.policyType == 'Motor') {
       console.log('return car');
       return 'car_policy.png';
     }
-    else if(this.claimType == 'Homeowner Damage Claim'){
+    else if(this.policyType == 'Home'){
       return  'home_policy.png';
     }
-    else if(this.claimType == 'Commercial Claim'){
+    else if(this.policyType == 'Commercial'){
       return 'commercial_policy.png';
     }
-    else if(this.claimType == 'Health Insurance Claim'){
+    else if(this.policyType == 'Health'){
       return 'health_policy.png';
     }
   }
 }
-var aFolder = new Folder('65286002498','Auto Physical Damage Claim','29th Jan','Waiting for review','High','I am writing this to file a report for a car accident in which I was involved on the 5th of February. I was driving my Hyundai i10, 9678 in Bandra when a Honda city, 7845 came in a rush and hit me from behind. My car was totally smashed and damaged','John Mahedy');
+//var aFolder = new Folder('65286002498','Auto Physical Damage Claim','29th Jan','Waiting for review','High','I am writing this to file a report for a car accident in which I was involved on the 5th of February. I was driving my Hyundai i10, 9678 in Bandra when a Honda city, 7845 came in a rush and hit me from behind. My car was totally smashed and damaged','John Mahedy');
 
 
-function loadAllClaims(folderId) {
+function loadPolicy() {
   url = "https://api.box.com/2.0/folders/" +folderId + "/items?fields=id,name,metadata.enterprise.claim";
   var settings = {
         "async": true,

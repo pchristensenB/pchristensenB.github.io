@@ -138,7 +138,7 @@ function loadClaim(myFolder) {
         //'<a folder-id="' + myFolder.id + '" class="button small explorer-toggle" href="#"><span style="color:white">Claim Files <i class="fa fa-angle-double-down"></span></a>' +
         '</div>'+
         '</article>'+
-        '<div style="margin-top:10px;" class="contentexplorer_' +myFolder.id + '" >' +
+        '<div style="margin-top:10px;" class="contentexplorer_' +myFolder.id + '" id="contentexplorer_' +myFolder.id + '">' +
         '</div>'+
       '</div>'+
     '</div>'+
@@ -183,6 +183,7 @@ function loadClaim(myFolder) {
             }
           }
       });
+      document.getElementById('contentexplorer_' + $(".explorer-toggle").attr("folder-id")).scrollIntoView(false);
     }
   });
 }
