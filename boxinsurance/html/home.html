@@ -210,13 +210,13 @@
     </div>
   </div>
 </div>
-<form id="userlogin" action="/" method="get">
+<form id="userloginForm" action="/" method="get">
 <div style="opacity:0.95;" id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="row">
       <div class="small-12 columns" id="auth0-container">
-        User name:<input type=text name=userLogin/>
-        Password:<input type=text name=username/>
+        User name:<input type='text' name='userLogin' id='userLogin'/>
+        Password:<input type=password name=pwd/>
         <input id="signbutton" type="submit" class="button" value="Sign In">
         <img id="loader" src="/boxinsurance/img/ajax-loader_t.gif" style="display:none;"/>
        </div>
