@@ -25,7 +25,13 @@ $(document).ready(function() {
           sessionStorage.setItem("adminAccessToken",response.adminAccessToken);
           console.log("from storage access:" + sessionStorage.getItem("accessToken"));
           console.log("from storage admin:" + sessionStorage.getItem("adminAccessToken"));
-          window.location.replace('/boxinsurance/html/dashboard.html');
+          if(userLogin=='jmahedy+claimsadministrator@box.com') {
+            window.location.replace('/boxinsurance/html/dashboard.html');
+          }
+          else {
+            window.location.replace('/boxinsurance/html/customer.html');  
+          }
+
 
         });
     }));

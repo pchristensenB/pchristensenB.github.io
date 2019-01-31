@@ -1,13 +1,11 @@
 
+class Policy {
 
-
-
-class Folder {
-  constructor(id,claimType,creationDate,claimStage,claimPriority,description,policyHolder,policyNumber,name) {
+  constructor(id,policyType,creationDate,expiryDate,description,policyHolder,policyNumber,name) {
     this.id=id;
-    this.claimType=claimType;
+    this.policyType=policyType;
     this.creationDate=creationDate;
-    this.claimStage=claimStage;
+    this.expiryDate=expiryDate;
     this.claimPriority=claimPriority;
     this.description=description;
     this.policyHolder=policyHolder;
