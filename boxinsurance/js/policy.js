@@ -1,16 +1,17 @@
 
 class Policy {
 
-  constructor(id,policyType,policyStartDate,expiryDate,vehicleType,vehicleModel,engineSize,policyNumber,name) {
+  constructor(id,policyType,policyStartDate,policyEndDate,vehicleType,vehicleModel,engineSize,policyNumber,name,policyHolder) {
     this.id=id;
     this.policyType=policyType;
     this.policyStartDate=policyStartDate;
-    this.expiryDate=expiryDate;
+    this.policyEndDate=policyEndDate;
     this.vehicleType=vehicleType;
     this.vehicleModel=vehicleModel;
     this.engineSize=engineSize;
     this.name=name;
     this.policyNumber=policyNumber;
+    this.policyHolder=policyHolder;
   };
 
   getPolicyIcon() {
@@ -49,14 +50,15 @@ function loadPolicyData(folderId) {
 
 
           var claimFolder = new Policy(data.id,
-            data.metadata.enterprise.policy.type,
+            data.metadata.enterprise.policy.policyType,
             data.metadata.enterprise.policy.policyStartDate,
             data.metadata.enterprise.policy.policyEndDate,
             data.metadata.enterprise.policy.vehicleType,
             data.metadata.enterprise.policy.vehicleModel,
             data.metadata.enterprise.policy.engineSize,
             data.metadata.enterprise.policy.policyNumber,
-            data.name);
+            data.name,
+            data.metadata.enterprise.policy.firstName);
 
           loadPolicy(claimFolder);
         });
@@ -94,7 +96,7 @@ function loadPolicy(myFolder) {
           '<div style="float:right;padding-top:12px;" class="lato-font">' +
           '  Policy Type' +
           '</br>' +
-          ' <a style="color:#888888;font-size:14px;padding-left:0px;" class="lato-font">' +myFolder.claimType + '</a>' +
+          ' <a style="color:#888888;font-size:14px;padding-left:0px;" class="lato-font">' +myFolder.policyType + '</a>' +
           '</div>' +
         '</div>' +
       '</div>' +
@@ -104,14 +106,18 @@ function loadPolicy(myFolder) {
         '<div id="contentBox">' +
         '   <div style="padding-left:10%;" class="column leftpush">'+
         '      <i class="fa fa-id-card" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:15px;" aria-hidden="true"><span style="font-size:13px;padding-left:5px;" class="lato-font"> Policy Number: </span><span style="font-size:13px;color:#888888;" class="lato-font">' + myFolder.policyNumber + '</span></i>' +
-        '        <i class="fa fa-check-circle" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" aria-hidden="true"><span style="font-size:13px;padding-left:5px;" class="lato-font"> Status: </span><span style="font-size:13px;color:#888888" class="lato-font">' + myFolder.claimStage+'</span></i>'+
+        '      <i class="fa fa-car" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:15px;" aria-hidden="true"><span style="font-size:13px;padding-left:5px;" class="lato-font"> Vehicle Type: </span><span style="font-size:13px;color:#888888" class="lato-font">' + myFolder.vehicleType+'</span></i>'+
+
+
         '   </div>'+
         '   <div style="padding-left:10%;" class="column">'+
-        '       <i class="fa fa-user-circle" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:15px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Policy Holder: </span><span style="font-size:13px;color:#888888" class="lato-font">' + myFolder.policyHolder + '</span></i>'+
-
+        '       <i class="fa fa-user-circle" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:55px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Policy Holder: </span><span style="font-size:13px;color:#888888" class="lato-font">' + myFolder.policyHolder + '</span></i>'+
+        '       <i class="fa fa-user-circle" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:15px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Vehicle Model: </span><span style="font-size:13px;color:#888888" class="lato-font">' + myFolder.vehicleModel + '</span></i>'+
          '    </div>'+
-        '</div>' +
-
+         '   <div style="padding-left:10%;" class="column">'+
+         '       <i class="fa  fa-paperclip" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:60px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Claims: </span><span style="font-size:13px;color:#888888" class="lato-font">2</span></i>'+
+           '    </div>'+
+         '</div>' +
         '<div style="margin-left:95%;margin-top:1%;">'+
         //'<a class="button small" href="/claims/full_report/<%= folder.id %>"><span style="color:white">Full Report</span></a>' +
         //'<button class="button small explorer-toggle" style="font-size:12px">Files <i class="fa fa-angle-double-down"></i></button>' +
