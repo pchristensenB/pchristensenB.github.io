@@ -7,6 +7,9 @@
 			  <!-- Box preview SDK -->
 			  <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/9.1.0/en-US/explorer.css">
 			  <script src="https://cdn01.boxcdn.net/platform/elements/9.1.0/en-US/explorer.js"></script>
+				<script src="https://cdn01.boxcdn.net/platform/elements/9.1.1/en-US/openwith.js"></script>
+				<link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/9.1.1/en-US/openwith.css" />
+
 				<script>
 					var clientId="bn2iyg37p78jkowrp0io0nc2ln0be3wt";
 					$(document).ready(function() {
@@ -31,9 +34,9 @@
 					          accessToken = response.token;
 					          sessionStorage.setItem("accessToken",accessToken);
 					          sessionStorage.setItem("userLogin",userLogin);
-					          sessionStorage.setItem("adminAccessToken",response.adminAccessToken);
+					          //sessionStorage.setItem("adminAccessToken",response.adminAccessToken);
 					          console.log("from storage access:" + sessionStorage.getItem("accessToken"));
-					          console.log("from storage admin:" + sessionStorage.getItem("adminAccessToken"));
+					          //console.log("from storage admin:" + sessionStorage.getItem("adminAccessToken"));
 					          var contentExplorer = new Box.ContentExplorer();
 					            contentExplorer.show('0', accessToken, {
 					                container: '.pcontainer',
@@ -51,6 +54,10 @@
 						         				}
 					                }
 					            });
+											var contentOpenWith = new Box.ContentOpenWith();
+        								contentOpenWith.show('301448802596', accessToken, {
+          							container: '.ocontainer'
+        								})
 					        });
 					    //}));
 					});
@@ -61,6 +68,7 @@
 <div class="tab-pane show active mts" role="tabpanel" id="explorer">
 
 	<div style="height:500px" class="pcontainer"></div>
+	<div style="height:500px" class="ocontainer"></div>
 </div>
 </body>
 </html>
