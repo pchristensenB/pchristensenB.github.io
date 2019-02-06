@@ -73,7 +73,17 @@
         $('.page-wrapper').toggleClass('blur');
         return false;
       });
-      loadPolicyData('65437459840');
+      $('#newclaim').click(function() {
+        console.log("clicked");
+        //$("#claim").innerHTML = '<iframe style="width:100%;height:100%;" frameborder="0" src="https://box-162828.workflowcloud.com/forms/72dbda52-9ece-4809-8b8d-afe6ea504d80" />';
+        //document.getElementById("claim").innerHtml = '<iframe style="width:100%;height:100%;" frameborder="0" src="https://box-162828.workflowcloud.com/forms/72dbda52-9ece-4809-8b8d-afe6ea504d80" />';
+        //console.log($("#claim").text());
+        //return false;
+        $('.modal').toggle();
+
+      });
+      //find policy documents folder
+      loadPolicyData('66078197731');
     });
   </script>
 </head>
@@ -120,7 +130,7 @@
 
           </li>
           <li class="has-subnav">
-            <a href="#" style="margin-bottom:5%;">
+            <a id="newclaim" href="#" style="margin-bottom:5%;">
             <i class="fa fa-list fa-2x"></i>
             <span class="nav-text">
               New Claim
@@ -181,6 +191,11 @@
           <ul id="folderGroup" class="medium-12 columns tile-padding">
 
 
+
+          </ul>
+          <ul id="claim" class="medium-12 columns tile-padding">
+
+12
 
           </ul>
         </div>
@@ -597,7 +612,7 @@
     </div>
   </div>
 
-  
+
   <script type="text/javascript">
     var accessToken = sessionStorage.getItem("accessToken");
 
@@ -666,8 +681,19 @@
       document.getElementById("loader").style.display = 'block';
     }
   </script>
+  <div id="myModal" class="modal">
 
+    <!-- Modal content -->
+    <div class="modal-content">
+      <script src="https://box-162828.workflowcloud.com/embedform/iframe/ntx-embed-iframe.js" data-id="ntxFormContainer-f1238499-10fb-42e7-a341-81284d15f8fd"></script><iframe id="ntxFormContainer-f1238499-10fb-42e7-a341-81284d15f8fd" scrolling="no" style="width:100%; border:none;" height="100%" src="https://box-162828.workflowcloud.com/embedform/iframe?id=f1238499-10fb-42e7-a341-81284d15f8fd"></iframe>
+      <div class="modal-header">
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
 
+      </div>
+
+    </div>
 </body>
 
 </html>

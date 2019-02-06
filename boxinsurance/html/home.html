@@ -140,16 +140,16 @@
       <img src="/boxinsurance/img/suv.png">
     </div>
     <div class="lato-font" style="text-align:center;color:#888888;">
-      <span style="font-size:17px;">For your auto needs</span>
+      <span style="font-size:17px;">Get a quote instantly</span>
     </div>
-    <a href="#" class="button expanded">More Info</a>
+    <a href="https://box-162828.workflowcloud.com/forms/f1238499-10fb-42e7-a341-81284d15f8fd" class="button expanded">More Info</a>
   </div>
   <div class="column">
     <div style="padding-left:70px">
       <img src="/boxinsurance/img/motor-sports.png">
     </div>
     <div class="lato-font" style="text-align:center;color:#888888;">
-      <span style="font-size:17px;">Get a quote instantly</span>
+      <span style="font-size:17px;">For your motorcycle needs</span>
     </div>
     <a href="#" class="button expanded">More Info</a>
   </div>
@@ -341,39 +341,6 @@ $(".button-collapse").sideNav();
   </div>
 </footer>
 
-<div class="edit-icon btn hide_mobile" style="z-index:1000;">
-  <span style="color: #222222; position: relative; font-size: 12px;">
-    <i class="fi-page-edit edit-icon-style" style="font-size: 18px; color: #F96F67;"></i>
-    <div class="row">
-      <div class="medium-12 columns">
-        </br>
-        <form method="post" action="/set-customization">
-          <label>Company
-            <input type="text" name="company" placeholder="Box">
-          </label>
-          <label>Salesforce Opportunity Link
-            <input type="text" name="salesforce" placeholder="">
-          </label>
-          <label>Company logo URL
-            <input type="text" name="logo" placeholder="logo url">
-          </label>
-          <span class="icon-mr">Is this demo attached to a real opportunity?</span>
-          <input type="radio" name="real_demo" value=true id="real_demo_yes"><label for="real_demo_yes">Yes</label>
-          <input type="radio" name="real_demo" value=false id="real_demo_no" required><label for="real_demo_no">No</label>
-          <button type="submit" class="button" value="Submit">Submit</button>
-        </form>
-        <!-- <div>
-          <input type="checkbox" name="edit" value="edit" id="edit_btn">
-          <label for="edit_btn" cursor="none" style="font-size: 12px;"> Edit mode </label>
-        </div> -->
-        <a class="alert button" style="float:left;" onclick="deleteAllCookies()" href="/reset-customization">Reset Customization</a>
-        <% if(locals.user) { %>
-          <a href="/reset" class="alert button" style="float:right;" onclick="preloader()">Reset Demo</a>
-        <% } %>
-      </div>
-    </div>
-  </span>
-</div>
 <script>
 
 

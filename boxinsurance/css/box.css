@@ -332,6 +332,7 @@ body {
   border-radius: 50%;
   color: transparent;
   font-size: 2rem;
+  z-index:999;
 }
 .step__icon:before {
   display: block;
@@ -1216,13 +1217,18 @@ body {
       .googleplus {
         background-color: #54D6C7;
       }
+      .clipboard {
+        background-color: #129944;
+      }
       .facebook,
       .twitter,
+      .clipboard,
       .googleplus {
         color: #fff;
       }
       .facebook:hover,
       .twitter:hover,
+      .clipboard:hover,
       .googleplus:hover {
         color: #eee;
       }
@@ -1694,4 +1700,43 @@ body {
 
           /* round the edges to a circle with border radius 1/2 container size */
           border-radius: 50%;
+      }
+      .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 50px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 90%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+      }
+
+      /* Modal Content */
+
+      .modal-content {
+        position: relative;
+        background-color: #ffffff;
+        margin: auto;
+        height: 640px;
+        padding: 0;
+        border: 1px solid #888;
+        width: 100%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
       }

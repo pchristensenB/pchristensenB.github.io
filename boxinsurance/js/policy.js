@@ -1,7 +1,7 @@
 
 class Policy {
 
-  constructor(id,policyType,policyStartDate,policyEndDate,vehicleType,vehicleModel,engineSize,policyNumber,name,policyHolder) {
+  constructor(id,policyType,policyStartDate,policyEndDate,vehicleType,vehicleModel,engineSize,policyNumber,name,policyHolder,parentId) {
     this.id=id;
     this.policyType=policyType;
     this.policyStartDate=policyStartDate;
@@ -12,6 +12,7 @@ class Policy {
     this.name=name;
     this.policyNumber=policyNumber;
     this.policyHolder=policyHolder;
+    this.parentId=parentId
   };
 
   getPolicyIcon() {
@@ -35,7 +36,7 @@ class Policy {
 
 
 function loadPolicyData(folderId) {
-  url = "https://api.box.com/2.0/folders/" +folderId + "?fields=id,name,metadata.enterprise.policy";
+  url = "https://api.box.com/2.0/folders/" +folderId + "/items?fields=id,name,metadata.enterprise.policy";
   var settings = {
         "async": true,
         "crossDomain": true,
@@ -46,21 +47,25 @@ function loadPolicyData(folderId) {
           "Cache-Control": "no-cache"
         }
       };
-      $.ajax(settings).done(function(data) {
+      $.ajax(settings).done(function(response) {
+        console.log(response);
+        var i = 0;
+        $.each(response.entries, function(k, data) {
+          console.log(data);
+            var policyFolder = new Policy(data.id,
+              data.metadata.enterprise.policy.policyType,
+              data.metadata.enterprise.policy.policyStartDate,
+              data.metadata.enterprise.policy.policyEndDate,
+              data.metadata.enterprise.policy.vehicleType,
+              data.metadata.enterprise.policy.vehicleModel,
+              data.metadata.enterprise.policy.engineSize,
+              data.metadata.enterprise.policy.policyNumber,
+              data.name,
+              data.metadata.enterprise.policy.firstName,
+            folderId);
+              loadPolicy(policyFolder);
+          });
 
-
-          var claimFolder = new Policy(data.id,
-            data.metadata.enterprise.policy.policyType,
-            data.metadata.enterprise.policy.policyStartDate,
-            data.metadata.enterprise.policy.policyEndDate,
-            data.metadata.enterprise.policy.vehicleType,
-            data.metadata.enterprise.policy.vehicleModel,
-            data.metadata.enterprise.policy.engineSize,
-            data.metadata.enterprise.policy.policyNumber,
-            data.name,
-            data.metadata.enterprise.policy.firstName);
-
-          loadPolicy(claimFolder);
         });
       }
 
@@ -121,11 +126,11 @@ function loadPolicy(myFolder) {
         '<div style="margin-left:95%;margin-top:1%;">'+
         //'<a class="button small" href="/claims/full_report/<%= folder.id %>"><span style="color:white">Full Report</span></a>' +
         //'<button class="button small explorer-toggle" style="font-size:12px">Files <i class="fa fa-angle-double-down"></i></button>' +
-        ' <i style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" class="fa fa-folder" aria-hidden="true"></i><i style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" id="file_indicator" class="fa fa-angle-double-down explorer-toggle" folder-id="' + myFolder.id + '">'+
+        ' <i style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" class="fa fa-folder" aria-hidden="true"></i><i style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" id="file_indicator" class="fa fa-angle-double-down explorer-toggle" folder-id="' + myFolder.parentId + '">'+
         //'<a folder-id="' + myFolder.id + '" class="button small explorer-toggle" href="#"><span style="color:white">Claim Files <i class="fa fa-angle-double-down"></span></a>' +
         '</div>'+
         '</article>'+
-        '<div style="margin-top:10px;" class="contentexplorer_' +myFolder.id + '" >' +
+        '<div style="margin-top:10px;" class="contentexplorer_' +myFolder.parentId + '" >' +
         '</div>'+
       '</div>'+
     '</div>'+

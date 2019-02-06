@@ -1,6 +1,8 @@
 
 
-
+var completeInactive = 'step--complete step--inactive';
+var completeActive = 'step--complete step--active';
+var incompleteInactive = 'step--incomplete step--inactive';
 
 class Folder {
   constructor(id,claimType,creationDate,claimStage,claimPriority,description,policyHolder,policyNumber,name) {
@@ -15,6 +17,28 @@ class Folder {
     this.policyNumber=policyNumber;
   };
 
+getClaimStatusClass(displayStage) {
+  //if stage Received
+  if(this.claimStage=='Received') {
+    if(displayStage=='Received') {return completeActive}
+    else  {return incompleteInactive}
+  }
+  else if(this.claimStage=='Adjuster') {
+    if(displayStage=='Received') {return completeInactive}
+    else if(displayStage=='Adjust')  {return CompleteActive}
+    else {return incompleteInactive}
+  }
+  else if(this.claimStage=='Complete') {
+    if(displayStage=='Received') {return completeInactive}
+    else if(displayStage=='Adjust')  {return CompleteInactive}
+    else {return completeActive}
+  }
+
+
+  //if stage adjuster
+
+  //if stage complete
+}
   getPolicyIcon() {
     console.log(this.claimType);
     if(this.claimType == 'Motor') {
@@ -78,8 +102,8 @@ function loadClaim(myFolder) {
           '<div class="card__social">' +
             '<a class="share-icon facebook" href="/claims/file_view/' + myFolder.id + '"><span class="fa fa-file icon-padding"></span></a>' +
             '<a class="share-icon twitter" href="" data-toggle="modal" data-id="107"><span class="fa fa-phone icon-padding trigger" data-toggle="modal" data-id="' + myFolder.id + '"></span></a>' +
-            '<a class="share-icon googleplus" href="/claims/approve/<%= folder.id %>"><span class="fa fa-clipboard icon-padding"></span></a>' +
-            '<a class="share-icon googleplus" href="/claims/approve/<%= folder.id %>"><span class="fa fa-thumbs-o-up icon-padding"></span></a>' +
+            '<a class="share-icon clipboard" href="/claims/approve/<%= folder.id %>"><span class="fa fa-clipboard icon-padding"></span></a>' +
+            '<a title="Approve claim" class="share-icon googleplus" href="/claims/approve/<%= folder.id %>"><span class="fa fa-thumbs-o-up icon-padding"></span></a>' +
           '</div>' +
         '<a id="share" class="share-toggle share-icon" href="#"></a>' +
       '</div>' +
@@ -115,15 +139,15 @@ function loadClaim(myFolder) {
         '</div>' +
         '<div>' +
         ' <ul class="steps" style="margin-bottom:5%;padding-top:20px;">' +
-        '   <li id="step1" class="step step--complete step--active lato-font">' +
+        '   <li id="step1" class="step ' +  myFolder.getClaimStatusClass('Received') +' lato-font">' +
         '     <span class="step__icon"></span>' +
         '     <span class="step__label">Received Processing</span>' +
         '   </li>' +
-        '    <li id="step2" class="step step--incomplete step--inactive lato-font">' +
+        '    <li id="step2" class="step ' +  myFolder.getClaimStatusClass('Adjustment') +' lato-font">' +
         '     <span class="step__icon"></span>' +
         '      <span class="step__label">Adjustment</span>' +
         '    </li>' +
-        '   <li id="step3" class="step step--incomplete step--inactive lato-font">' +
+        '   <li id="step3" class="step ' +  myFolder.getClaimStatusClass('Complete') +' lato-font">' +
         '      <span class="step__icon"></span>' +
         '     <span class="step__label">Complete</span>' +
         '   </li>' +
