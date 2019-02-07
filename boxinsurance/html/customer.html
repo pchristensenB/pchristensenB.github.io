@@ -82,6 +82,15 @@
         $('.modal').toggle();
 
       });
+      $('#policy').click(function() {
+        $('.modal').hide();
+        //popup policy docs
+        $('.explorer-toggle').trigger( "click" )
+      });
+      $('#dashboard').click(function() {
+        $('.modal').hide();
+
+      });
       //find policy documents folder
       loadPolicyData('66078197731');
     });
@@ -112,7 +121,7 @@
       <nav class="main-menu" style="padding-top:75px">
         <ul>
           <li>
-            <a href="#" style="margin-top:10%;margin-bottom:5%;">
+            <a id="dashboard" href="#" style="margin-top:10%;margin-bottom:5%;">
             <i class="fa fa-home fa-2x"></i>
             <span class="nav-text">
               Dashboard
@@ -139,7 +148,7 @@
 
           </li>
           <li class="has-subnav">
-            <a href="#" style="margin-bottom:5%;">
+            <a id="policy" href="#" style="margin-bottom:5%;">
             <i class="fa fa-folder-open fa-2x"></i>
             <span class="nav-text">
               Policy Documents
@@ -193,11 +202,6 @@
 
 
           </ul>
-          <ul id="claim" class="medium-12 columns tile-padding">
-
-12
-
-          </ul>
         </div>
       </div>
 
@@ -230,7 +234,7 @@
             <a id="two" href="#"><i class="fa fa-clock-o"></i></a>
             <a id="three" href="#"><i class="fa fa-inbox"></i></a>
             <a id="all" href="#"><i class="fa fa-star"></i></a>
-            <span style="margin-right:8px" class="toggle-btn fa fa-bars"></span>
+
           </div>
           <div class="clearfix"></div>
           <div class="bottom">
@@ -241,20 +245,20 @@
             <ul class="tasks">
               <li class="one green">
                 <span class="task-title">Sign New Policy Document</span>
-                <span class="task-time">11am</span>
+                <span class="task-time"></span>
                 <span class="task-cat">Signature</span>
 
               </li>
               <li class="one red">
                 <span class="task-title">Policy Expiring</span>
-                <span class="task-time">12:30pm</span>
+                <span class="task-time"></span>
                 <span class="task-cat">Renewal</span>
 
               </li>
               </li>
               <li class="three yellow">
                 <span class="task-title">Your Motor Claim: 65286002498</span>
-                <span class="task-time">2pm</span>
+                <span class="task-time"></span>
                 <span class="task-cat">In Progress</span>
 
 
@@ -685,7 +689,7 @@
 
     <!-- Modal content -->
     <div class="modal-content">
-      <script src="https://box-162828.workflowcloud.com/embedform/iframe/ntx-embed-iframe.js" data-id="ntxFormContainer-f1238499-10fb-42e7-a341-81284d15f8fd"></script><iframe id="ntxFormContainer-f1238499-10fb-42e7-a341-81284d15f8fd" scrolling="no" style="width:100%; border:none;" height="100%" src="https://box-162828.workflowcloud.com/embedform/iframe?id=f1238499-10fb-42e7-a341-81284d15f8fd"></iframe>
+      <script src="https://box-162828.workflowcloud.com/embedform/iframe/ntx-embed-iframe.js" data-id="ntxFormContainer-72dbda52-9ece-4809-8b8d-afe6ea504d80"></script><iframe id="ntxFormContainer-72dbda52-9ece-4809-8b8d-afe6ea504d80" scrolling="no" style="width:100%; border:none;" height="100%" src="https://box-162828.workflowcloud.com/embedform/iframe?id=72dbda52-9ece-4809-8b8d-afe6ea504d80"></iframe>
       <div class="modal-header">
         <span class="close">&times;</span>
       </div>

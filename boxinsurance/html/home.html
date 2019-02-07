@@ -25,7 +25,15 @@
   <link rel="stylesheet" href="/boxinsurance/icons/foundation-icons/foundation-icons.css">
   <link rel="stylesheet" href="/boxinsurance/css/page_loader.css">
 <script src="/boxinsurance/js/box.js"></script>
-
+<script>
+$(document).ready(function() {
+  $('#getquote').click(function() {
+    console.log("clicked");
+    $("#nintex").toggle();
+    return false;
+  });
+});
+  </script>
 </head>
 <body>
 
@@ -117,11 +125,11 @@
         <input type="text" placeholder="Enter Zip" />
       </div>
       <div style="padding-left:28%" class="large-5 columns">
-        <a href="#" class="button">Get a quote</a>
+        <a  href="#" class="button">Get a quote</a>
       </div>
       <div class="large-3 columns">
         <ul class="white-background menu separate top-bar-override">
-            <li class="lato-font" style="font-size:14px"><a href="">Get a saved quote</a></li>
+            <li id="getquote" class="lato-font" style="font-size:14px"><a id="getquote" href="#">Get a saved quote</a></li>
             <li class="lato-font" style="font-size:14px"><a href="">Contact agent</a></li>
         </ul>
       </div>
@@ -129,6 +137,7 @@
     </div>
   </div>
   <hr>
+  <div id="nintex" style="display:none;"><script src="https://box-162828.workflowcloud.com/embedform/iframe/ntx-embed-iframe.js" data-id="ntxFormContainer-f1238499-10fb-42e7-a341-81284d15f8fd"></script><iframe id="ntxFormContainer-f1238499-10fb-42e7-a341-81284d15f8fd" scrolling="no" style="width:100%; border:none;" height="100%" src="https://box-162828.workflowcloud.com/embedform/iframe?id=f1238499-10fb-42e7-a341-81284d15f8fd"></iframe></div>
 
 <div class="lato-font" style="margin-left:38%;font-size:25px;color:#2B9DE8;">
   Browse products for your needs
@@ -149,7 +158,7 @@
       <img src="/boxinsurance/img/motor-sports.png">
     </div>
     <div class="lato-font" style="text-align:center;color:#888888;">
-      <span style="font-size:17px;">For your motorcycle needs</span>
+      <span style="font-size:17px;">For your motorcycle </span>
     </div>
     <a href="#" class="button expanded">More Info</a>
   </div>
@@ -322,7 +331,7 @@ function closeNav() {
 
 <script>
 // SideNav Initialization
-$(".button-collapse").sideNav();
+//$(".button-collapse").sideNav();
 </script>
 <footer>
   <div class="row column">

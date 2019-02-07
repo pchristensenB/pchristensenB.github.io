@@ -61,7 +61,7 @@ function loadPolicyData(folderId) {
               data.metadata.enterprise.policy.engineSize,
               data.metadata.enterprise.policy.policyNumber,
               data.name,
-              data.metadata.enterprise.policy.firstName,
+            'John Mahedy',
             folderId);
               loadPolicy(policyFolder);
           });
