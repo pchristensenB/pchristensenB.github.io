@@ -171,8 +171,10 @@ function loadPolicy(myFolder) {
               hasSkills: true,
               hasProperties: true,
               hasAccessStats: true,
-              defaultView:'metadata'
-            }
+              hasActivityFeed: true,
+              defaultView:'activityFeed'
+            },
+            showAnnotations:true
           }
       });
     }
