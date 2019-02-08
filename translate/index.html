@@ -48,7 +48,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       $.ajax({
           method : 'get',
           url: url,
-          data: {authCode:params.get('authCode'),fileId:params.get('fileId'),clientId:clientId,clientSecret:clientSecret},
+          data: {authCode:params.get('auth'),fileId:params.get('id'),clientId:clientId,clientSecret:clientSecret},
           crossDomain: true,
           timeout:120000,
           dataType:'jsonp',
