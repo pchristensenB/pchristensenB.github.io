@@ -116,7 +116,7 @@ var contentUploader = new Box.ContentUploader();
                   "url": "https://api.box.com/2.0/files/" + id + "/metadata/enterprise_48902184/busCctv",
                   "method": "POST",
                   "headers": {
-                    "Authorization": "Bearer " + sessionStorage.getItem("accessToken"),
+                    "Authorization": "Bearer " + accessToken,
                     "Content-Type": "application/json",
                     "Cache-Control": "no-cache"
                   },
@@ -139,7 +139,7 @@ var contentUploader = new Box.ContentUploader();
                     "url": "https://api.box.com/2.0/collaborations",
                     "method": "POST",
                     "headers": {
-                      "Authorization": "Bearer " + sessionStorage.getItem("accessToken"),
+                      "Authorization": "Bearer " + accessToken,
                       "Content-Type": "application/json",
                       "Cache-Control": "no-cache"
                     },
