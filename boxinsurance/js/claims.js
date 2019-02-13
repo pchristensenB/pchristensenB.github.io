@@ -60,6 +60,7 @@ var aFolder = new Folder('65286002498','Auto Physical Damage Claim','29th Jan','
 
 
 function loadAllClaims(folderId) {
+  console.log("loading folder:" + folderId);
   url = "https://api.box.com/2.0/folders/" +folderId + "/items?fields=id,name,metadata.enterprise.claim";
   var settings = {
         "async": true,
