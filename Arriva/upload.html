@@ -32,7 +32,7 @@ p {
   text-align: center;
 }
 
-label,select,input {
+label,select,input, option {
   font-family: sans-serif;
   font-size: 12px;
   list-style-type: none;
@@ -52,6 +52,9 @@ div {
   background-color: #f2f2f2;
   padding: 20px;
 }
+
+
+
 </style>
 <body>
 
@@ -71,7 +74,7 @@ div {
     <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
 
     <label for="depot">Depot</label>
-    <select id="depto" name="depot" required>
+    <select id="depto" name="depot" required style="height:35px">
       <option value="palmers green">Palmers Green</option>
       <option value="ash grove">Ash Grove</option>
       <option value="tottenham">Tottenham</option>
@@ -89,7 +92,8 @@ div {
 
     <label for="caseID">Case ID</label>
     <input type="text" id="caseID" name="caseID" placeholder="Assigned case ID" required>
-
+    <label for="caseID">Share with</label>
+    <input type="text" id="collabID" name="collabID" placeholder="Collaborator email address" required>
     <input type="submit" value="Upload with Meta-Data">
   </form>
 </div>
