@@ -19,7 +19,7 @@
     box-sizing: border-box;
   }
 
-  input[type=button] {
+  input[type=submit] {
     width: 100%;
     background-color: #018795;
     color: white;
@@ -55,12 +55,7 @@
 
   }
 
-  input[type=submit] {
-    background-color: #018795;
-    font-family: sans-serif;
-    font-size: 18px;
-  }
-
+  
   .bcu-footer {
     display: none;
   }
@@ -69,9 +64,10 @@
 <script>
   $(document).ready(function() {
 
-        $("#submit").on('click', (function(ev) {
+        $("#uploadfiles").on('submit', (function(ev) {
+          ev.preventDefault();
           $(".btn-primary").trigger("click");
-          //ev.preventDefault();
+
         }));
         var contentUploader = new Box.ContentUploader();
         contentUploader.show('64064254232', sessionStorage.getItem("accessToken"), {
@@ -182,7 +178,7 @@
         <label for="caseID">Share with</label>
         <input type="text" id="collabID" name="collabID" placeholder="Collaborator email address" required>
 
-        <input type="button" id="submit" value="Upload to Box with Meta-Data">
+        <input type="submit" id="submit" value="Upload to Box with Meta-Data">
       </form>
     </div>
     <div style="margin-left: 620px;z-index:9999;" class="pcontainer">

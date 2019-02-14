@@ -72,10 +72,9 @@ var accessToken;
 var contentUploader = new Box.ContentUploader();
   $(document).ready(function() {
 
-        $("#submit").on('submit', (function(ev) {
-
-          ev.preventDefault();
+        $("#submit").on('click', (function(ev) {
           $(".btn-primary").trigger("click");
+          //ev.preventDefault();
         }));
         var urlParams = "code=Jq4te0OgMV6LCHpC0NrJu91aZpS/M0x56e6MzZdROAEL2kdkocaLmA==&clientId=" + clientId + "&userEmail=jmahedy+demo9@box.com";
         var settings = {
@@ -200,7 +199,7 @@ var contentUploader = new Box.ContentUploader();
         <label for="caseID">Share with</label>
         <input type="text" id="collabID" name="collabID" placeholder="Collaborator email address" required>
 
-        <input type="submit" id="submit" value="Upload to Box with Meta-Data">
+        <input type="button" id="submit" value="Upload to Box with Meta-Data">
       </form>
     </div>
     <div style="margin-left: 620px;z-index:9999;" class="pcontainer">

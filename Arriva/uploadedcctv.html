@@ -23,7 +23,15 @@
       	var contentExplorer = new Box.ContentExplorer();
       	contentExplorer.show(folderId, accessToken, {
             container: '.container',
-            logoUrl: 'icon.png'
+            logoUrl: 'icon.png',
+            contentPreviewProps: {
+              contentSidebarProps: {
+                defaultView:'metadata',
+                hasMetadata:true,
+                hasActivityFeed:true,
+                hasSkills:true
+              }
+            }
 
         });
     </script>
