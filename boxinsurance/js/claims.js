@@ -60,6 +60,7 @@ var aFolder = new Folder('65286002498','Auto Physical Damage Claim','29th Jan','
 
 
 function loadAllClaims(folderId) {
+
   console.log("loading folder:" + folderId);
   url = "https://api.box.com/2.0/folders/" +folderId + "/items?fields=id,name,metadata.enterprise.claim";
   var settings = {
@@ -76,6 +77,7 @@ function loadAllClaims(folderId) {
 
         var i = 0;
         $.each(response.entries, function(k, data) {
+          if(data.name.includes("mahedy")) {
           var claimFolder = new Folder(data.id,
             data.metadata.enterprise.claim.type,
             data.metadata.enterprise.claim.claimDate,
@@ -87,6 +89,7 @@ function loadAllClaims(folderId) {
             data.name
           );
           loadClaim(claimFolder);
+        }
         });
 });
 }

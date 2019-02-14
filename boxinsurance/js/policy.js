@@ -29,7 +29,7 @@ class Policy {
   }
 }
 //var aFolder = new Folder('65286002498','Auto Physical Damage Claim','29th Jan','Waiting for review','High','I am writing this to file a report for a car accident in which I was involved on the 5th of February. I was driving my Hyundai i10, 9678 in Bandra when a Honda city, 7845 came in a rush and hit me from behind. My car was totally smashed and damaged','John Mahedy');
-
+var policyId;
 
 function loadPolicyData(folderId, name) {
   var folderPathSettings = {
@@ -47,6 +47,7 @@ function loadPolicyData(folderId, name) {
     console.log(response);
 
       var polId = response.entries[0].id;
+      policyId=polId
       url = "https://api.box.com/2.0/folders/" + polId+ "/items?fields=id,name,metadata.enterprise.policy";
       var settings = {
         "async": true,
@@ -134,7 +135,7 @@ function loadPolicy(myFolder) {
     '       <i class="fa fa-user-circle" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:15px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Vehicle Model: </span><span style="font-size:13px;color:#888888" class="lato-font">' + myFolder.vehicleModel + '</span></i>' +
     '    </div>' +
     '   <div style="padding-left:10%;" class="column">' +
-    '       <i class="fa  fa-paperclip" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:60px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Claims: </span><span style="font-size:13px;color:#888888" class="lato-font">2</span></i>' +
+    '       <i class="fa  fa-paperclip" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:60px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Claims: </span><span style="font-size:13px;color:#888888" class="lato-font">0</span></i>' +
     '    </div>' +
     '</div>' +
     '<div style="margin-left:95%;margin-top:1%;">' +

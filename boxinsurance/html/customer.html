@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css?family=Nobile" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <link rel="stylesheet" href="/boxinsurance/assets/css/bootstrap.min.css">
+  <script src="/boxinsurance/assets/js/bootstrap.min.js"/>
   <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/9.1.0/en-US/explorer.css">
   <script src="https://cdn01.boxcdn.net/platform/elements/9.1.0/en-US/explorer.js"></script>
   <!-- foundation 6 style + js -->
@@ -27,8 +29,8 @@
   <link rel="stylesheet" href="/boxinsurance/icons/foundation-icons/foundation-icons.css" />
   <link rel="stylesheet" href="/boxinsurance/css/page_loader.css" />
   <link rel="stylesheet" href="/boxinsurance/css/box.css" />
-  <script src="/boxinsurance/js/claims.js"></script>
   <script src="/boxinsurance/js/policy.js"></script>
+  <script src="/boxinsurance/js/claims.js"></script>
 
   <script>
   var contentExplorer;
@@ -94,7 +96,7 @@
       //find policy documents folder
       loadPolicyData('65937358294','John Mahedy');
 
-      //loadAllClaims('65306596707');
+      loadAllClaims('65306596707');
     });
   </script>
 </head>
@@ -521,7 +523,7 @@
         .bottom:after {
           content: '';
           position: absolute;
-          top: -46px;
+          top:-38px;
           background: #fff;
           left: -22px;
           right: 0;
@@ -693,13 +695,18 @@
     <div class="modal-content">
       <script src="https://box-162828.workflowcloud.com/embedform/iframe/ntx-embed-iframe.js" data-id="ntxFormContainer-72dbda52-9ece-4809-8b8d-afe6ea504d80"></script><iframe id="ntxFormContainer-72dbda52-9ece-4809-8b8d-afe6ea504d80" scrolling="no" style="width:100%; border:none;" height="100%" src="https://box-162828.workflowcloud.com/embedform/iframe?id=72dbda52-9ece-4809-8b8d-afe6ea504d80"></iframe>
       <div class="modal-header">
-        <span class="close">&times;</span>
+        <span class="close" onclick="hideModal()">&times;</span>
       </div>
       <div class="modal-body">
 
       </div>
 
     </div>
+    <script>
+    function hideModal() {
+      $("#myModal").toggle();
+    }
+    </script>
 </body>
 
 </html>
