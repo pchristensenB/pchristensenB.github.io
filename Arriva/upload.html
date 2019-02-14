@@ -37,7 +37,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    color: #018795;
+    color: #0161d4;
     text-align: left;
   }
 
@@ -51,11 +51,11 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    color: #018795;
+    color: #0161d4;
 
   }
 
-  
+
   .bcu-footer {
     display: none;
   }
@@ -96,7 +96,7 @@
                   "url": "https://api.box.com/2.0/files/" + id + "/metadata/enterprise_48902184/busCctv",
                   "method": "POST",
                   "headers": {
-                    "Authorization": "Bearer " + sessionStorage.getItem("accessToken"),
+                    "Authorization": "Bearer " + sessionStorage.getItem("adminAccessToken"),
                     "Content-Type": "application/json",
                     "Cache-Control": "no-cache"
                   },
