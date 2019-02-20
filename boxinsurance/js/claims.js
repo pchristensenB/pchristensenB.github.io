@@ -178,7 +178,7 @@ function loadClaim(myFolder) {
     $(this).toggleClass('share-expanded');
   });
   $('.explorer-toggle').on('click', function(e) {
-    console.log("clicked files");
+    console.log("clicked claim files");
     e.preventDefault();
     var showExplorer = true;
     if($(this).hasClass("fa-angle-double-down")) {
