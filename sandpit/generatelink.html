@@ -62,7 +62,7 @@
 
                 $.each(response, function(k, data) {
                     console.log(JSON.stringify(data));
-                    $("#link").text("http://0.0.0.0:8000/sandpit/uploadlink.html?c=" + clientId + "&u=" +userLogin+ "&f=" + data.id);
+                    $("#link").text(window.location.protocol + "//" + window.location.hostname + (window.location.port?":"+window.location.port:"") + "/sandpit/uploadlink.html?c=" + clientId + "&u=" +userLogin+ "&f=" + data.id);
                   });
                 });
 
