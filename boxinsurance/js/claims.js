@@ -60,6 +60,7 @@ var aFolder = new Folder('65286002498','Auto Physical Damage Claim','29th Jan','
 
 
 function loadAllClaims(folderId) {
+
   console.log("loading folder:" + folderId);
   url = "https://api.box.com/2.0/folders/" +folderId + "/items?fields=id,name,metadata.enterprise.claim";
   var settings = {
@@ -76,6 +77,7 @@ function loadAllClaims(folderId) {
 
         var i = 0;
         $.each(response.entries, function(k, data) {
+          if(data.name.includes("mahedy")) {
           var claimFolder = new Folder(data.id,
             data.metadata.enterprise.claim.type,
             data.metadata.enterprise.claim.claimDate,
@@ -87,6 +89,7 @@ function loadAllClaims(folderId) {
             data.name
           );
           loadClaim(claimFolder);
+        }
         });
 });
 }
@@ -96,17 +99,17 @@ function loadAllClaims(folderId) {
 
 function loadClaim(myFolder) {
   console.log(myFolder.getPolicyIcon());
-  $("#folderGroup").append('<div class="wrapper">' +
+  $("#folderGroupClaim").append('<div class="wrapper">' +
     '<div class="card radius shadowDepth1">'+
       '<div class="card__content card__padding">' +
-        '<div class="card__share">' +
+        '<div class="card__share card__claim" id="claimShare">' +
           '<div class="card__social">' +
-            '<a class="share-icon facebook" href="/claims/file_view/' + myFolder.id + '"><span class="fa fa-file icon-padding"></span></a>' +
-            '<a class="share-icon twitter" href="" data-toggle="modal" data-id="107"><span class="fa fa-phone icon-padding trigger" data-toggle="modal" data-id="' + myFolder.id + '"></span></a>' +
-            '<a class="share-icon clipboard" href="/claims/approve/<%= folder.id %>"><span class="fa fa-clipboard icon-padding"></span></a>' +
-            '<a title="Approve claim" class="share-icon googleplus" href="/claims/approve/<%= folder.id %>"><span class="fa fa-thumbs-o-up icon-padding"></span></a>' +
+            //'<a class="share-icon facebook" href="/claims/file_view/' + myFolder.id + '"><span class="fa fa-file icon-padding"></span></a>' +
+            //'<a class="share-icon twitter" href="" data-toggle="modal" data-id="107"><span class="fa fa-phone icon-padding trigger" data-toggle="modal" data-id="' + myFolder.id + '"></span></a>' +
+            //'<a class="share-icon clipboard" href="/claims/approve/<%= folder.id %>"><span class="fa fa-clipboard icon-padding"></span></a>' +
+            //'<a title="Approve claim" class="share-icon googleplus" href="/claims/approve/<%= folder.id %>"><span class="fa fa-thumbs-o-up icon-padding"></span></a>' +
           '</div>' +
-        '<a id="share" class="share-toggle share-icon" href="#"></a>' +
+        '<a id="shareClaim" class="share-toggle share-icon" href="#"></a>' +
       '</div>' +
       '<div class="card__action">' +
         '<div class="card__author">' +
@@ -127,7 +130,7 @@ function loadClaim(myFolder) {
       '</div>' +
       '<hr>' +
 
-      '<article style="font-size:15px;" class="card__article">' +
+      '<article style="font-size:15px;" class="card__article" id="contentBoxClaim">' +
         '<div id="contentBox">' +
         '   <div style="padding-left:10%;" class="column leftpush">'+
         '      <i class="fa fa-id-card" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:15px;" aria-hidden="true"><span style="font-size:13px;padding-left:5px;" class="lato-font"> Policy Number: </span><span style="font-size:13px;color:#888888;" class="lato-font">' + myFolder.policyNumber + '</span></i>' +
@@ -158,24 +161,30 @@ function loadClaim(myFolder) {
         '<span style="color:#888888;font-size:14px;" class="lato-font">' + myFolder.description + '</span>'+
         '<div style="margin-left:95%;margin-top:1%;">'+
         //'<a class="button small" href="/claims/full_report/<%= folder.id %>"><span style="color:white">Full Report</span></a>' +
-        //'<button class="button small explorer-toggle" style="font-size:12px">Files <i class="fa fa-angle-double-down"></i></button>' +
-        ' <i style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" class="fa fa-folder" aria-hidden="true"></i><i style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" id="file_indicator" class="fa fa-angle-double-down explorer-toggle" folder-id="' + myFolder.id + '">'+
-        //'<a folder-id="' + myFolder.id + '" class="button small explorer-toggle" href="#"><span style="color:white">Claim Files <i class="fa fa-angle-double-down"></span></a>' +
+        //'<button class="button small explorer-toggle-claim" style="font-size:12px">Files <i class="fa fa-angle-double-down"></i></button>' +
+        ' <i style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" class="fa fa-folder" aria-hidden="true"></i><i style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" id="file_indicator" class="fa fa-angle-double-down explorer-toggle-claim" folder-id="' + myFolder.id + '">'+
+        //'<a folder-id="' + myFolder.id + '" class="button small explorer-toggle-claim" href="#"><span style="color:white">Claim Files <i class="fa fa-angle-double-down"></span></a>' +
         '</div>'+
-        '</article>'+
         '<div style="margin-top:10px;" class="contentexplorer_' +myFolder.id + '" id="contentexplorer_' +myFolder.id + '">' +
         '</div>'+
+        '</article>'+
+
       '</div>'+
     '</div>'+
   '</div>');
-  $('.card__share > a').on('click', function(e){
+  $('.card__claim > a').on('click', function(e){
     console.log("clicked");
     e.preventDefault(); // prevent default action - hash doesn't appear in url
-    $(this).parent().find( 'div' ).toggleClass( 'card__social--active' );
-    $(this).toggleClass('share-expanded');
+    //$(this).parent().find( 'div' ).toggleClass( 'card__social--active' );
+    //$(this).toggleClass('share-expanded');
+      console.log($(this));
+    $("#contentBoxClaim").slideToggle(500, function () {
+      console.log('here');
+
+    });
   });
-  $('.explorer-toggle').on('click', function(e) {
-    console.log("clicked files");
+  $('.explorer-toggle-claim').on('click', function(e) {
+    console.log("clicked claim files");
     e.preventDefault();
     var showExplorer = true;
     if($(this).hasClass("fa-angle-double-down")) {
@@ -187,15 +196,15 @@ function loadClaim(myFolder) {
       $(this).addClass("fa-angle-double-down");
       showExplorer=false;
     }
-    if(!showExplorer && contentExplorer) {
-      contentExplorer.hide();
-      contentExplorer.clearCache();
+    if(!showExplorer && contentExplorerClaim) {
+      contentExplorerClaim.hide();
+      contentExplorerClaim.clearCache();
     }
     else {
-      var container ='.contentexplorer_' + $(".explorer-toggle").attr("folder-id");
+      var container ='.contentexplorer_' + $(".explorer-toggle-claim").attr("folder-id");
       console.log(container + ":" + $(container));
-      contentExplorer = new Box.ContentExplorer();
-      contentExplorer.show($(".explorer-toggle").attr("folder-id"),sessionStorage.getItem("accessToken"),{
+      contentExplorerClaim = new Box.ContentExplorer();
+      contentExplorerClaim.show($(".explorer-toggle-claim").attr("folder-id"),sessionStorage.getItem("accessToken"),{
           container: container,
           logoUrl:'box',
           contentPreviewProps: {
@@ -208,7 +217,7 @@ function loadClaim(myFolder) {
             }
           }
       });
-      document.getElementById('contentexplorer_' + $(".explorer-toggle").attr("folder-id")).scrollIntoView(false);
+      document.getElementById('contentexplorer_' + $(".explorer-toggle-claim").attr("folder-id")).scrollIntoView(false);
     }
   });
 }

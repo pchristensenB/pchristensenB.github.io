@@ -1,0 +1,582 @@
+{
+    "accountId": "8e052e89-1bbe-4e73-8991-9d8fc4948ec9",
+    "id": "2c625e69d4",
+    "partition": null,
+    "name": "test.mp4",
+    "description": null,
+    "userName": "Unknown User",
+    "created": "2019-02-26T17:12:43.2551873+00:00",
+    "privacyMode": "Private",
+    "state": "Processed",
+    "isOwned": true,
+    "isEditable": true,
+    "isBase": true,
+    "durationInSeconds": 15,
+    "summarizedInsights": {
+        "name": "test.mp4",
+        "id": "2c625e69d4",
+        "privacyMode": "Private",
+        "duration": {
+            "time": "0:00:15.083",
+            "seconds": 15.1
+        },
+        "thumbnailVideoId": "2c625e69d4",
+        "thumbnailId": "895eda90-c3a7-4cc9-938f-69b7219b1124",
+        "faces": [],
+        "keywords": [
+            {
+                "isTranscript": false,
+                "id": 0,
+                "name": "leclerc baisse",
+                "appearances": [
+                    {
+                        "startTime": "0:00:06.78",
+                        "endTime": "0:00:12.67",
+                        "startSeconds": 6.8,
+                        "endSeconds": 12.7
+                    }
+                ]
+            },
+            {
+                "isTranscript": false,
+                "id": 1,
+                "name": "prix",
+                "appearances": [
+                    {
+                        "startTime": "0:00:06.78",
+                        "endTime": "0:00:12.67",
+                        "startSeconds": 6.8,
+                        "endSeconds": 12.7
+                    }
+                ]
+            }
+        ],
+        "sentiments": [
+            {
+                "sentimentKey": "Neutral",
+                "seenDurationRatio": 0.5437,
+                "appearances": [
+                    {
+                        "startTime": "0:00:06.78",
+                        "endTime": "0:00:15.021",
+                        "startSeconds": 6.8,
+                        "endSeconds": 15
+                    }
+                ]
+            }
+        ],
+        "emotions": [],
+        "audioEffects": [],
+        "labels": [
+            {
+                "id": 0,
+                "name": "indoor",
+                "appearances": [
+                    {
+                        "startTime": "0:00:00",
+                        "endTime": "0:00:07.68",
+                        "startSeconds": 0,
+                        "endSeconds": 7.7
+                    }
+                ]
+            }
+        ],
+        "brands": [
+            {
+                "referenceId": "E.Leclerc",
+                "referenceUrl": "http://en.wikipedia.org/wiki/E.Leclerc",
+                "confidence": 0.309,
+                "description": "E.Leclerc is a French hypermarket chain, headquartered in Ivry-sur-Seine. E.Leclerc was established on 1 January 1948 by Édouard Leclerc. E.Leclerc currently has more than 500 locations in France and 114 stores outside of the country, as of 2012. The chain enables semi-independent stores to operate under the Leclerc brand.",
+                "seenDuration": 4.9,
+                "id": 1,
+                "name": "E.Leclerc",
+                "appearances": [
+                    {
+                        "startTime": "0:00:07.2",
+                        "endTime": "0:00:12.12",
+                        "startSeconds": 7.2,
+                        "endSeconds": 12.1
+                    }
+                ]
+            }
+        ],
+        "statistics": {
+            "correspondenceCount": 0,
+            "speakerTalkToListenRatio": {
+                "2": 1
+            },
+            "speakerLongestMonolog": {
+                "2": 15
+            },
+            "speakerNumberOfFragments": {
+                "2": 1
+            },
+            "speakerWordCount": {
+                "2": 18
+            }
+        },
+        "topics": []
+    },
+    "videos": [
+        {
+            "accountId": "8e052e89-1bbe-4e73-8991-9d8fc4948ec9",
+            "id": "2c625e69d4",
+            "state": "Processed",
+            "moderationState": "OK",
+            "reviewState": "None",
+            "privacyMode": "Private",
+            "processingProgress": "100%",
+            "failureCode": "None",
+            "failureMessage": "",
+            "externalId": null,
+            "externalUrl": null,
+            "metadata": null,
+            "insights": {
+                "version": "1.0.0.0",
+                "duration": "0:00:15.083",
+                "sourceLanguage": "fr-FR",
+                "language": "fr-FR",
+                "transcript": [
+                    {
+                        "id": 0,
+                        "text": "",
+                        "confidence": 1,
+                        "speakerId": 2,
+                        "language": "fr-FR",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:00",
+                                "adjustedEnd": "0:00:06.78",
+                                "start": "0:00:00",
+                                "end": "0:00:06.78",
+                                "duration": "0:00:06.78"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 0,
+                        "text": "En 2019 Leclerc baisse les prix de 4600 produits marque repère hors produits agricole.",
+                        "confidence": 0.8862,
+                        "speakerId": 2,
+                        "language": "fr-FR",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:06.78",
+                                "adjustedEnd": "0:00:12.67",
+                                "start": "0:00:06.78",
+                                "end": "0:00:12.67",
+                                "duration": "0:00:05.89"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 0,
+                        "text": "Il est clair.",
+                        "confidence": 0.7561,
+                        "speakerId": 2,
+                        "language": "fr-FR",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:12.67",
+                                "adjustedEnd": "0:00:15.021",
+                                "start": "0:00:12.67",
+                                "end": "0:00:15.021",
+                                "duration": "0:00:02.351"
+                            }
+                        ]
+                    }
+                ],
+                "ocr": [
+                    {
+                        "id": 0,
+                        "text": "EN 2019,",
+                        "confidence": 398.8438,
+                        "left": 843,
+                        "top": 261,
+                        "width": 233,
+                        "height": 58,
+                        "language": "fr-FR",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:07.2",
+                                "adjustedEnd": "0:00:12.12",
+                                "start": "0:00:07.2",
+                                "end": "0:00:12.12",
+                                "duration": "0:00:04.92"
+                            },
+                            {
+                                "adjustedStart": "0:00:12.48",
+                                "adjustedEnd": "0:00:12.6",
+                                "start": "0:00:12.48",
+                                "end": "0:00:12.6",
+                                "duration": "0:00:00.12"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 1,
+                        "text": "E.LECLERC BAISSE LES PRIX",
+                        "confidence": 428.25,
+                        "left": 572,
+                        "top": 348,
+                        "width": 781,
+                        "height": 49,
+                        "language": "fr-FR",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:07.2",
+                                "adjustedEnd": "0:00:12.12",
+                                "start": "0:00:07.2",
+                                "end": "0:00:12.12",
+                                "duration": "0:00:04.92"
+                            },
+                            {
+                                "adjustedStart": "0:00:12.48",
+                                "adjustedEnd": "0:00:12.6",
+                                "start": "0:00:12.48",
+                                "end": "0:00:12.6",
+                                "duration": "0:00:00.12"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "text": "POUR LE POUVOIR",
+                        "confidence": 523.8333,
+                        "left": 787,
+                        "top": 419,
+                        "width": 352,
+                        "height": 28,
+                        "language": "fr-FR",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:03.84",
+                                "adjustedEnd": "0:00:04",
+                                "start": "0:00:03.84",
+                                "end": "0:00:04",
+                                "duration": "0:00:00.16"
+                            },
+                            {
+                                "adjustedStart": "0:00:04.32",
+                                "adjustedEnd": "0:00:04.48",
+                                "start": "0:00:04.32",
+                                "end": "0:00:04.48",
+                                "duration": "0:00:00.16"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 3,
+                        "text": "DE 4600 PRODUITS MARQUE REPÈRE,",
+                        "confidence": 351.9875,
+                        "left": 446,
+                        "top": 423,
+                        "width": 1027,
+                        "height": 71,
+                        "language": "fr-FR",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:07.2",
+                                "adjustedEnd": "0:00:12.12",
+                                "start": "0:00:07.2",
+                                "end": "0:00:12.12",
+                                "duration": "0:00:04.92"
+                            },
+                            {
+                                "adjustedStart": "0:00:12.48",
+                                "adjustedEnd": "0:00:12.6",
+                                "start": "0:00:12.48",
+                                "end": "0:00:12.6",
+                                "duration": "0:00:00.12"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 4,
+                        "text": "HORS PRODUITS AGRICOLES.",
+                        "confidence": 450.9219,
+                        "left": 558,
+                        "top": 522,
+                        "width": 803,
+                        "height": 49,
+                        "language": "fr-FR",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:07.2",
+                                "adjustedEnd": "0:00:12.12",
+                                "start": "0:00:07.2",
+                                "end": "0:00:12.12",
+                                "duration": "0:00:04.92"
+                            },
+                            {
+                                "adjustedStart": "0:00:12.48",
+                                "adjustedEnd": "0:00:12.6",
+                                "start": "0:00:12.48",
+                                "end": "0:00:12.6",
+                                "duration": "0:00:00.12"
+                            }
+                        ]
+                    }
+                ],
+                "keywords": [
+                    {
+                        "id": 0,
+                        "text": "leclerc baisse",
+                        "confidence": 0.9975,
+                        "language": "fr-FR",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:06.78",
+                                "adjustedEnd": "0:00:12.67",
+                                "start": "0:00:06.78",
+                                "end": "0:00:12.67",
+                                "duration": "0:00:05.89"
+                            },
+                            {
+                                "adjustedStart": "0:00:07.2",
+                                "adjustedEnd": "0:00:12.12",
+                                "start": "0:00:07.2",
+                                "end": "0:00:12.12",
+                                "duration": "0:00:04.92"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 1,
+                        "text": "prix",
+                        "confidence": 0.6211,
+                        "language": "fr-FR",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:06.78",
+                                "adjustedEnd": "0:00:12.67",
+                                "start": "0:00:06.78",
+                                "end": "0:00:12.67",
+                                "duration": "0:00:05.89"
+                            },
+                            {
+                                "adjustedStart": "0:00:07.2",
+                                "adjustedEnd": "0:00:12.12",
+                                "start": "0:00:07.2",
+                                "end": "0:00:12.12",
+                                "duration": "0:00:04.92"
+                            }
+                        ]
+                    }
+                ],
+                "labels": [
+                    {
+                        "id": 0,
+                        "name": "indoor",
+                        "language": "fr-FR",
+                        "instances": [
+                            {
+                                "confidence": 0.8919,
+                                "adjustedStart": "0:00:00",
+                                "adjustedEnd": "0:00:05.12",
+                                "start": "0:00:00",
+                                "end": "0:00:05.12",
+                                "duration": "0:00:05.12"
+                            },
+                            {
+                                "confidence": 0.8684,
+                                "adjustedStart": "0:00:06.4",
+                                "adjustedEnd": "0:00:07.68",
+                                "start": "0:00:06.4",
+                                "end": "0:00:07.68",
+                                "duration": "0:00:01.28"
+                            }
+                        ]
+                    }
+                ],
+                "shots": [
+                    {
+                        "id": 0,
+                        "keyFrames": [
+                            {
+                                "id": 0,
+                                "instances": [
+                                    {
+                                        "thumbnailId": "e23a8e0b-7852-44e2-b593-7c3dfd1a6f86",
+                                        "adjustedStart": "0:00:00.2",
+                                        "adjustedEnd": "0:00:00.24",
+                                        "start": "0:00:00.2",
+                                        "end": "0:00:00.24",
+                                        "duration": "0:00:00.04"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 1,
+                                "instances": [
+                                    {
+                                        "thumbnailId": "fc76b61e-4b38-4893-a9ea-b14f3022afc7",
+                                        "adjustedStart": "0:00:00.24",
+                                        "adjustedEnd": "0:00:00.28",
+                                        "start": "0:00:00.24",
+                                        "end": "0:00:00.28",
+                                        "duration": "0:00:00.04"
+                                    }
+                                ]
+                            }
+                        ],
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:00",
+                                "adjustedEnd": "0:00:07.24",
+                                "start": "0:00:00",
+                                "end": "0:00:07.24",
+                                "duration": "0:00:07.24"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 1,
+                        "keyFrames": [
+                            {
+                                "id": 2,
+                                "instances": [
+                                    {
+                                        "thumbnailId": "45248c7a-9f8a-4675-bb8f-a966774eff9a",
+                                        "adjustedStart": "0:00:07.24",
+                                        "adjustedEnd": "0:00:07.28",
+                                        "start": "0:00:07.24",
+                                        "end": "0:00:07.28",
+                                        "duration": "0:00:00.04"
+                                    }
+                                ]
+                            }
+                        ],
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:07.24",
+                                "adjustedEnd": "0:00:15",
+                                "start": "0:00:07.24",
+                                "end": "0:00:15",
+                                "duration": "0:00:07.76"
+                            }
+                        ]
+                    }
+                ],
+                "brands": [
+                    {
+                        "id": 1,
+                        "name": "E.Leclerc",
+                        "referenceId": "E.Leclerc",
+                        "referenceUrl": "http://en.wikipedia.org/wiki/E.Leclerc",
+                        "referenceType": "Wiki",
+                        "description": "E.Leclerc is a French hypermarket chain, headquartered in Ivry-sur-Seine. E.Leclerc was established on 1 January 1948 by Édouard Leclerc. E.Leclerc currently has more than 500 locations in France and 114 stores outside of the country, as of 2012. The chain enables semi-independent stores to operate under the Leclerc brand.",
+                        "tags": [],
+                        "confidence": 0.309,
+                        "isCustom": false,
+                        "instances": [
+                            {
+                                "brandType": "Ocr",
+                                "adjustedStart": "0:00:07.2",
+                                "adjustedEnd": "0:00:12.12",
+                                "start": "0:00:07.2",
+                                "end": "0:00:12.12",
+                                "duration": "0:00:04.92"
+                            }
+                        ]
+                    }
+                ],
+                "sentiments": [
+                    {
+                        "id": 0,
+                        "averageScore": 0.6064,
+                        "sentimentType": "Neutral",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:06.78",
+                                "adjustedEnd": "0:00:10.547",
+                                "start": "0:00:06.78",
+                                "end": "0:00:10.547",
+                                "duration": "0:00:03.767"
+                            },
+                            {
+                                "adjustedStart": "0:00:10.615",
+                                "adjustedEnd": "0:00:15.021",
+                                "start": "0:00:10.615",
+                                "end": "0:00:15.021",
+                                "duration": "0:00:04.406"
+                            }
+                        ]
+                    }
+                ],
+                "blocks": [
+                    {
+                        "id": 0,
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:00",
+                                "adjustedEnd": "0:00:15.021",
+                                "start": "0:00:00",
+                                "end": "0:00:15.021",
+                                "duration": "0:00:15.021"
+                            }
+                        ]
+                    }
+                ],
+                "speakers": [
+                    {
+                        "id": 2,
+                        "name": "Speaker #2",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:06.78",
+                                "adjustedEnd": "0:00:15.021",
+                                "start": "0:00:06.78",
+                                "end": "0:00:15.021",
+                                "duration": "0:00:08.241"
+                            }
+                        ]
+                    }
+                ],
+                "textualContentModeration": {
+                    "id": 0,
+                    "bannedWordsCount": 0,
+                    "bannedWordsRatio": 0,
+                    "instances": []
+                },
+                "statistics": {
+                    "correspondenceCount": 0,
+                    "speakerTalkToListenRatio": {
+                        "2": 1
+                    },
+                    "speakerLongestMonolog": {
+                        "2": 15
+                    },
+                    "speakerNumberOfFragments": {
+                        "2": 1
+                    },
+                    "speakerWordCount": {
+                        "2": 18
+                    }
+                },
+                "sourceLanguageConfidence": 1
+            },
+            "thumbnailId": "895eda90-c3a7-4cc9-938f-69b7219b1124",
+            "publishedUrl": "https://videoindexeramsbfe55c85-euno.streaming.media.azure.net:443/e9f1fda2-dda0-483f-8bc9-b70c2f514763/5f3ff1e9-0809-4dd9-9c1a-2f35f933.ism/manifest(encryption=cbc)",
+            "publishedProxyUrl": null,
+            "viewToken": "Bearer=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1cm46bWljcm9zb2Z0OmF6dXJlOm1lZGlhc2VydmljZXM6Y29udGVudGtleWlkZW50aWZpZXIiOiI5MTU1MzBkMy1iMmE5LTQ1MzMtYjk4Ni1lYmYxM2NmNGQzYzkiLCJpc3MiOiJodHRwczovL2JyZWFrZG93bi5tZSIsImF1ZCI6IkJyZWFrZG93blVzZXIiLCJleHAiOjE1NTEyODc5NTIsIm5iZiI6MTU1MTIwMTQ5Mn0.1qdhu8xxPmkLZz_WlOSWXL9EkHJr03Gzbd5MJn8YdPQ",
+            "detectSourceLanguage": false,
+            "sourceLanguage": "fr-FR",
+            "language": "fr-FR",
+            "indexingPreset": "Default",
+            "linguisticModelId": "00000000-0000-0000-0000-000000000000",
+            "personModelId": "00000000-0000-0000-0000-000000000000",
+            "isAdult": false
+        }
+    ],
+    "videosRanges": [
+        {
+            "videoId": "2c625e69d4",
+            "range": {
+                "start": "0:00:00",
+                "end": "0:00:15.083",
+                "duration": "0:00:15.083"
+            }
+        }
+    ]
+}
