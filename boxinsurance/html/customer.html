@@ -88,7 +88,7 @@
       $('#policy').click(function() {
         $('.modal').hide();
         //popup policy docs
-        $('.explorer-toggle').trigger( "click" )
+        $('.explorer-toggle-policy').trigger( "click" )
       });
       $('#dashboard').click(function() {
         $('.modal').hide();
@@ -200,13 +200,18 @@
 
 
       <div id="folders" class="col-md-3" style="padding-left:-2.0rem">
-        <div id="foldersUi">
+        <div id="foldersUi" class="medium-12 columns tile-padding">
 
-          <ul id="folderGroup" class="medium-12 columns tile-padding">
+          <div id="folderGroupPolicy" class="row">
 
 
 
-          </ul>
+          </div>
+          <div id="folderGroupClaim"  class="row">
+
+
+
+          </div>
         </div>
       </div>
 
