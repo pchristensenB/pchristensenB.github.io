@@ -193,7 +193,8 @@ function loadPolicy(myFolder) {
       console.log(container + ":" + $(container));
       contentExplorerPolicy = new Box.Preview();
       contentExplorerPolicy.show($(".explorer-toggle-policy").attr("folder-id"), sessionStorage.getItem("accessToken"), {
-        container:'.contentpreview'
+        container:'.contentpreview',
+        showDownload:true
 
         });
     }
