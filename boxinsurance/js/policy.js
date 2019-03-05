@@ -110,8 +110,8 @@ function loadPolicy(myFolder) {
     '</br>' +
     '  <a style="color:#666666;font-size:14px;padding-left:6px;" class="lato-font">' + myFolder.policyNumber + '</a>' +
     '<br/>' +
-    '  <time>' + myFolder.policyStartDate + '</time>-' +
-    '  <time>' + myFolder.policyEndDate + '</time>' +
+    '  <time>05-03-2019</time>-' +
+    '  <time>04-03-2020</time>' +
     '</div>' +
     '<div style="float:right;padding-top:12px;" class="lato-font">' +
     '  Policy Type' +
@@ -135,7 +135,7 @@ function loadPolicy(myFolder) {
     '       <i class="fa fa-user-circle" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:15px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Vehicle Model: </span><span style="font-size:13px;color:#888888" class="lato-font">' + myFolder.vehicleModel + '</span></i>' +
     '    </div>' +
     '   <div style="padding-left:10%;" class="column">' +
-    '       <i class="fa  fa-paperclip" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:60px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Claims: </span><span style="font-size:13px;color:#888888" class="lato-font">0</span></i>' +
+    '       <i class="fa  fa-paperclip" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:60px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Claims: </span><span style="font-size:13px;color:#888888" class="lato-font" id="claimsCounter">0</span></i>' +
     '    </div>' +
     '</div>' +
     '<div style="margin-left:95%;margin-top:1%;">' +

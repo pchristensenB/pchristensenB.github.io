@@ -98,6 +98,7 @@ function loadAllClaims(folderId) {
 
 
 function loadClaim(myFolder) {
+  $("#claimCounter").text("1");
   $("#folderGroupClaim").append('<div class="wrapper">' +
     '<div class="card radius shadowDepth1">'+
       '<div class="card__content card__padding">' +
@@ -150,7 +151,7 @@ function loadClaim(myFolder) {
         '     <span class="step__icon"></span>' +
         '      <span class="step__label">Adjustment</span>' +
         '    </li>' +
-        '   <li id="step3" class="step ' +  myFolder.getClaimStatusClass('Completed') +' lato-font">' +
+        '   <li id="step3" class="step ' +  myFolder.getClaimStatusClass('Complete') +' lato-font">' +
         '      <span class="step__icon"></span>' +
         '     <span class="step__label">Completed</span>' +
         '   </li>' +
