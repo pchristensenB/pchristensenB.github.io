@@ -39,11 +39,11 @@ getClaimStatusClass(displayStage) {
 
   //if stage complete
 }
-  getPolicyIcon() {
+  getClaimPolicyIcon() {
     console.log(this.claimType);
     if(this.claimType == 'Motor') {
       console.log('return car');
-      return 'car_policy.png';
+      return 'claim.png';
     }
     else if(this.claimType == 'Homeowner Damage Claim'){
       return  'home_policy.png';
@@ -98,7 +98,6 @@ function loadAllClaims(folderId) {
 
 
 function loadClaim(myFolder) {
-  console.log(myFolder.getPolicyIcon());
   $("#folderGroupClaim").append('<div class="wrapper">' +
     '<div class="card radius shadowDepth1">'+
       '<div class="card__content card__padding">' +
@@ -113,7 +112,7 @@ function loadClaim(myFolder) {
       '</div>' +
       '<div class="card__action">' +
         '<div class="card__author">' +
-        '<img style="margin-left:-20px;" src="/boxinsurance/img/' + myFolder.getPolicyIcon() + '">'+
+        '<img style="margin-left:-20px;" width="64" height="64" src="/boxinsurance/img/' + myFolder.getClaimPolicyIcon() + '">'+
           '<div class="card__author-content lato-font" style="font-size:15px;">' +
           '  Claim Number' +
           '</br>' +
@@ -145,15 +144,15 @@ function loadClaim(myFolder) {
         ' <ul class="steps" style="margin-bottom:5%;padding-top:20px;">' +
         '   <li id="step1" class="step ' +  myFolder.getClaimStatusClass('Received') +' lato-font">' +
         '     <span class="step__icon"></span>' +
-        '     <span class="step__label">Received Processing</span>' +
+        '     <span class="step__label">Received</span>' +
         '   </li>' +
         '    <li id="step2" class="step ' +  myFolder.getClaimStatusClass('Adjustment') +' lato-font">' +
         '     <span class="step__icon"></span>' +
         '      <span class="step__label">Adjustment</span>' +
         '    </li>' +
-        '   <li id="step3" class="step ' +  myFolder.getClaimStatusClass('Complete') +' lato-font">' +
+        '   <li id="step3" class="step ' +  myFolder.getClaimStatusClass('Completed') +' lato-font">' +
         '      <span class="step__icon"></span>' +
-        '     <span class="step__label">Complete</span>' +
+        '     <span class="step__label">Completed</span>' +
         '   </li>' +
         ' </ul>' +
         '</div>' +
@@ -201,7 +200,9 @@ function loadClaim(myFolder) {
       contentExplorerClaim.clearCache();
     }
     else {
+
       var container ='.contentexplorer_' + $(".explorer-toggle-claim").attr("folder-id");
+      $(container).height(600);
       console.log(container + ":" + $(container));
       contentExplorerClaim = new Box.ContentExplorer();
       contentExplorerClaim.show($(".explorer-toggle-claim").attr("folder-id"),sessionStorage.getItem("accessToken"),{
