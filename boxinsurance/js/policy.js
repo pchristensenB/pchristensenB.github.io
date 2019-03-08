@@ -110,8 +110,8 @@ function loadPolicy(myFolder) {
     '</br>' +
     '  <a style="color:#666666;font-size:14px;padding-left:6px;" class="lato-font">' + myFolder.policyNumber + '</a>' +
     '<br/>' +
-    '  <time>' + myFolder.policyStartDate + '</time>-' +
-    '  <time>' + myFolder.policyEndDate + '</time>' +
+    '  <time>05-03-2019</time>-' +
+    '  <time>04-03-2020</time>' +
     '</div>' +
     '<div style="float:right;padding-top:12px;" class="lato-font">' +
     '  Policy Type' +
@@ -135,16 +135,16 @@ function loadPolicy(myFolder) {
     '       <i class="fa fa-user-circle" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:15px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Vehicle Model: </span><span style="font-size:13px;color:#888888" class="lato-font">' + myFolder.vehicleModel + '</span></i>' +
     '    </div>' +
     '   <div style="padding-left:10%;" class="column">' +
-    '       <i class="fa  fa-paperclip" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:60px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Claims: </span><span style="font-size:13px;color:#888888" class="lato-font">0</span></i>' +
+    '       <i class="fa  fa-paperclip" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:60px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Claims: </span><span style="font-size:13px;color:#888888" class="lato-font" id="claimsCounter">0</span></i>' +
     '    </div>' +
     '</div>' +
     '<div style="margin-left:95%;margin-top:1%;">' +
     //'<a class="button small" href="/claims/full_report/<%= folder.id %>"><span style="color:white">Full Report</span></a>' +
     //'<button class="button small explorer-toggle-policy" style="font-size:12px">Files <i class="fa fa-angle-double-down"></i></button>' +
-    ' <i style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" class="fa fa-folder" aria-hidden="true"></i><i style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" id="file_indicator" class="fa fa-angle-double-down explorer-toggle-policy" folder-id="' + myFolder.parentId + '">' +
+    ' <i style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" class="fa fa-file" aria-hidden="true"></i><i style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:5px;" id="file_indicator" class="fa fa-angle-double-down explorer-toggle-policy" folder-id="' + myFolder.id + '">' +
     //'<a folder-id="' + myFolder.id + '" class="button small explorer-toggle-policy" href="#"><span style="color:white">Claim Files <i class="fa fa-angle-double-down"></span></a>' +
     '</div>' +
-    '<div style="margin-top:10px;" class="contentexplorer_' + myFolder.parentId + '" >' +
+    '<div style="margin-top:10px;" class="contentpreview" >' +
     '</div>' +
     '</article>' +
 
@@ -167,6 +167,7 @@ function loadPolicy(myFolder) {
     console.log("clicked policy files");
     e.preventDefault();
     var showExplorer = true;
+    var container = '.contentpreview';
     if ($(this).hasClass("fa-angle-double-down")) {
       $(this).removeClass("fa-angle-double-down");
       $(this).addClass("fa-angle-double-up");
@@ -178,27 +179,24 @@ function loadPolicy(myFolder) {
       //$('.contentexplorer_' + $(".explorer-toggle-policy").attr("folder-id")).height=0px;
     }
     if (!showExplorer && contentExplorerPolicy) {
-      contentExplorerPolicy.hide();
-      contentExplorerPolicy.clearCache();
+      //contentExplorerPolicy.hide();
+      //contentExplorerPolicy.clearCache();
+      $(container).removeClass("positionHackOff");
+
+      $(container).addClass("positionHack");
+
     } else {
-      var container = '.contentexplorer_' + $(".explorer-toggle-policy").attr("folder-id");
+      $(container).removeClass("positionHack");
+      $(container).addClass("positionHackOff");
+
+      $(container).height(600);
       console.log(container + ":" + $(container));
-      contentExplorerPolicy = new Box.ContentExplorer();
+      contentExplorerPolicy = new Box.Preview();
       contentExplorerPolicy.show($(".explorer-toggle-policy").attr("folder-id"), sessionStorage.getItem("accessToken"), {
-        container: container,
-        logoUrl: 'box',
-        contentPreviewProps: {
-          contentSidebarProps: {
-            hasMetadata: true,
-            hasSkills: true,
-            hasProperties: true,
-            hasAccessStats: true,
-            hasActivityFeed: true,
-            defaultView: 'activityFeed'
-          },
-          showAnnotations: true
-        }
-      });
+        container:'.contentpreview',
+        showDownload:true
+
+        });
     }
   });
 }
