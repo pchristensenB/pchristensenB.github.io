@@ -99,6 +99,7 @@ function loadAllClaims(folderId) {
 
 function loadClaim(myFolder) {
   $("#claimCounter").text("1");
+  var excess = (myFolder.claimStage=='Complete')?'<i class="fa fa-gbp" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:15px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Excess: </span><span style="font-size:13px;color:#888888" class="lato-font">£250</span></i>':'';
   $("#folderGroupClaim").append('<div class="wrapper">' +
     '<div class="card radius shadowDepth1">'+
       '<div class="card__content card__padding">' +
@@ -138,7 +139,7 @@ function loadClaim(myFolder) {
         '   </div>'+
         '   <div style="padding-left:10%;" class="column">'+
         '       <i class="fa fa-user-circle" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:15px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Policy Holder: </span><span style="font-size:13px;color:#888888" class="lato-font">' + myFolder.policyHolder + '</span></i>'+
-
+        excess +
          '    </div>'+
         '</div>' +
         '<div>' +

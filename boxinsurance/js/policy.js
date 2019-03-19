@@ -77,6 +77,7 @@ function loadPolicyData(folderId, name) {
             polId);
           loadPolicy(policyFolder);
         });
+        loadAllClaims('65306596707');
 
       });
     });
@@ -135,7 +136,7 @@ function loadPolicy(myFolder) {
     '       <i class="fa fa-user-circle" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:15px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Vehicle Model: </span><span style="font-size:13px;color:#888888" class="lato-font">' + myFolder.vehicleModel + '</span></i>' +
     '    </div>' +
     '   <div style="padding-left:10%;" class="column">' +
-    '       <i class="fa  fa-paperclip" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:60px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Claims: </span><span style="font-size:13px;color:#888888" class="lato-font" id="claimsCounter">0</span></i>' +
+    '       <i class="fa  fa-paperclip" style="white-space:nowrap;width:0!important;color:#039BE5;padding-top:2px;padding-right:60px;" aria-hidden="true"><span style="font-size:13px; padding-left:5px;" class="lato-font">  Claims: </span><span style="font-size:13px;color:#888888" class="lato-font" id="claimCounter">0</span></i>' +
     '    </div>' +
     '</div>' +
     '<div style="margin-left:95%;margin-top:1%;">' +
