@@ -1,0 +1,109 @@
+<html>
+<title>POV Help</title>
+<head>
+</head>
+<style>
+
+  .collapsible {
+    background-color: #F4F6F9;
+    color: 343759;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active, .collapsible:hover {
+    background-color: #343759;
+    color: white;
+}
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+  p {
+      color: #54698D;
+      font-family: "Lato", "Helvetica", "Arial", sans-serif;
+      font-size: "24px"
+
+  }
+
+  p1 {
+      color: #54698D;
+      font-family: "Lato", "Helvetica", "Arial", sans-serif;
+      font-size: "36px"
+
+  }
+</style>
+<body style= "height:100%" bgcolor="#F4F6F9">
+  <p1>Welcome to the Scottish Government Evidence POV provided in collaboration with Box and Leidos</p1>
+
+<hr></hr>
+
+<div class="preview-container" style="height:400px; width:600px;" align="centre"></div>
+
+<hr></hr>
+
+<p>Expand the help desriptions below to find descriptions and instructions for all of the key application functions:</p>
+
+<button class="collapsible">My Cases</button>
+<div class="content">
+  <p>"My Cases" provides users with access to folders containing evidence relating to cases that they are associated with.  As an authorised user you can search for evidence by name using the search bar provided, upload new evidence as well as preview the material.  Evidence can me marked as evidential using the Case Meta-Data "Evidential" flag so that it can be shared with the COPFS Triage Managers and subsequent COPFS Case Managers.  When you select a folder, a COFS button will appear.  This button gathers all evidence marked as "Evidential" and shares the material with the COPFS Triage Manager Group.   When you highlight any video content, a button will appear "Video", this button presents encoding options for the user that enables them to Cut, perform Audio Extraction and Frame Extraction.</p>
+</div>
+
+<button class="collapsible">Create Case</button>
+<div class="content">
+ <p>"Create Case" simulates creation of a case from the existing Case Management System provided by Police Scotland.  This application is provided to showcase the power of the Box Platform and is not necesarilly part of the solution that will be provided for Scottish Government.  When an officer creates a case using this form, a template folder structure is generated in Box based on the "Case Type" selected.  This ensures a consistent folder structure is used for all case and evidence related activity.  Any input from this form sets "Case" Meta-Data on the new case folder which cascades down to all material added thereafer, again providing further consistency and facilitating advanced evidence search.</p>
+</div>
+
+<button class="collapsible">Upload Evidence</button>
+<div class="content">
+  <p>"Upload Evidence" provides Police Officers with the facility to upload evidence prior to a case being created.  Officers can create folders and organise their own case materials in a personal workspace that only they have access to.  All material is encrypted in transit when sent through Box-created applications, using high-strength TLS encryption. Content is also encrypted at rest by Box using 256-bit AES encryption, and is further protected by an encryption key-wrapping strategy that also utilizes 256-bit AES encryption.</p>
+</div>
+
+<button class="collapsible">Associate Evidence</button>
+<div class="content">
+  <p>"Associate Evidence" provides Police Officers with the ability to move evidence files and folders into active case folders.  Two views are provided, on the left is the Police Officers personal evidence folders, and on the right, case folders are displayed.  To move evidence, first highlight the evidence in the personal folder in the left pane, and then highlight the desired target folder in the right pane, then select "Move >".  If you make a mistake the move can be reversed by clicking "Undo".</p>
+</div>
+
+<button class="collapsible">External Agencies</button>
+<div class="content">
+  <p>"External Agencies" shows all folders that are shared with any external agencies.  Here, agencies such as councils, bus and transportation companies can upload materials so that they are available to Police Officers to review and add to cases.</p>
+</div>
+
+<button class="collapsible">Case Events</button>
+<div class="content">
+  <p>"Case Events" Box logs every action a user takes, whether copying or deleting evidence, associating case meta-data etc. to an events database which can be accessed by applications or IT staff through integtration with SIEM or reporting tools.  This page allows officers to review all of the events that are generated for their own actions in Box.  This page is representational, and may not be provided as part of the delivery of the solution Provided by Leidos.  The page allows users to filter events they are interested by using the search bar amd preview content relating to the actions.  Additionally, Box provides AV scanning on all files uploaded.  If a file is deemed suspect, it will be quarantined and the Box admin and uploader will be notified.  Police Officers will be able to see any files quarantined in the "Malicious File Events tab." </p>
+</div>
+
+<button class="collapsible">Social Evidence</button>
+<div class="content">
+  <p>"Social Evidence" enables Police Officers to create a temporary upload space that can be published on social media platforms.  This is particularly useful as it can enable users to securely upload images and video files from smartphones and other devices directly into Box.  Box Governance provides assurance that only specified materials can be uploaded using Content Policies.  These policies can restrict uploads to specified file types (extensions) and can restrict certain PII information types.</p>
+</div>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+  <body>
+</html>
