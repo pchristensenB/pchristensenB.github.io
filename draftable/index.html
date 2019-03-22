@@ -30,11 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
   var params = new URLSearchParams(window.location.search);
   $(document).ready(function(){
-    transform.addEventListener("submit", function(e) {
-      e.preventDefault();
 
-      var lang = $("#lang").val();
-      //Grab data from the HTML form
       $.ajax({
           method : 'get',
           url: "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator",
@@ -54,7 +50,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           success : function(response){
             console.log("Success:" + response);
             var filePicker = new Box.FilePicker();
-              filePicker.show('0', token, {
+              filePicker.show('0', response.token, {
                   container: '.fileChooser',
                   maxSelectable: 1,
                   contentPreviewProps: {
@@ -84,8 +80,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           }
       });
    });
-
-
   });
 
 </script>
