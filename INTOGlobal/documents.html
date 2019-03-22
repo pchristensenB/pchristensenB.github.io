@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8" />
+    <title>Collaborations</title>
+
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Intl"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn01.boxcdn.net/platform/elements/6.0.0/en-US/explorer.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/6.0.0/en-US/explorer.css" />
+</head>
+<script>
+    var folderId = sessionStorage.getItem("caseFolderId");
+    var accessToken = sessionStorage.getItem("accessToken");
+    var contentExplorer = new Box.ContentExplorer();
+    var canCreateNewFolder = 'true';
+    var selectedFolder;
+    var currentSelected;
+    var currentSpan;
+    $(document).ready(function() {
+      //var settings = {
+      //  "async": true,
+      //  "crossDomain": true,
+        //"url": "https://desc-transcode-function.azurewebsites.net/api/generateToken?code=Jq4te0OgMV6LCHpC0NrJu91aZpS/M0x56e6MzZdROAEL2kdkocaLmA==&client-id=r1yki89hxnzv6mrz14njndrr59dm5w0h&as-user=6203007648",
+        //"url": "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-jwt-tokengenerator?code=Jq4te0OgMV6LCHpC0NrJu91aZpS/M0x56e6MzZdROAEL2kdkocaLmA==&clientId=r1yki89hxnzv6mrz14njndrr59dm5w0h&userId=6203007648",
+        //"method": "GET",
+        //"headers": {}
+      //}
+      //$.ajax(settings).done(function(response) {
+        //console.log(response);
+        // console.log("from storage:" + sessionStorage.getItem("accessToken"));
+        // accessToken = sessionStorage.getItem("accessToken");
+        // console.log(accessToken);
+        loadExplorer();
+      //});
+    });
+    function loadExplorer() {
+      contentExplorer.show(folderId, accessToken, {
+        container: '.container',
+        logoUrl: 'pixel.png',
+        canDelete: false,
+        canCreateNewFolder: false,
+        canRename: false,
+        canSetShareAccess: false,
+        logoUrl: '/hiscox/round.jpg',
+        contentPreviewProps: {
+        contentSidebarProps: {
+          container: '.sb',
+           //defaultView: 'metadata',
+          hasMetadata: false,
+        hasSkills: true,
+        hasProperties: true,
+        hasAccessStats: true,
+          hasActivityFeed: true,
+        defaultView:'activityFeed'
+      }}
+      });
+      /**
+      contentExplorer.addListener('select', (item) => {
+        selectedFolder = item[0].id;
+        var divs = document.getElementsByTagName('div');
+        for(i=0;i<divs.length;i++) {
+          if(divs[i].className=='bce-more-options' && divs[i].parentNode.parentNode.className.includes('bce-item-row-selected')) {
+            divs[i].style.display='block';
+            if(currentSelected) {
+              currentSelected.style.display='none';
+            }
+            currentSelected = divs[i];
+            hackDom();
+          }
+        }
+
+      });
+      contentExplorer.addListener('navigate', (item) => {
+
+      });
+    }
+
+    function hackDom() {
+      //hack dom
+      var allSpans = document.getElementsByTagName('span');
+      var i = 0;
+      console.log("found " + allSpans.length);
+      for(i=0;i<allSpans.length;i++) {
+        var obj = allSpans[i];
+        if(obj.innerHTML=='Share') {
+          obj.innerHTML = 'COPFS';
+          obj.parentNode.parentNode.onclick = function(event){changeEvent(event);};
+          obj.parentNode.onclick = function(event){changeEvent(event);};
+          obj.onclick = function(event){changeEvent(event);};
+          currentSpan=obj;
+        }
+      }
+    }
+    function changeEvent(ev) {
+      console.log(ev);
+      currentSelected.innerHTML="<img src='smallspinner.gif'/>";
+      launchNintexFlow();
+      ev.cancelBubble=true;
+    }
+  function launchNintexFlow() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      //"url": "https://box-162828.workflowcloud.com/api/v1/workflow/published/4de240a7-6de1-47a9-9da6-c71e9be9de7f/swagger.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJOV0MiLCJ3b3JrZmxvd0lkIjoiNGRlMjQwYTctNmRlMS00N2E5LTlkYTYtYzcxZTliZTlkZTdmIiwidGVuYW50SWQiOiJiYTllNDhmNS1kNjdlLTRkNjMtYmY2OS04YWRiNTBiMGRjMjMiLCJpYXQiOjE1NDIxOTc1MDF9.V0Z8scOJpS10RC-x8Dm2pa2oYwKCIUIcl9JWytIe2Ts",
+      "url": "https://box-162828.workflowcloud.com/api/v1/workflow/published/4de240a7-6de1-47a9-9da6-c71e9be9de7f/instances?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJOV0MiLCJ3b3JrZmxvd0lkIjoiNGRlMjQwYTctNmRlMS00N2E5LTlkYTYtYzcxZTliZTlkZTdmIiwidGVuYW50SWQiOiJiYTllNDhmNS1kNjdlLTRkNjMtYmY2OS04YWRiNTBiMGRjMjMiLCJpYXQiOjE1NDIyMDQyNDZ9.EpDwRhaL3ievSI23gw3l_KvcyCPwlmiGNV-G5Ll4F6g",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json"
+        //"cache-control": "no-cache",
+        //"Access-Control-Allow-Headers":1"*"
+  },
+  "processData": false,
+  "data": "{\"startData\": {\"se_folder_id\": \"" + selectedFolder + "\"}}"
+}
+
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+currentSelected.innerHTML="<img src='tick.png'/>";
+
+
+});
+**/
+  }
+</script>
+<style>
+  p {
+      color: #54698D;
+      font-family: "Lato", "Helvetica", "Arial", sans-serif;
+      font-size: 24px;
+  }
+/*.bce-more-options {
+  display:none;
+}
+.bce-btn-more-options {
+  display:none;
+}*/
+.DraftEditor-editorContainer {
+  width:250px;
+  height:36px;
+}
+</style>
+<body>
+
+    <div class="container" style="height:600px"></div>
+</body>
+</html>

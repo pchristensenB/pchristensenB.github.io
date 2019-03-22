@@ -1,0 +1,77 @@
+    <<!DOCTYPE html>
+    <html lang="en" dir="ltr">
+      <head>
+
+        <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/css/mdb.min.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <title>My Aviva</title>
+
+        <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/js/mdb.min.js"></script>
+
+      </head>
+      <body>
+
+        <!-- polyfill.io only loads the polyfills your browser needs -->
+            <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
+            <!-- Alternatively, use polyfills hosted on the Box CDN
+            <script src="https://cdn01.boxcdn.net/polyfills/bluebird/3.5.1/bluebird.min.js"></script>
+            -->
+
+            <!-- Latest version of Box Content Preview for en-US locale -->
+            <script src="https://cdn01.boxcdn.net/platform/preview/2.1.1/en-US/preview.js"></script>
+            <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/preview/2.1.1/en-US/preview.css" />
+
+<div class="container" style="width:100%">
+
+  <div class="row">
+          <!-- As a link -->
+          <nav class="navbar navbar-dark #0d47a1 blue darken-4">
+             <a class="navbar-brand" href="pension.html">Pensions</a>
+             <a class="navbar-brand" href="investments.html">Investments</a>
+             <a class="navbar-brand" href="insurance.html">Insurance</a>
+             <a class="navbar-brand" href="vault.html">My Vault</a>
+             <a class="navbar-brand" href="upload.html">Upload Documents</a>
+          </nav>
+          <br>
+
+        </div>
+
+        <div class="row">
+
+           <div class="preview-container" style="height:1000px; width:100%;"></div>
+           <script>
+               var preview = new Box.Preview();
+               preview.show('425610207376', "BbvqwYL182A7c9p5IpuqQ8Depc29ZIjL", {
+                   container: '.preview-container',
+                   showDownload: true,
+                   logoUrl: 'https://pchristensenb.github.io/Aviva-Mobile/small_image.gif',
+                   contentSidebarProps: {
+                     container: '.sb',
+                      //defaultView: 'metadata',
+                     hasMetadata: true,
+                   hasSkills: true,
+                   hasProperties: true,
+                   hasAccessStats: true,
+                   defaultView:'skills'
+                   }
+               });
+           </script>
+
+        </div>
+
+
+      </body>
+    </html>
+    <head>
