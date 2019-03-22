@@ -1,4 +1,4 @@
-\
+
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -34,7 +34,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       $.ajax({
           method : 'get',
           url: "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator",
-          data: {authCode:params.get('auth'),id:params.get('id'),clientId:clientId},
+          data: {authCode:params.get('auth'),id:params.get('id'),clientId:params.get('clientId')},
           crossDomain: true,
           timeout:120000,
           dataType:'jsonp',
