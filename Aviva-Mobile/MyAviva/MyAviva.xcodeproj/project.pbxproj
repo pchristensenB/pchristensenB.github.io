@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4B5878B12248027800CBCE64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5878B02248027800CBCE64 /* AppDelegate.swift */; };
+		4B5878B32248027800CBCE64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5878B22248027800CBCE64 /* ViewController.swift */; };
+		4B5878B62248027800CBCE64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5878B42248027800CBCE64 /* Main.storyboard */; };
+		4B5878B82248027C00CBCE64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B5878B72248027C00CBCE64 /* Assets.xcassets */; };
+		4B5878BB2248027C00CBCE64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5878B92248027C00CBCE64 /* LaunchScreen.storyboard */; };
+		4B5878C62248027C00CBCE64 /* MyAvivaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5878C52248027C00CBCE64 /* MyAvivaTests.swift */; };
+		4B5878D12248027C00CBCE64 /* MyAvivaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5878D02248027C00CBCE64 /* MyAvivaUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4B5878C22248027C00CBCE64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B5878A52248027800CBCE64 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B5878AC2248027800CBCE64;
+			remoteInfo = MyAviva;
+		};
+		4B5878CD2248027C00CBCE64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B5878A52248027800CBCE64 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B5878AC2248027800CBCE64;
+			remoteInfo = MyAviva;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4B5878AD2248027800CBCE64 /* MyAviva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAviva.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B5878B02248027800CBCE64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4B5878B22248027800CBCE64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4B5878B52248027800CBCE64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4B5878B72248027C00CBCE64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4B5878BA2248027C00CBCE64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4B5878BC2248027C00CBCE64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B5878C12248027C00CBCE64 /* MyAvivaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyAvivaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B5878C52248027C00CBCE64 /* MyAvivaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAvivaTests.swift; sourceTree = "<group>"; };
+		4B5878C72248027C00CBCE64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B5878CC2248027C00CBCE64 /* MyAvivaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyAvivaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B5878D02248027C00CBCE64 /* MyAvivaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAvivaUITests.swift; sourceTree = "<group>"; };
+		4B5878D22248027C00CBCE64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4B5878AA2248027800CBCE64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B5878BE2248027C00CBCE64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B5878C92248027C00CBCE64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4B5878A42248027800CBCE64 = {
+			isa = PBXGroup;
+			children = (
+				4B5878AF2248027800CBCE64 /* MyAviva */,
+				4B5878C42248027C00CBCE64 /* MyAvivaTests */,
+				4B5878CF2248027C00CBCE64 /* MyAvivaUITests */,
+				4B5878AE2248027800CBCE64 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4B5878AE2248027800CBCE64 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B5878AD2248027800CBCE64 /* MyAviva.app */,
+				4B5878C12248027C00CBCE64 /* MyAvivaTests.xctest */,
+				4B5878CC2248027C00CBCE64 /* MyAvivaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4B5878AF2248027800CBCE64 /* MyAviva */ = {
+			isa = PBXGroup;
+			children = (
+				4B5878B02248027800CBCE64 /* AppDelegate.swift */,
+				4B5878B22248027800CBCE64 /* ViewController.swift */,
+				4B5878B42248027800CBCE64 /* Main.storyboard */,
+				4B5878B72248027C00CBCE64 /* Assets.xcassets */,
+				4B5878B92248027C00CBCE64 /* LaunchScreen.storyboard */,
+				4B5878BC2248027C00CBCE64 /* Info.plist */,
+			);
+			path = MyAviva;
+			sourceTree = "<group>";
+		};
+		4B5878C42248027C00CBCE64 /* MyAvivaTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B5878C52248027C00CBCE64 /* MyAvivaTests.swift */,
+				4B5878C72248027C00CBCE64 /* Info.plist */,
+			);
+			path = MyAvivaTests;
+			sourceTree = "<group>";
+		};
+		4B5878CF2248027C00CBCE64 /* MyAvivaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4B5878D02248027C00CBCE64 /* MyAvivaUITests.swift */,
+				4B5878D22248027C00CBCE64 /* Info.plist */,
+			);
+			path = MyAvivaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4B5878AC2248027800CBCE64 /* MyAviva */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B5878D52248027C00CBCE64 /* Build configuration list for PBXNativeTarget "MyAviva" */;
+			buildPhases = (
+				4B5878A92248027800CBCE64 /* Sources */,
+				4B5878AA2248027800CBCE64 /* Frameworks */,
+				4B5878AB2248027800CBCE64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyAviva;
+			productName = MyAviva;
+			productReference = 4B5878AD2248027800CBCE64 /* MyAviva.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4B5878C02248027C00CBCE64 /* MyAvivaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B5878D82248027C00CBCE64 /* Build configuration list for PBXNativeTarget "MyAvivaTests" */;
+			buildPhases = (
+				4B5878BD2248027C00CBCE64 /* Sources */,
+				4B5878BE2248027C00CBCE64 /* Frameworks */,
+				4B5878BF2248027C00CBCE64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B5878C32248027C00CBCE64 /* PBXTargetDependency */,
+			);
+			name = MyAvivaTests;
+			productName = MyAvivaTests;
+			productReference = 4B5878C12248027C00CBCE64 /* MyAvivaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4B5878CB2248027C00CBCE64 /* MyAvivaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B5878DB2248027C00CBCE64 /* Build configuration list for PBXNativeTarget "MyAvivaUITests" */;
+			buildPhases = (
+				4B5878C82248027C00CBCE64 /* Sources */,
+				4B5878C92248027C00CBCE64 /* Frameworks */,
+				4B5878CA2248027C00CBCE64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B5878CE2248027C00CBCE64 /* PBXTargetDependency */,
+			);
+			name = MyAvivaUITests;
+			productName = MyAvivaUITests;
+			productReference = 4B5878CC2248027C00CBCE64 /* MyAvivaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4B5878A52248027800CBCE64 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "John Mahedy";
+				TargetAttributes = {
+					4B5878AC2248027800CBCE64 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					4B5878C02248027C00CBCE64 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 4B5878AC2248027800CBCE64;
+					};
+					4B5878CB2248027C00CBCE64 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 4B5878AC2248027800CBCE64;
+					};
+				};
+			};
+			buildConfigurationList = 4B5878A82248027800CBCE64 /* Build configuration list for PBXProject "MyAviva" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4B5878A42248027800CBCE64;
+			productRefGroup = 4B5878AE2248027800CBCE64 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4B5878AC2248027800CBCE64 /* MyAviva */,
+				4B5878C02248027C00CBCE64 /* MyAvivaTests */,
+				4B5878CB2248027C00CBCE64 /* MyAvivaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4B5878AB2248027800CBCE64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B5878BB2248027C00CBCE64 /* LaunchScreen.storyboard in Resources */,
+				4B5878B82248027C00CBCE64 /* Assets.xcassets in Resources */,
+				4B5878B62248027800CBCE64 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B5878BF2248027C00CBCE64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B5878CA2248027C00CBCE64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4B5878A92248027800CBCE64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B5878B32248027800CBCE64 /* ViewController.swift in Sources */,
+				4B5878B12248027800CBCE64 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B5878BD2248027C00CBCE64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B5878C62248027C00CBCE64 /* MyAvivaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B5878C82248027C00CBCE64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B5878D12248027C00CBCE64 /* MyAvivaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B5878C32248027C00CBCE64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B5878AC2248027800CBCE64 /* MyAviva */;
+			targetProxy = 4B5878C22248027C00CBCE64 /* PBXContainerItemProxy */;
+		};
+		4B5878CE2248027C00CBCE64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B5878AC2248027800CBCE64 /* MyAviva */;
+			targetProxy = 4B5878CD2248027C00CBCE64 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4B5878B42248027800CBCE64 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B5878B52248027800CBCE64 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4B5878B92248027C00CBCE64 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B5878BA2248027C00CBCE64 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4B5878D32248027C00CBCE64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4B5878D42248027C00CBCE64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4B5878D62248027C00CBCE64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MyAviva/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = box.MyAviva;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4B5878D72248027C00CBCE64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MyAviva/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = box.MyAviva;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4B5878D92248027C00CBCE64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MyAvivaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = box.MyAvivaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyAviva.app/MyAviva";
+			};
+			name = Debug;
+		};
+		4B5878DA2248027C00CBCE64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MyAvivaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = box.MyAvivaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyAviva.app/MyAviva";
+			};
+			name = Release;
+		};
+		4B5878DC2248027C00CBCE64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MyAvivaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = box.MyAvivaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyAviva;
+			};
+			name = Debug;
+		};
+		4B5878DD2248027C00CBCE64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MyAvivaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = box.MyAvivaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyAviva;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4B5878A82248027800CBCE64 /* Build configuration list for PBXProject "MyAviva" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B5878D32248027C00CBCE64 /* Debug */,
+				4B5878D42248027C00CBCE64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B5878D52248027C00CBCE64 /* Build configuration list for PBXNativeTarget "MyAviva" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B5878D62248027C00CBCE64 /* Debug */,
+				4B5878D72248027C00CBCE64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B5878D82248027C00CBCE64 /* Build configuration list for PBXNativeTarget "MyAvivaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B5878D92248027C00CBCE64 /* Debug */,
+				4B5878DA2248027C00CBCE64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B5878DB2248027C00CBCE64 /* Build configuration list for PBXNativeTarget "MyAvivaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B5878DC2248027C00CBCE64 /* Debug */,
+				4B5878DD2248027C00CBCE64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4B5878A52248027800CBCE64 /* Project object */;
+}
