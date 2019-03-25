@@ -15,26 +15,27 @@ $(document).ready(function () {
   		$("#"+tab_id).addClass('current');
   	});
       $(".resetBtb").click(function(e) {
-        location.reload(true);
+        //location.reload(true);
 
 
       });
       $(".copyStd").click(function(e) {
+        e.preventDefault();
         var copyText = document.getElementById("stdToken");
         $("#stdToken").show();
         copyText.select();
         document.execCommand("copy");
         $("#stdToken").hide();
-        e.preventDefault();
+
       });
-      $(".copyScoped").click(function(e) {
+      $(".copyScope").click(function(e) {
+        e.preventDefault();
         var copyText = document.getElementById("scopedToken");
         $("#scopedToken").show();
         copyText.select();
         document.execCommand("copy");
         $("#scopedToken").hide();
 
-        e.preventDefault();
       });
      var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),

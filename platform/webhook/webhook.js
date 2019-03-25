@@ -22,6 +22,7 @@ $(document).ready(function () {
         e.preventDefault();
         console.log("I want from nav:" + $(this).attr('id'));
         if($(this).attr('id')=='tryClicked' && !$(this).hasClass('disabled')) {
+            $("eloader").show();
             createWebhookAndLoadExplorer();
 
             //listen for events
@@ -147,6 +148,7 @@ function createWebhookAndLoadExplorer() {
               }
             }
           });
+          $("eloader").hide();
         },
         error: function(data,status,xhr) {
           console.log("Webhook creation error");
@@ -165,14 +167,14 @@ function listenForEvents() {
         console.log("Payload:" + JSON.parse(data).payload);
         console.log("Message:" + JSON.parse(data).message);
           if(JSON.parse(data).payload!=null) {
-          $("#webhookPayload").html(JSON.stringify(JSON.parse(JSON.parse(data).payload),null,2));
+            $("#wloader").hide();
+            $("#webhookPayload").html(JSON.stringify(JSON.parse(JSON.parse(data).payload),null,2));
+          }
+          else {
+            //how loader
+            $("#wloader").show();
+          }
         }
-        else {
-          //how loader
-        }
-
-
-      }
     });
 
 }

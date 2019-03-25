@@ -79,3 +79,6 @@ input[type=text],input[type=number],input[type=file],
     border-radius: 4px;
     box-sizing: border-box;
   }
+  .cloader {
+    display:none;
+  }

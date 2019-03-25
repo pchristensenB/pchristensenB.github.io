@@ -11,3 +11,6 @@
 #events {
   font-size: 10px;
 }
+.wloader,.eloader {
+  display:none;
+}

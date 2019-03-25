@@ -47,7 +47,8 @@
         </div>
         <p>When you click next two app users will be created in your application.</p>
         <p>UserA and UserB - these will be used to show the 'can view path' collaboration and can be deleted when you are
-          done by clicking 'Reset'. If you do not click 'Reset' the user will not be deleted.
+          done by clicking 'Reset'. If you do not click 'Reset' the user will not be deleted.</p>
+          <p>If 'UserA' and 'UserB' already exists these will be used</p>
 
 
         <div id="user" class="panel-body">
@@ -60,8 +61,8 @@
         </div>
 
         <div id="canviewpath" class="panel-body">
-          <div class="row">
-            <div class="col col-md-8 mtm">
+          <div class="row" style="text-align: center;">
+            <div class="col col-md-8 mtm" >
               <h4>Admin</h4>
               <div style="border-style: dashed; border-color: #F1F1F1; padding: 10px">
                 <form class="form-inline" action="#" method="get">
@@ -73,14 +74,14 @@
                     <input  type="hidden" name="folderId" id="folderId">
                     <input type="text" id="targetFolder" name="targetFolder" class="form-control form-control-sm mls" id="targetFolder" placeholder="select folder below" disabled>
                     <input type="checkbox" class="form-check-input form-control mls" name="canViewPath" id="canViewPath">
-                    <label class="form-check-label" for="canViewPath">can_view_path</label>
+                    <label class="form-check-label" for="canViewPath">Can View Path</label>
                   </div>
                   <button id="collabButton" type="submit" class="btn btn-primary btn-sm mls" disabled>Send Collaboration Invite</button>
                 </form>
 
                 <!-- Box Content Explorer -->
                 <div class="tab-pane show active mts" role="tabpanel" id="explorer">
-                  <div style="height:400px" class="explorer-sa"></div>
+                  <div style="height:300px" class="explorer-sa"></div>
                 </div>
               </div>
             </div>
@@ -91,7 +92,7 @@
               <h4>User 1</h4>
               <!-- Box Content Explorer -->
               <div class="tab-pane show active mts" style="border-style: dotted; border-color: #9EB7DC; padding: 10px" role="tabpanel" id="explorer">
-                <div style="height:400px" class="explorer-a"></div>
+                <div style="height:300px" class="explorer-a"></div>
               </div>
             </div>
             <div class="col col-md-2"></div>
@@ -100,7 +101,7 @@
               <h4>User 2</h4>
               <!-- Box Content Explorer -->
               <div class="tab-pane show active mts" style="border-style: dotted; border-color: #9EB7DC; padding: 10px" role="tabpanel" id="explorer">
-                <div style="height:400px" class="explorer-b"></div>
+                <div style="height:300px" class="explorer-b"></div>
               </div>
             </div>
           </div>

@@ -47,6 +47,8 @@ $(document).ready(function() {
       $('#myModal').modal("show");
     }
     $("#modalClient").click(function(e) {
+      $("#cloader").show();
+      $("#modalClient").hide();
       $.get( "http://localhost:5000/sandpit", { cmd: "getApp", app: $("#clientId").val() })
       .done(function( data ) {
         console.log( data );
@@ -87,12 +89,7 @@ $(document).ready(function() {
                 <a href="#" class="list-group-item text-center">
                   <h4 class="glyphicon glyphicon-cog"></h4><br/>Token Generators
                 </a>
-                <a href="#" class="list-group-item text-center">
-                  <h4 class="glyphicon glyphicon-cog"></h4><br/>Annotations
-                </a>
-                <a href="#" class="list-group-item text-center">
-                  <h4 class="glyphicon glyphicon-cog"></h4><br/>Preview with sidebar
-                </a>
+
 
               </div>
             </div>
@@ -100,8 +97,14 @@ $(document).ready(function() {
               <div class="bhoechie-tab-content active">
               This platform toolbox has a number of functions to test and try
               <ul>
-                <li>Workbench</li>
-                <li>Scopes</li>
+                <li>Workbench: Log in as any user and browse via UI element or custom list. See
+                API calls being made and stream Box events directly</li>
+                <li>Scopes: Shows how scoped tokens work. Select a user, a file or folder and
+                show differene between scoped and standard token</li>
+                <li>Can view path: See how the 'can view path' collaboration works</li>
+                <li>Webhooks: Show how a live webhook responds. Select user, folder or file and event and
+                webhook payload will be send to the browser</li>
+                <li>Token generators: Generate token for any user via JWT or OAuth 2.0</li>
               </ul>
               </div>
               <div class="bhoechie-tab-content " id="workbench">
@@ -144,7 +147,7 @@ $(document).ready(function() {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="modalClient">Set ClientId</button>
-        <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+        <img src="ajax-loader_t.gif" class="cloader"/>
       </div>
     </div>
   </div>

@@ -13,9 +13,13 @@ $(document).ready(function () {
     ev.preventDefault();
     //read folderId and user
     var folderId = $("#folderId").val();
-    var user = $("#appUsers").val();
-    var canViewPath = $("#canViewPath");
-    var data = "{\"item\":{\"id\":\"" + folderId + "\",\"type\":\"folder\"},\"accessible_by\":{\"id\":,\"" + user + "\"},\"role\":\"editor\"}";
+    var user = $("#appUser").val();
+    var canViewPath = $("#canViewPath").val();
+    var cvp="";
+    if(canViewPath=='on') {
+        cvp=", \"can_view_path\":\"true\"";
+    };
+    var data = "{\"item\":{\"id\":\"" + folderId + "\",\"type\":\"folder\"},\"accessible_by\":{\"id\":\"" + user + "\"},\"role\":\"editor\"" + cvp + "}";
     $.ajax({
       url: 'https://api.box.com/2.0/collaborations',
       headers: {"Authorization": "Bearer "+scToken},
@@ -23,12 +27,11 @@ $(document).ready(function () {
       data:data,
       success: function(response) {
         console.log("created");
-        explorerA.refresh();
-        explorerB.refresh();
+        explorerA.clearCache();
+        explorerB.clearCache();
       },
       error: function(data) {
-        console.log("created");
-        callback(callback);
+        console.log("error:" + data);
       }
     });
     //set collaboration - check can view path setting
@@ -56,19 +59,19 @@ $(document).ready(function () {
          dataType: 'json',
          success: function(response) {
            console.log(response);
-           $("#appUsers").append('<option value=dontchoose>Select user</option>');
+           $("#appUser").append('<option value=dontchoose>Select user</option>');
 
            $.each(response, function(key, value) {
             if(key=='userA') {
               userAId=value.id;
               userAToken=value.token;
-              $("#appUsers").append('<option value=' + value.id + ' >UserA(' + key + ')</option>');
+              $("#appUser").append('<option value=' + value.id + ' >UserA </option>');
 
             }
             if(key=='userB') {
               userBId=value.id;
               userBToken=value.token;
-              $("#appUsers").append('<option value=' + value.id + ' >UserB(' + key + ')</option>');
+              $("#appUser").append('<option value=' + value.id + ' >UserB </option>');
 
             }
             if(key=='sc') {
@@ -77,17 +80,17 @@ $(document).ready(function () {
            });
            //Got users - load explorers and drop down
 
-           explorerA.show('0', scToken, {
+           explorerA.show('0', userAToken, {
              container: '.explorer-a',
              logoUrl: ""
            });
 
-           explorerB.show('0', userAToken, {
+           explorerB.show('0', userBToken, {
              container: '.explorer-b',
              logoUrl: ""
            });
 
-           explorerSA.show('0',  userBToken, {
+           explorerSA.show('0',  scToken, {
              container: '.explorer-sa',
              logoUrl: ""
            });

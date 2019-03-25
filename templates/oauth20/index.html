@@ -8,15 +8,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Compare documents</title>
+<title>Sample OAuth 2.0 third party page</title>
 <!-- for-mobile-apps -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<!-- //for-mobile-apps -->
-<link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/9.1.1/en-US/picker.css" />
-<script src="https://cdn01.boxcdn.net/platform/elements/9.1.1/en-US/picker.js"></script>
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -26,51 +22,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
   var params = new URLSearchParams(window.location.search);
+  var clientId=params.get("clientId");
   $(document).ready(function(){
 
       $.ajax({
           method : 'get',
           url: "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator",
-          data: {authCode:params.get('auth'),id:params.get('id'),clientId:'fgwcq0ilfcydxtnyrthn2gl6vcx4857f'},
+          data: {authCode:params.get('auth'),id:params.get('id'),clientId:clientId},
           crossDomain: true,
           timeout:120000,
           dataType:'jsonp',
           cache: false,
           beforeSend: function() {
               $('#loader').show();
-              $("#foot").hide();
+
            },
            complete: function(){
               $('#loader').hide();
-              $("#foot").show();
+
           },
           success : function(response){
-            console.log("Success:" + response);
-            var filePicker = new Box.FilePicker();
-              filePicker.show('0', response.token, {
-                  container: '.fileChooser',
-                  maxSelectable: 2,
-                  contentPreviewProps: {
-                      contentSidebarProps: {
-                        hasMetadata: false,
-                        hasSkills: true,
-                        hasProperties: true,
-                        hasAccessStats: true,
-                        hasActivityFeed: true,
-                      defaultView:'activityFeed'
-                    },
-                    contentOpenWithProps: {
-                      show: true
-                    }
-                  }
-              });
-              filePicker.addListener('choose', function(response) {
-                $.each(response, function(k, data) {
-                    id = data.id;
-                });
-
-          });
-        }
+            console.log("Success:" + JSON.stringify(response));
+            var spanA = $('<li />').html('Authcode:' + params.get("auth"));
+            var spanC = $('<li />').html('ClientId:' + params.get("clientId"));
+            var spanT = $('<li />').html( 'Token:' + response.token );
+            var spanR = $('<li />').html( 'Refresh token:' + response.token );
+            var ul = $("<ul/>").append(spanA).append(spanC).append(spanT).append(spanR);
+            $("#main").append(ul);
+            $('#loader').hide();
+          }
           ,
           error : function(err){
             console.log(JSON.stringify(err));
@@ -86,8 +66,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
   <div class="content" id='main'>
+  <img id="loader" src='/templates/img/ajax-loader_t.gif' class="hidden"/>
 
-  		<div class="fileChooser"></div>
+
 
   </div>
 </body>

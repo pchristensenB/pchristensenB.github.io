@@ -9,6 +9,24 @@ function setId(id) {
 }
 
 $(document).ready(function() {
+
+  $("#newuserform").on('submit',function(ev) {
+    ev.preventDefault();
+    $.ajax({
+      url: 'http://localhost:5000/sandpit',
+      type: 'get',
+      data: {
+        "cmd": "createAppUser","app": $("#apps").val(),"user": $("#newuser").val(),"id":$("#newuseremail").val(),"data":$("#newuserpassword").val()
+      },
+      dataType: 'json',
+      success:function(response) {
+        console.log(response);
+      },
+      error: function(response) {
+
+      }
+    });
+  });
   //For tabbed content panes - custom and UI element
   $('ul.tabs1 li').click(function() {
     var tab_id = $(this).attr('data-tab1');
