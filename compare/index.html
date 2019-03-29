@@ -113,7 +113,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
      });
    }
    function compare(id1,id2,ext1,ext2) {
-     var url='https://cvw2zdcqpc.execute-api.eu-west-2.amazonaws.com/default/box-document-compare?mainId=427073856256&id1='+id1 + '&id2='+id2 + '&token=' + accessToken + "&ext1=" + ext1 + "&ext2=" + ext2;
+     var url='https://cvw2zdcqpc.execute-api.eu-west-2.amazonaws.com/default/box-document-compare?mainId=' + fileId + '&id1='+id1 + '&id2='+id2 + '&token=' + accessToken + "&ext1=" + ext1 + "&ext2=" + ext2;
      console.log(url);
      $.ajax({
      //  //url: 'http://0.0.0.0:8000',
