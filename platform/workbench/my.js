@@ -16,7 +16,7 @@ $(document).ready(function() {
       url: 'http://localhost:5000/sandpit',
       type: 'get',
       data: {
-        "cmd": "createAppUser","app": $("#apps").val(),"user": $("#newuser").val(),"id":$("#newuseremail").val(),"data":$("#newuserpassword").val()
+        "cmd": "createAppUser","app": $("#apps").val(),"user": $("#newuser").val(),"id":$("#newuseremail").val()
       },
       dataType: 'json',
       success:function(response) {

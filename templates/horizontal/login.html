@@ -7,9 +7,10 @@
 
 
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
-
-<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="../css/login.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../js/box.js"></script>
+
 <script>
 
   //Change this to change Application context
@@ -28,33 +29,11 @@
           ev.preventDefault();
           $("#signbutton").hide();
           $("#loader").show();
-
           var userLogin = $("#userLogin").val();
           var password = $("#passLogin").val();
-          var urlParams = "code=Jq4te0OgMV6LCHpC0NrJu91aZpS/M0x56e6MzZdROAEL2kdkocaLmA==&clientId=" + clientId + "&userEmail=" + userLogin + "&password=" + password;
+          var urlParams = "clientId=" + clientId + "&userEmail=" + userLogin + "&password=" + password;
+          login('../horizontal/main.html',urlParams);
 
-          $.ajax({
-            //url: 'https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?',
-            url: 'http://localhost:5000/jwttokengenerator?',
-            headers: {},
-            type: 'get',
-            data:urlParams,
-            success: function(response) {
-              console.log("Response:" + JSON.stringify(response));
-              sessionStorage.setItem("accessToken",response.token);
-              sessionStorage.setItem("userLogin",userLogin);
-              window.location.replace('/templates/vertical/main_vertical_top_navigation.html');
-            },
-            error: function(xhr, status, error) {
-              console.log(xhr);
-              var err = eval("(" + xhr.responseText + ")");
-              console.log("error:" + err.Message);
-              $("#errormessage").html("Could not login you in");
-              $("#loader").hide();
-              $("#signbutton").show();
-          }
-
-          });
         }
 
     }));

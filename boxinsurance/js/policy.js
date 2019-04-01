@@ -192,7 +192,7 @@ function loadPolicy(myFolder) {
 
       $(container).height(600);
       console.log(container + ":" + $(container));
-      contentExplorerPolicy = new Box.Preview();
+      contentExplorerPolicy = new Box.ContentPreview();
       contentExplorerPolicy.show($(".explorer-toggle-policy").attr("folder-id"), sessionStorage.getItem("accessToken"), {
         container:'.contentpreview',
         showDownload:true

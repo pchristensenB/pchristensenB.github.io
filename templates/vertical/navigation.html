@@ -1,67 +1,117 @@
 <!DOCTYPE html>
 <html>
+<title>Navigation Menu</title>
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script>
+  $(document).ready(function() {
+    var links = document.getElementsByTagName("a");
+
+console.log(links.length);
+for(var i = 0; i < links.length; i++) {
+    console.log(links[i].innerHTML);
+    links[i].addEventListener("click", function() {
+      var current = document.getElementsByClassName("active");
+      var currentp = document.getElementsByClassName("activep");
+      current[0].className = current[0].className.replace("active", "");
+      currentp[0].className = currentp[0].className.replace("activep", "");
+      this.className = "active";
+      this.parentNode.className='activep';
+  });
+}
+});
+</script>
 <style>
-
-
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  border: 1px solid #FFFFFF;
-  background-color: #018795;
+    border: 1px solid #cdd4de;
 }
 
 li {
-  float: left;
-   border-right: 1px solid #bbb;
+    text-align: centre;
+    border-bottom: 1px solid #cdd4de;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+.active{
+    background-color: #343859;
+    color: white;
+}
+.activep {
+    background-color: #343859; !important
+    color: white;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #FAFAFA;
+
 }
 
 li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+    display: block;
+    color: #54698D;
+    text-align: left;
+    padding: 4px 12px;
+    text-decoration: none;
+    border: 1px;
 }
 
+/* Change the link color on hover */
 li a:hover {
-  background-color: #00D9EC;
-  color: #ffffff;
+    background-color: #343759;
+    color: white;
+
+}
+li p:hover {
+    background-color: #343759;
+    color: white;
+
 }
 
-.active {
-  background-color: #003473;
-}
 
 p {
     color: #54698D;
     font-family: "Lato", "Helvetica", "Arial", sans-serif;
     margin-block-start:0em;
     margin-block-end:0em;
+    padding-top:16px;
+    padding-bottom: 16px;
 
 }
 
 </style>
 </head>
-<body style="margin:0px">
-
+<body style= "height:100%" bgcolor="#F4F6F9">
 
 <ul>
 
-  <li><p><a href="folder.html" target="main">Folder</a></p></li>
-  <li><p><a href="events.html" target="main">Events</a></p></li>
-  <li><p><a href="map.html" target="main">Map</a></p></li>
-  <li><p><a href="move.html" target="main">Move</a></p></li>
-  
-  <li><p><a href="login.html" target="_top">Logout</a></p></li>
+  <li width="140px"><p class='activep'><a class="active" height='27px' href="../pages/folder.html" target="main">Folder</a></p></li>
+
+  <li width="140px"><p><a href="../pages/map.html" target="main">Map</a></p></li>
+  <li width="140px"><p><a href="../pages/search.html" target="main">Search Evidence</a></p></li>
+  <li width="140px"><p><a href="../pages/events.html" target="main">Events</a></p></li>
+  <li width="140px"><p><a href="login.html" target="_top">Logout</a></p></li>
 
 
+  </ul>
 
+  </div>
 
-
-</ul>
-
-</body>
-</html>
+  </body>
+  </html>

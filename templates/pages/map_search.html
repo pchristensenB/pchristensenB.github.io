@@ -120,8 +120,13 @@
   </script>
   <script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js"></script>
   <script>
+
+  //***** please enter the starting folder for the search ***
+  //***** the search will search all sub folders from here and find images and documents with the gpsCoordinates metadata template attached
+
     var startFolderId = '0';
 
+  //***********
     var markersArray = [];
     var markersArrayEvidence = [];
     var cases = new Map();
@@ -132,7 +137,7 @@
     var contentPreview;
     var curInfoWindow;
     var camImage = '/templates/img/photo.png';
-    var vidImage = './img/video.png';
+    var vidImage = './templates/img/video.png';
     var curSW;
     var curNE;
 

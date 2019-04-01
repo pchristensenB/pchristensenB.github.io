@@ -4,29 +4,35 @@
 
 
 				<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+				<script src="https://cdn.jsdelivr.net/mark.js/8.6.0/jquery.mark.min.js"></script>
 			  <!-- Box preview SDK -->
 			  <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/9.1.0/en-US/explorer.css">
 			  <script src="https://cdn01.boxcdn.net/platform/elements/9.1.0/en-US/explorer.js"></script>
 				<script src="https://cdn01.boxcdn.net/platform/elements/9.1.1/en-US/openwith.js"></script>
 				<link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/9.1.1/en-US/openwith.css" />
-
+				<style>
+				.highlight {
+					background-color:#ddd;
+				}
+				</style>
 				<script>
 					var clientId="bn2iyg37p78jkowrp0io0nc2ln0be3wt";
 					$(document).ready(function() {
+
 					      //sessionStorage.clear();
 					      //$('#userloginForm').on('submit', (function(ev) {
 					      //  $("#signbutton").hide();
 					      //  $("#loader").show();
 					      //  ev.preventDefault();
 					      //  console.log("Form submitted:" + $("#userLogin").val());
-					        var userLogin = 'AppUser_572053_QKuD6swDA3@boxdevedition.com';
-					        var urlParams = "code=Jq4te0OgMV6LCHpC0NrJu91aZpS/M0x56e6MzZdROAEL2kdkocaLmA==&clientId=" + clientId + "&userEmail=" + userLogin;
+					        var userLogin = 'pchristensen+demo@box.com';
+					        var urlParams = "code=Jq4te0OgMV6LCHpC0NrJu91aZpS/M0x56e6MzZdROAEL2kdkocaLmA==&clientId=" + clientId + "&userEmail=" + userLogin + "&requestedTokens=userToken";
 					        console.log(urlParams);
 					        var settings = {
 					          "async": true,
 					          "crossDomain": true,
 					          //"url": "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-jwt-tokengenerator?" + urlParams,
-										"url": "http://localhost:5000/jwttokengenerator?" + urlParams,
+										"url": "https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?" + urlParams,
 					          "method": "GET",
 					          "headers": {}
 					        };
@@ -39,7 +45,7 @@
 					          console.log("from storage access:" + sessionStorage.getItem("accessToken"));
 					          //console.log("from storage admin:" + sessionStorage.getItem("adminAccessToken"));
 					          var contentExplorer = new Box.ContentExplorer();
-					            contentExplorer.show('0', accessToken, {
+					            contentExplorer.show('50774380508', accessToken, {
 					                container: '.pcontainer',
 					                contentPreviewProps: {
 					                    contentSidebarProps: {
@@ -48,20 +54,50 @@
 					                      hasProperties: true,
 					                      hasAccessStats: true,
 					                      hasActivityFeed: true,
-					                    defaultView:'activityFeed'
+					                    defaultView:'skills'
 					                  },
 												    contentOpenWithProps: {
 						             			show: true
 						         				}
 					                }
 					            });
-											var contentOpenWith = new Box.ContentOpenWith();
-        								contentOpenWith.show('301448802596', accessToken, {
-          							container: '.ocontainer'
-        								})
-					        });
-					    //}));
-					});
+
+											contentExplorer.addListener('preview', (item) => {
+												console.log("pr");
+
+												$(".be-transcript-row").click(function(ev) {
+													console.log($(this).children(":first").html().substring(0,1));
+													var text = $(this).children(":first").html().substring(2);
+													console.log(text);
+													var target = $(this).children(":first").html().substring(0,1)
+													$(".bp-current-page").trigger("click");
+													$(".bp-page-num-input").val($(this).children(":first").html().substring(0,1))
+													//$(".bp-current-page").html($(this).children(":first").html().substring(0,1));
+													console.log("1");
+
+													$('.bp-page-num-input').trigger(jQuery.Event('keypress', { keycode: 13 }));
+
+													$(".bp-current-page").trigger("focusout");
+													$(".bp-current-page").trigger("blur");
+													$(".bp-page-num-input").trigger("blur");
+													$(".bp-page-num-input").trigger("focusout");
+													$(".pdfViewer").trigger("focus");
+													$( "div.page" ).each(function( index ) {
+  													if($(this).attr("data-page-number")==target) {
+															console.log("found:" + $(this).attr("data-page-number"));
+															$(this).children().each(function(index) {
+																var m = $(this).text();
+																if(m.includes(text)) {
+																	$(this).mark(text);
+																	//$(this).text(m.replace(text,"<mark'>"+text+"</mark>"));
+																}
+															});
+														}
+													});
+											});
+										});
+								});
+						});
 				</script>
 </head>
 <body>

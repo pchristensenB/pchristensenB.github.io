@@ -182,7 +182,7 @@
             render: function(data, type, row) {
               //console.log("" + (i++) + ":" + row.source.type);
               if (row.event_type && row.event_type.startsWith('ITEM_') && row.source.type=='file') {
-                  return "<img class='preview' box-id='" + row.source.id + "' src='preview_icon.png'/>";
+                  return "<img class='preview' box-id='" + row.source.id + "' src='../img/preview_icon.png'/>";
               }
               return "";
             }
@@ -393,7 +393,7 @@
 <body>
   <div style="padding: 5 5 5 5px;bgcolor='#F4F6F9';border: 1px solid #cdd4de;">
     <ul class="tabs">
-      <li class="tab-link current" data-tab="tab-100">My Events <span class='loader'><img src='/templates/img/ajax-loader_t.gif'/></span></li>
+      <li class="tab-link current" data-tab="tab-100">My Events <span class='loader'><img src='../img/ajax-loader_t.gif'/></span></li>
     </ul>
     <div id="tab-100" class="tab-content current">
       <table id="contentlist" class="display" style="width:95%%">

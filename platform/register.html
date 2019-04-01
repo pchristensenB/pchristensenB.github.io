@@ -96,8 +96,10 @@ function getMessage(id) {
       return "<p style='padding: 5px;'>Add the URLs from where the token generator can be called. Don't forget to also add them to the CORS list in the Box JWT app config</p><p style='padding:5px;'>Please add URls on like https://mysite.com or http://0.0.0.0:5000";
     case "durationMessage":
       return "<p style='padding: 5px;'>Here you can specify for how long you want the JWT config to be stored. It will be deleted without confirmation after the period chosen - so will any app user logins stored</p>";
-      case "fileMessage":
-        return "<p style='padding: 5px;'>Upload your config json file here. The file name is not important!</p>";
+    case "fileMessage":
+      return "<p style='padding: 5px;'>Upload your config json file here. The file name is not important!</p>";
+    case "pwdMessage":
+      return "<p style='padding: 5px;'>Default password for Managed users. This is required as we are generating a JWT token for these so standard OAuth2 password will not be used</p>";
   }
 
 }
@@ -144,7 +146,7 @@ function getMessage(id) {
     $("#submit").hide();
     $("#loader").show();
     $.ajax({
-      url: 'http://' + window.location.host + '/uploadfiles',
+      url: 'http://localhost:5000/uploadfiles',
       type: 'POST',
       data: new FormData(form),
       crossDomain: true,
@@ -156,11 +158,17 @@ function getMessage(id) {
         $('#upload-form').trigger("reset");
         //Reload table to show uploaded document
         $("#loader").hide();
-        $(".container").html("Your JWT app was registered. You can now use the token generator and workbench")
+        $(".container").html("Your JWT app was registered. You can now use the token generator and <a href='https://box-java-sandpit.herokuapp.com/platform/index.html'>workbench</a>");
 
       },
       error: function(xhr, status, error) {
-        console.log("bad upload:" + error);
+        if(status=='409') {
+          $(".container").html("An app with these details has already been registered. In the next version you can update your registered app");  
+        }
+        else {
+          console.log("bad upload:" + error);
+          $(".container").html("An error occurred registering your app - please check JWT file. If problem persists contact pchristensen@box.com");
+        }
         $("#loader").hide();
       }
     });
@@ -195,6 +203,8 @@ function getMessage(id) {
             <input type="text" id="dname" name="dname" placeholder="Application name.." required>
             <label for="dname">Email <a class="showmessage" id="enameMessage" href="#"><span class="glyphicon glyphicon-info-sign"></span></a></label>
             <input type="text" id="ename" name="ename" placeholder="Your email.." required>
+            <label for="dname">Password <a class="showmessage" id="pwdMessage" href="#"><span class="glyphicon glyphicon-lock	"></span></a></label>
+            <input type="text" id="pwd" name="pwd" placeholder="Default pwd.." required>
             <label for="duration">Duration <a class="showmessage" id="durationMessage" href="#"><span class="glyphicon glyphicon-info-sign"></span></a></label>
             <input type="number" id="dnumber" name="dnumber" placeholder="Enter number.." required>
             <select id="duration" name="duration" required style="height:35px" required>
@@ -267,7 +277,7 @@ function getMessage(id) {
             <p id="msg"></p>
           </div>
         </form>
-        <form id="uploadfilesOAuth" action="#" method="post">
+        <form id="uploadfilesOAuth" action="#" method="get">
           <input type="hidden" value="oauth" name="type" />
           <div class="tab-content" id="tab-3" style="width: 600px; float: left;z-index:-9999;border:1px solid;padding:5px;box-shadow:3px 6px">
             <span class="big">Use this if you are going to use the a the OAuth 2.0 token generator for 3rd party integrations</span><br/><br/>
