@@ -87,15 +87,18 @@
         //console.log($("#claim").text());
         //return false;
         $('.modal').toggle();
+        $(".steps").toggle();
 
       });
       $('#policy').click(function() {
         $('.modal').hide();
+        $(".steps").show();
         //popup policy docs
         $('.explorer-toggle-policy').trigger( "click" )
       });
       $('#dashboard').click(function() {
         $('.modal').hide();
+          $(".steps").show();
 
       });
       //find policy documents folder
