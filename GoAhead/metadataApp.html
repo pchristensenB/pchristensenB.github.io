@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+p {
+  font-family: sans-serif;
+  font-size: 18px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #018795;
+  text-align: center;
+}
+
+label,select,input {
+  font-family: sans-serif;
+  font-size: 12px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #018795;
+
+}
+
+input[type=submit] {
+  background-color: #018795;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+
+<br>
+
+<P>Arriva CCTV Upload Form With Meta-Data</p>
+
+  <br>
+
+
+<div style="width:50%;margin:0 auto">
+  <form action="/action_page.php">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+
+    <label for="depot">Depot</label>
+    <select id="depto" name="depot" required>
+      <option value="palmers green">Palmers Green</option>
+      <option value="ash grove">Ash Grove</option>
+      <option value="tottenham">Tottenham</option>
+      <option value="clapton">Clapton</option>
+      <option value="barking">Barking</option>
+      <option value="enfield">Enfield</option>
+      <option value="edmonton">Edmonton</option>
+      <option value="grays">Grays</option>
+      <option value="stamford hill">Stamford Hill</option>
+      <option value="wood green">Wood Green</option>
+    </select>
+
+    <label for="routeNumber">Route Number</label>
+    <input type="text" id="routeNumber" name="routeNumber" placeholder="Route Number" required>
+
+    <label for="caseID">Case ID</label>
+    <input type="text" id="caseID" name="caseID" placeholder="Assigned case ID" required>
+
+    <input type="submit" value="Upload with Meta-Data">
+  </form>
+</div>
+
+</body>
+</html>
