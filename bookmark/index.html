@@ -18,6 +18,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+  <script src="https://cdn01.boxcdn.net/platform/elements/9.1.1/en-US/preview.js"></script>
+  <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/9.1.1/en-US/preview.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
     <script>
 
 
@@ -56,7 +60,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
           }
       });
-      var preview = new Box.Preview();
+      var preview = new Box.ContentPreview();
       //alert("Preview:" + gaccessToken);
       $("#preview-container").show();
       console.log("selected item:" + sessionStorage.getItem('selectedId'));
@@ -137,25 +141,99 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </script>
 
 </head>
-<body style="height:1000px;overflow-x:hidden;">
-  <div class="container">
+
+<body style="border:0px;">
+
+  <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2">
-            <div class="fileChooser">
-              <div id="fileName"></div>
+      <div class="col">
+        <ul class="nav nav-tabs" id="transcodeTab" role="tablist">
 
-            </div>
-        </div>
-        <div class="col-md-12">
-          <img src='../templates/img/ajax-loader_t.gif' id='loader'/>
-
-          <div id="dialog" style="display:none;height:1000px;overflow-x:hidden;left:100px !important;flow: left">
-              <iframe id="compareFrame" src="" height="95%" width="85%" frameborder=0></iframe>
-          </div>
-        </div>
+          <li class="nav-item">
+            <a class="nav-link" id="bookmark-tab" data-toggle="tab" href="#bookmark" role="tab" aria-controls="bookmark" aria-selected="false">Bookmark</a>
+          </li>
+        </ul>
+      </div>
     </div>
-</div>
+    <div class="row">
+      <div class="col-md-8" id="preview" aria-labelledby="preview-tab">
+        <div id="preview-container" class="preview-container" style="height:600px; width:100%;"></div>
+      </div>
+      <div class="col-sm-4">
+        <div class="tab-content" id="transcodeContent">
 
+
+
+        <div class="tab-pane fade" id="bookmark" role="tabpanel" aria-labelledby="bookmark-tab">
+          <!-- Central Modal Medium Info -->
+          <div class="modal fade" id="bookmarkontentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabelAudio" aria-hidden="true">
+            <div class="modal-dialog modal-notify modal-info" role="document">
+              <!--Content-->
+              <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header bg-primary">
+                  <p class="heading lead text-white">bookmark Extraction</p>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                  </button>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                  <div class="text-center">
+                    <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                    <p>The video has been submitted for bookmark extraction. Please allow time for extraciton and check the folder for the result.</p>
+                  </div>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                  <a type="button" class="btn btn-primary" data-dismiss="modal">Close</a>
+                </div>
+              </div>
+              <!--/.Content-->
+            </div>
+          </div>
+          <!-- Central Modal Medium Info-->
+          <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>Option</th>
+                <th>Value</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bookmark Start</td>
+                <td>
+                  <input type="text" id="bookmarkstarttime" name="bookmarkstarttime" value="0:00"><br>
+
+                </td>
+              </tr>
+              <tr id=bend style="display:none;"><td>Bookmark End</td>
+                <td>
+                  <input  type="text" id="bookmarkendtime" name="bookmarkendtime" value="0:00">
+                </td>
+                </tr>
+              <tr>
+                <td>Bookmark name</td>
+                <td>
+                  <input type="text" id="bookmarkname" name="bookmarkname" value="">
+                </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+          <button type="button" id="submitbutton-bookmark" name="submitbutton-bookmark" class="btn btn-primary">Add bookmark</button>
+          <img src='smallspinner.gif' id='spinner' style="display:none;"/>
+        </div>
+
+      </div>
+      </div>
+    </div>
 
 
 </body>
