@@ -22,20 +22,20 @@
 
 
 		$(document).ready(function() {
-			var userLogin = 'pchristensen+demo@box.com';
-			var urlParams = "clientId=" + clientId + "&userEmail=" + userLogin;
+			var userLogin = 'pchristensen+demo@boxdemo.com';
+			var urlParams = "clientId=" + clientId + "&userEmail=" + userLogin +"&password=" + clientId;
 			console.log(urlParams);
 			var settings = {
 				"async": true,
 				"crossDomain": true,
 				//"url": "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-jwt-tokengenerator?" + urlParams,
-				//"url": "https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?" + urlParams,
-				"url": "http://localhost:7000/jwttokengenerator?" + urlParams,
+				"url": "https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?" + urlParams,
+				//"url": "http://localhost:7000/jwttokengenerator?" + urlParams,
 				"method": "GET",
 				"headers": {}
 			};
 			$.ajax(settings).done(function(response) {
-				accessToken = response.token;
+				accessToken = response.userToken;
 				sessionStorage.setItem("accessToken", accessToken);
 				var preview = new Box.ContentPreview();
 				preview.show('428392560865', accessToken, {

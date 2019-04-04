@@ -25,6 +25,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <script
     src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script>
+      var mainID="430082375483";
   var   filePicker = new Box.FilePicker();
   var src;
   var ids=[];
@@ -40,7 +41,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 });
 function loadVersions() {
   console.log("loadVersions");
-  var url = "https://api.box.com/2.0/files/430082375483/versions";
+  var url = "https://api.box.com/2.0/files/" + mainId + "/versions";
 
   $(".fileChooser").append($('<div/>').addClass('checkbox').html('<label><input ext="docx" type="checkbox" value="430082375483" >terms3.doc <o id="mainVersion"></o></label>'));
 
@@ -94,7 +95,7 @@ function loadVersions() {
   });
 }
 function compare(id1,id2,ext1,ext2) {
-  var url='https://cvw2zdcqpc.execute-api.eu-west-2.amazonaws.com/default/box-document-compare?mainId=427073856256&id1='+id1 + '&id2='+id2 + '&token=' + ga + "&ext1=" + ext1 + "&ext2=" + ext2;
+  var url='https://cvw2zdcqpc.execute-api.eu-west-2.amazonaws.com/default/box-document-compare?mainId=' + mainId + '&id1='+id1 + '&id2='+id2 + '&token=' + ga + "&ext1=" + ext1 + "&ext2=" + ext2;
   console.log(url);
   $.ajax({
   //  //url: 'http://0.0.0.0:8000',
