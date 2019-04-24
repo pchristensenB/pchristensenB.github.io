@@ -87,7 +87,7 @@ var contentUploader = new Box.ContentUploader();
         };
         $.ajax(settings).done(function(response) {
           accessToken = response.token;
-          contentUploader.show('64064254232', accessToken, {
+          contentUploader.show('74460076725', accessToken, {
             container: '.pcontainer'
           });
         });
@@ -106,9 +106,8 @@ var contentUploader = new Box.ContentUploader();
                 var id = f.id;
                 var data = "{\"firstName\":\"" + $("#fname").val() + "\",";
                 data = data + "\"lastName\":\"" + $("#lname").val() + "\",";
-                data = data + "\"depot\":\"" + $("#depot").val() + "\",";
-                data = data + "\"routeNumber\":\"" + $("#routeNumber").val() + "\",";
-                data = data + "\"caseId\":\"" + $("#caseID").val() + "\"}";
+                data = data + "\"location\":\"" + $("#location").val() + "\",";
+                data = data + "\"email\":\"" + $("#email").val() + "\"}";
                 console.log(data);
                 var settings = {
                   "async": true,
@@ -164,7 +163,7 @@ var contentUploader = new Box.ContentUploader();
 
   <br>
 
-  <P>Arriva CCTV Upload With Mandatory Meta-Data Capture</P>
+  <P>Gloucestershire Constabulary</P>
 
   <br>
   <br>
@@ -177,29 +176,19 @@ var contentUploader = new Box.ContentUploader();
         <label for="lname">Last Name</label>
         <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
 
-        <label for="depot">Depot</label>
-        <select id="depot" name="depot" required style="height:35px">
-          <option value="palmers green">Palmers Green</option>
-          <option value="ash grove">Ash Grove</option>
+        <label for="depot">Location</label>
+        <select id="location" name="location" required style="height:35px">
+          <option value="gloucester">Gloucester</option>
+          <option value="forest of dean">Forest Of Dean</option>
           <option value="tottenham">Tottenham</option>
-          <option value="clapton">Clapton</option>
-          <option value="barking">Barking</option>
-          <option value="enfield">Enfield</option>
-          <option value="edmonton">Edmonton</option>
-          <option value="grays">Grays</option>
-          <option value="stamford hill">Stamford Hill</option>
-          <option value="wood green">Wood Green</option>
         </select>
 
         <label for="routeNumber">Route Number</label>
         <input type="text" id="routeNumber" name="routeNumber" placeholder="Route Number" required>
 
-        <label for="caseID">Case ID</label>
-        <input type="text" id="caseID" name="caseID" placeholder="Assigned case ID" required>
-        <label for="caseID">Share with</label>
-        <input type="text" id="collabID" name="collabID" placeholder="Collaborator email address" required>
+        <label for="email">Email Address</label>
 
-        <input type="button" id="submit" value="Upload to Box with Meta-Data">
+        <input type="button" id="submit" value="Report Crime">
       </form>
     </div>
     <div style="margin-left: 620px;z-index:9999;" class="pcontainer">
