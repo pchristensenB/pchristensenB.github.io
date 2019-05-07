@@ -25,8 +25,9 @@
 					      //  $("#loader").show();
 					      //  ev.preventDefault();
 					      //  console.log("Form submitted:" + $("#userLogin").val());
-					        var userLogin = 'pchristensen+demo@box.com';
-					        var urlParams = "code=Jq4te0OgMV6LCHpC0NrJu91aZpS/M0x56e6MzZdROAEL2kdkocaLmA==&clientId=" + clientId + "&userEmail=" + userLogin + "&requestedTokens=userToken";
+					        //var userLogin = 'pchristensen+demo@boxdemo.com';
+									var userLogin = 'AppUser_572053_QKuD6swDA3@boxdevedition.com';
+					        var urlParams = "code=Jq4te0OgMV6LCHpC0NrJu91aZpS/M0x56e6MzZdROAEL2kdkocaLmA==&clientId=" + clientId + "&userEmail=" + userLogin + "&requestedTokens=userToken&password=bn2iyg37p78jkowrp0io0nc2ln0be3wt";
 					        console.log(urlParams);
 					        var settings = {
 					          "async": true,
@@ -38,16 +39,17 @@
 					        };
 					        $.ajax(settings).done(function(response) {
 					          console.log(response);
-					          accessToken = response.token;
+					          accessToken = response.userToken;
 					          sessionStorage.setItem("accessToken",accessToken);
 					          sessionStorage.setItem("userLogin",userLogin);
 					          //sessionStorage.setItem("adminAccessToken",response.adminAccessToken);
 					          console.log("from storage access:" + sessionStorage.getItem("accessToken"));
 					          //console.log("from storage admin:" + sessionStorage.getItem("adminAccessToken"));
 					          var contentExplorer = new Box.ContentExplorer();
-					            contentExplorer.show('50774380508', accessToken, {
+					            contentExplorer.show('75309835004', accessToken, {
 					                container: '.pcontainer',
 					                contentPreviewProps: {
+														showAnnotations:true,
 					                    contentSidebarProps: {
 					                      hasMetadata: false,
 					                      hasSkills: true,
