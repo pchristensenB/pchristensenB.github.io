@@ -14,6 +14,12 @@
 				.highlight {
 					background-color:#ddd;
 				}
+				.be * {
+					font-family: arial;
+				}
+				.be input {
+					font-family: arial;
+				}
 				</style>
 				<script>
 					var clientId="bn2iyg37p78jkowrp0io0nc2ln0be3wt";
@@ -37,6 +43,12 @@
 					          "method": "GET",
 					          "headers": {}
 					        };
+									var testRequestInterceptor = (config /* https://github.com/axios/axios#response-config */) => {
+									    console.log(JSON.stringify(config));
+											//var newConfig = config.replace(/api.box.com/g, "api1.box.com");
+											console.log(config.parsedUrl);
+									    return config;
+									};
 					        $.ajax(settings).done(function(response) {
 					          console.log(response);
 					          accessToken = response.userToken;
@@ -60,9 +72,13 @@
 					                  },
 												    contentOpenWithProps: {
 						             			show: true
-						         				}
-					                }
+						         				},
+														apiHost:'https://api1.box.com'
+
+					                },
+													requestInterceptor: testRequestInterceptor
 					            });
+											console.log(contentExplorer.component.api);
 
 											contentExplorer.addListener('preview', (item) => {
 												console.log("pr");
@@ -100,6 +116,7 @@
 										});
 								});
 						});
+
 				</script>
 </head>
 <body>

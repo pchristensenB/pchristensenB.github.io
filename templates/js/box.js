@@ -16,6 +16,7 @@ function writeUpdate() {
 }
 
 function getToken(urlParams,callback) {
+  console.log("calling ajax");
   return $.ajax({
     //url: 'https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?',
     url: 'http://localhost:9090/jwttokengenerator?',
@@ -37,9 +38,12 @@ function getToken(urlParams,callback) {
 });
 }
 function login(page,urlParams) {
+  console.log("login called");
+
   getToken(urlParams,redirect(page));
 
 }
 function redirect(page) {
+  console.log("calling redirect");
   window.location.replace(page);
 }
