@@ -27,6 +27,7 @@
 
     var accessToken = sessionStorage.getItem("accessToken"); //'ERtaeEtF6SAIf6yBAwFeqKaHBCAAzcox';
     var contentExplorer = new Box.ContentExplorer();
+<<<<<<< HEAD
       getAccessToken().then(function(result) {
         contentExplorer.show(boxId, result, {
         container: '.container',
@@ -36,6 +37,16 @@
         canRename: false,
         canShare: false
       });
+=======
+    contentExplorer.show(folderId, accessToken, {
+      container: '.container',
+      logoUrl: 'logo-small.png',
+      canDownload: false,
+      canDelete: false,
+      canRename: false,
+      canShare: false,
+      canCreateNewFolder: false
+>>>>>>> 19500c8028cd8b5ba054bb0f35be0951717dd888
     });
   </script>
 </body>

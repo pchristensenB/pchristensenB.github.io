@@ -1,9 +1,15 @@
-navigation=[
+//Client ID
+var clientId="bn2iyg37p78jkowrp0io0nc2ln0be3wt";
+
+//Main page
+var redirectAfterLoginPage="/Template/main.html";
+
+//Navigation
+var navigation=[
 
   {
       "page":"readme.html",
-      "title":"README",
-      "boxId":"0"
+      "title":"README"
   },
   {
       "page":"https://developer.box.com",
@@ -28,7 +34,7 @@ navigation=[
   {
       "page":"preview1.html",
       "title":"PREV1",
-      "boxId":"0"
+      "boxId":"428392560865"
   },
   {
       "page":"preview2.html",

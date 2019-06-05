@@ -40,7 +40,15 @@
 				var preview = new Box.ContentPreview();
 				preview.show('428392560865', accessToken, {
 					container: '.pcontainer',
-					showDownload: true
+					showDownload: true,
+					contentSidebarProps: {
+ 					 hasMetadata: false,
+ 					 hasSkills: true,
+ 					 hasProperties: true,
+ 					 hasAccessStats: true,
+ 					 hasActivityFeed: true,
+ 				 defaultView:'skills'
+ 			 }
 
 				});
 
@@ -49,7 +57,7 @@
 				checkDOMChange()
 
 		});
-	var prevText="";
+		var prevText="";
 		function checkDOMChange() {
 			// check for any new element being inserted here,
 			// or a particular node being modified

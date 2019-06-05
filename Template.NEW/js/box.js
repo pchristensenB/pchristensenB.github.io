@@ -2,8 +2,7 @@
 
 
  async function getAccessToken() {
-   console.log("calling getAccessToken()");
-    var ttl = sessionStorage.getItem("ttl");
+       var ttl = sessionStorage.getItem("ttl");
     var now = new Date().getTime();
     console.log("ttl:" + (ttl-now)/1000);
     var timeLeft = (ttl-now)/1000;
@@ -17,7 +16,6 @@
       console.log("calling with await as token is dead");
       await getToken(sessionStorage.getItem("urlParams"),writeUpdate,'bob');
     }
-    console.log("returning from getAccessToken()");
 
   return sessionStorage.getItem("accessToken");
   };
@@ -27,7 +25,6 @@ function writeUpdate() {
 
  function getToken(urlParams,callback,page) {
   return $.ajax({
-    //url: 'https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?',
     url: 'https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?',
     headers: {},
     type: 'get',
