@@ -9,12 +9,12 @@
     //Update token if less than 4 mins left
     if(timeLeft<240 && timeLeft>10) {
       console.log("calling normally as we still have time");
-        getToken(sessionStorage.getItem("urlParams"),writeUpdate,'bob');
+        getToken(sessionStorage.getItem("urlParams"),writeUpdate,'get async');
     }
     else if(timeLeft<=10) {
       //Token expired - get new and await result
       console.log("calling with await as token is dead");
-      await getToken(sessionStorage.getItem("urlParams"),writeUpdate,'bob');
+      await getToken(sessionStorage.getItem("urlParams"),writeUpdate,'get sync and wait');
     }
 
   return sessionStorage.getItem("accessToken");

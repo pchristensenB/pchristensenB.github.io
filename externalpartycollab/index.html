@@ -1,0 +1,129 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Add external party to folder</title>
+  <!-- for-mobile-apps -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+
+<script>
+    var token;
+    var params = new URLSearchParams(window.location.search);
+    $(document).ready(function() {
+
+      $.ajax({
+        method: 'get',
+        url: "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator",
+        data: {
+          authCode: params.get('auth'),
+          id: params.get('id'),
+          clientId: 'bxofrmt82y51u412mysiwx5jlkr1vovh'
+        },
+        crossDomain: true,
+        timeout: 120000,
+        dataType: 'jsonp',
+        cache: false,
+        beforeSend: function() {
+          $('#loader').show();
+          $("#container").hide();
+        },
+        complete: function() {
+          $('#loader').hide();
+          $("#container").show();
+        },
+        success: function(response) {
+          token = response.token;
+
+        },
+        error: function(err) {
+          console.log(JSON.stringify(err));
+          console.log("error:" + err.message);
+
+        }
+      });
+    });
+  </script>
+
+</head>
+
+<body>
+  <div class="content" id='main'>
+    <img id="loader" src="/externalpartycollab/images/ajax-loader-gif-1.gif" style="display:none;" />
+    <div class="container" style="display:none;">
+      <div class="row">
+        <div class="lg col-8">
+          Document info
+        </div>
+      </div>
+      <div class="row">
+        <div class="lg col-8">
+          <form class="border border-light p-5">
+
+            <p class="h4 mb-4 text-center">Sign in</p>
+
+            <select class="browser-default custom-select mb-4" id="select">
+        <option value="" disabled="" selected="">Choose your option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+    </select>
+
+            <select class="browser-default custom-select mb-4" id="select">
+        <option value="" disabled="" selected="">Choose your option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+    </select>
+
+            <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+            <div class="text-center">
+              <p>Not a member?
+                <a href="">Register</a>
+              </p>
+
+              <p>or sign in with:</p>
+              <a type="button" class="light-blue-text mx-2">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+              <a type="button" class="light-blue-text mx-2">
+            <i class="fab fa-twitter"></i>
+        </a>
+              <a type="button" class="light-blue-text mx-2">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+              <a type="button" class="light-blue-text mx-2">
+            <i class="fab fa-github"></i>
+        </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
