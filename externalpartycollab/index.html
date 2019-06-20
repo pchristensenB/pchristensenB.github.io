@@ -27,6 +27,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
+<script src="box.js"></script>
 
 
 <script>
@@ -48,15 +49,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         cache: false,
         beforeSend: function() {
           $('#loader').show();
-          $("#container").hide();
+          $(".container").hide();
         },
         complete: function() {
           $('#loader').hide();
-          $("#container").show();
+          $(".container").show();
+
         },
         success: function(response) {
           token = response.token;
-
+          getDocumentInfo(id,token);
+          getGroups(token);
         },
         error: function(err) {
           console.log(JSON.stringify(err));
@@ -65,6 +68,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         }
       });
     });
+    function loadInfo() {
+      //Load document info
+
+
+
+    }
   </script>
 
 </head>
@@ -74,7 +83,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <img id="loader" src="/externalpartycollab/images/ajax-loader-gif-1.gif" style="display:none;" />
     <div class="container" style="display:none;">
       <div class="row">
-        <div class="lg col-8">
+        <div class="lg col-8" id='documentInfo'>
           Document info
         </div>
       </div>
@@ -98,7 +107,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <option value="3">Option 3</option>
     </select>
 
-            <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+            <button class="btn btn-info btn-block my-4" type="submit">Share</button>
 
             <div class="text-center">
               <p>Not a member?
