@@ -61,7 +61,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               chosenName = this.text;
             }
           });
-          $(".collaborators").append("<li id=" + chosenVal + " class='list-group-item d-flex justify-content-between align-items-center'>" + chosenName + "<span id='" + chosenVal + "_p' class='badge badge-primary badge-pill'>" + $(
+          $(".collaborators").append("<li id=" + chosenVal + " class='list-group-item d-flex justify-content-between align-items-center ital'>" + chosenName + "<span id='" + chosenVal + "_p' class='badge badge-primary badge-pill'>" + $(
             "#selectPermission").val() + "</span><span  class='badge badge-primary badge-pill remove'>x</span></li>")
         }
         $(".remove").click(function(event) {
@@ -185,6 +185,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       margin-bottom: 1.5rem !important;
       font-style: roboto;
       font-size: 13px;
+    }
+    .ital {
+      font-style:italic;
     }
 
     .dropdown-secondary-text {
