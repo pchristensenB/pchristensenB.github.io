@@ -13,39 +13,93 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://cdn01.boxcdn.net/platform/elements/10.1.0/en-US/preview.js"></script>
+  <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/10.1.0/en-US/preview.css" />
+  <script src="https://cdn01.boxcdn.net/platform/elements/10.1.0/en-US/explorer.js"></script>
+  <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/10.1.0/en-US/explorer.css" />
 
   <!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
-<!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script src="box.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.proto.min.js" integrity="sha256-caJ5d3++BXLzBy3MKsOiJWHlVgh8O3W61W/XxBN3u1I=" crossorigin="anonymous"></script>
+  <script src="box.js"></script>
 
 
-<script>
-    var token;
+  <script>
     var params = new URLSearchParams(window.location.search);
+    var clientId = 'bn2iyg37p78jkowrp0io0nc2ln0be3wt';
+    var userEmail = 'pchristensen+demo@boxdemo.com';
+    var password = 'bn2iyg37p78jkowrp0io0nc2ln0be3wt';
+    var token;
+    var fileId = "475117803371";
+    var type = "files";
+    var typeS = "file";
+
+    var readyToRoll = false;
+    var countDownCalls = -1;
     $(document).ready(function() {
 
+      $("#add").on('submit', (function(ev) {
+        ev.preventDefault();
+        for (var i = 0; i < $("#selectUser").chosen().val().length; i++) {
+          var chosenVal = $("#selectUser").chosen().val()[i];
+          var chosenName;
+          $("#selectUser > option").each(function() {
+            if (this.value == chosenVal) {
+              chosenName = this.text;
+            }
+          });
+          $(".collaborators").append("<li id=" + chosenVal + " class='list-group-item d-flex justify-content-between align-items-center'>" + chosenName + "<span id='" + chosenVal + "_p' class='badge badge-primary badge-pill'>" + $(
+            "#selectPermission").val() + "</span><span  class='badge badge-primary badge-pill remove'>x</span></li>")
+        }
+        $(".remove").click(function(event) {
+          console.log("remove clicked");
+          $(this).parent('li').removeClass('d-flex').hide('slow');
+        });
+        $("#addAll").attr("disabled", false);
+      }));
+      $("#save").on('submit', (function(ev) {
+        $("#saveAll").attr("disabled", true);
+        console.log("submitted");
+        ev.preventDefault();
+        countDownCalls = 0;
+        $(".list-group-item").each(function(index) {
+          console.log($(this).attr('id'));
+          if ($(this).attr('collabId')) {
+            if ($(this).is(":hidden")) {
+              countDownCalls++;
+              removeCollaboration($(this).attr("collabId"), token);
+            }
+          } else {
+            var spanPermit = $("#" + $(this).attr('id') + "_p");
+            countDownCalls++;
+            addCollaboration(this, fileId, $(this).attr('id'), spanPermit.text(), token);
+
+          }
+          $(this).remove();
+        });
+        $("#saveAll").attr("disabled", false);
+
+
+
+      }));
       $.ajax({
         method: 'get',
-        url: "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator",
-        data: {
-          authCode: params.get('auth'),
-          id: params.get('id'),
-          clientId: 'bxofrmt82y51u412mysiwx5jlkr1vovh'
-        },
+        //url: "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator",
+        url: "https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?clientId=" + clientId + "&userEmail=" + userEmail + "&password=" + password + "&requestedTokens=userToken",
         crossDomain: true,
-        timeout: 120000,
-        dataType: 'jsonp',
         cache: false,
         beforeSend: function() {
           $('#loader').show();
@@ -57,9 +111,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         },
         success: function(response) {
-          token = response.token;
-          getDocumentInfo(id,token);
+          console.log(response);
+          token = response.userToken;
+          getDocumentInfo(fileId, token, type);
           getGroups(token);
+          getCollaborators(fileId, token);
         },
         error: function(err) {
           console.log(JSON.stringify(err));
@@ -67,72 +123,117 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         }
       });
+      $("#selectGroup").change(function() {
+        console.log($(this).val());
+        if ($("#selectGroup").val() != 'Select a group') {
+          getUsers($(this).val(), token)
+        }
+      });
+      $("#selectUser").change(function() {
+        console.log($(this).val());
+        loadPermissions();
+      });
+      $("#selectPermission").change(function() {
+        console.log($(this).val());
+        if ($(this).val() != 'Select permission') {
+          $("#addAll").attr("disabled", false);
+        } else {
+          $("#addAll").attr("disabled", true);
+        }
+      });
+      $("#selectUser").chosen({
+        disable_search_threshold: 10,
+        width: "95%",
+        display_disabled_options: true,
+        display_selected_options: true
+
+      });
+      $(".remove").click(function(event) {
+        console.log("remove clicked");
+        $(this).parent('.list-group-item').hide();
+      });
+      $(".chosen-choices").addClass("peters");
+      //$(".chosen-container").addClass("peters");
+      $('#selectUser').on('change', function(evt, params) {
+        console.log(evt);
+        console.log(params);
+      });
     });
-    function loadInfo() {
-      //Load document info
+
+    function loadPermissions() {
+      $("#selectPermission").empty();
+      $("#selectPermission").append("<option selected='' disabled='' value='Select permission'>Select permission</option>");
+      $("#selectPermission").append("<option value='Preview'>Preview</option>");
+      $("#selectPermission").append("<option value='Viewer'>Viewer</option>");
+      $("#selectPermission").append("<option value='Editor'>Editor</option>");
+      $("#addAll").attr("disabled", true);
+
 
 
 
     }
   </script>
+  <style>
+    .DraftEditor-editorContainer {
+      width: 250px;
+      height: 36px;
+    }
 
+    .peters {
+      padding: .375rem 1.75rem .375rem .75rem;
+      width: 100%;
+      margin-bottom: 1.5rem !important;
+      font-style: roboto;
+      font-size: 13px;
+    }
+
+    .dropdown-secondary-text {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="content" id='main'>
-    <img id="loader" src="/externalpartycollab/images/ajax-loader-gif-1.gif" style="display:none;" />
-    <div class="container" style="display:none;">
-      <div class="row">
-        <div class="lg col-8" id='documentInfo'>
-          Document info
-        </div>
+  <img id="loader" src="/externalpartycollab/images/ajax-loader-gif-1.gif" style="display:none;" />
+  <div class="container" style="display:none;">
+    <div class="row">
+      <div class="col-lg-8" id='documentInfo' style="height:800px;" class="border border-light p-5">
+        <div id="docInfo"></div>
+        <div id="docView" style="height:800px;"></div>
       </div>
-      <div class="row">
-        <div class="lg col-8">
-          <form class="border border-light p-5">
 
-            <p class="h4 mb-4 text-center">Sign in</p>
 
-            <select class="browser-default custom-select mb-4" id="select">
-        <option value="" disabled="" selected="">Choose your option</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-    </select>
+      <div class="col-lg-4">
+        <form class="border border-light p-5" id="add">
 
-            <select class="browser-default custom-select mb-4" id="select">
-        <option value="" disabled="" selected="">Choose your option</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-    </select>
+          <select class="peters" id="selectGroup">
+                <option value="" disabled="" selected="">select groups</option>
 
-            <button class="btn btn-info btn-block my-4" type="submit">Share</button>
+              </select>
+          <select data-placeholder="Users..." class="peters chosen-select " multiple id="selectUser">
 
-            <div class="text-center">
-              <p>Not a member?
-                <a href="">Register</a>
-              </p>
+              </select>
+          <select class="peters" id="selectPermission">
+                  <option value="" disabled="" selected="">Select permission</option>
 
-              <p>or sign in with:</p>
-              <a type="button" class="light-blue-text mx-2">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-              <a type="button" class="light-blue-text mx-2">
-            <i class="fab fa-twitter"></i>
-        </a>
-              <a type="button" class="light-blue-text mx-2">
-            <i class="fab fa-linkedin-in"></i>
-        </a>
-              <a type="button" class="light-blue-text mx-2">
-            <i class="fab fa-github"></i>
-        </a>
-            </div>
-          </form>
-        </div>
+              </select>
+
+          <button id='addAll' disabled class="btn btn-info btn-block my-2" style="background-color:#4285f4 !important" type="submit">Add</button>
+
+        </form>
+        <form id="save" class="border border-light p-5">
+          <div id="collabs">
+            <ul class="list-group collaborators">
+
+            </ul>
+          </div>
+          <button id='saveAll' class="btn btn-info btn-block my-2" style="background-color:#4285f4 !important" type="submit">Save</button>
+          <div id="saveMsg"></div>
+        </form>
       </div>
     </div>
   </div>
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+
 </html>
