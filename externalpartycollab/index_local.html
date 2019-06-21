@@ -39,18 +39,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
   <script>
     var params = new URLSearchParams(window.location.search);
+    var clientId = 'bn2iyg37p78jkowrp0io0nc2ln0be3wt';
+    var userEmail = 'pchristensen+demo@boxdemo.com';
+    var password = 'bn2iyg37p78jkowrp0io0nc2ln0be3wt';
     var token;
-    var fileId;params.get("id");//"475117803371";
-    var type;// = "files";
-    var typeS;// = "file";
-    if(params.get("ext")!=null) {
-      type="files";
-      typeS="file";
-    }
-    else {
-      type="folders";
-      typeS="folder";
-    }
+    var fileId = "475117803371";
+    var type = "files";
+    var typeS = "file";
 
     var readyToRoll = false;
     var countDownCalls = -1;
@@ -76,6 +71,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
         $("#addAll").attr("disabled", false);
         $("#saveAll").show();
+
       }));
       $("#save").on('submit', (function(ev) {
         $("#saveAll").attr("disabled", true);
@@ -93,18 +89,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             var spanPermit = $("#" + $(this).attr('id') + "_p");
             countDownCalls++;
             addCollaboration(this, fileId, $(this).attr('id'), spanPermit.text(), token);
+
           }
           $(this).remove();
           if(countDownCalls==-1) {
             getCollaborators(fileId,token);
+
           }
+
          });
         $("#saveAll").attr("disabled", false);
+
+
+
       }));
       $.ajax({
         method: 'get',
-        url: "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator",
-        data: {authCode:params.get('auth'),id:params.get('id'),clientId:'spdrql2rm149ip4n6ju4fgeuoby6wcml'},
+        //url: "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator",
+        url: "https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?clientId=" + clientId + "&userEmail=" + userEmail + "&password=" + password + "&requestedTokens=userToken",
         crossDomain: true,
         cache: false,
         beforeSend: function() {
