@@ -136,7 +136,7 @@ function getCollaborators(fileId, token) {
       var i = 1;
       console.log(JSON.stringify(response));
       $.each(response.entries, function(k, data) {
-        if(data.accessible_by.login.startsWith("AppUser")) {
+        if(data.accessible_by.type=='user' && data.accessible_by.login.startsWith("AppUser")) {
           $(".collaborators").append("<li collabId='" + data.id + "' id=" + data.accessible_by.id + " class='list-group-item d-flex justify-content-between align-items-center'>" + data.accessible_by.name + "<span id='" + data.accessible_by.id + "_p' class='badge badge-default badge-pill'>" + data.role + "</span><span  class='badge badge-default badge-pill remove'>x</span></li>");
         }
       });
