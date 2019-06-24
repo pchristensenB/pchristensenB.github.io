@@ -118,7 +118,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         },
         success: function(response) {
           console.log(response);
-          token = response.userToken;
+          token = response.token;
           getDocumentInfo(fileId, token, type);
           getGroups(token);
           getCollaborators(fileId, token);
