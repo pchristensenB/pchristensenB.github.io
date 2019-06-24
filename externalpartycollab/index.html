@@ -40,6 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <script>
     var params = new URLSearchParams(window.location.search);
     var token;
+    var sToken;
     var fileId=params.get("id");//"475117803371";
     var type;// = "files";
     var typeS;// = "file";
@@ -120,7 +121,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           console.log(response);
           token = response.token;
           getDocumentInfo(fileId, token, type);
-          getGroups(token);
+          getGroups(sToken);
           getCollaborators(fileId, token);
         },
         error: function(err) {
@@ -132,7 +133,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       $("#selectGroup").change(function() {
         console.log($(this).val());
         if ($("#selectGroup").val() != 'Select a group') {
-          getUsers($(this).val(), token)
+          getUsers($(this).val(), sToken)
         }
       });
       $("#selectUser").change(function() {
