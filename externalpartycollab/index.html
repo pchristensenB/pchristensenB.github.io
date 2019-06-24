@@ -120,6 +120,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         success: function(response) {
           console.log(response);
           token = response.token;
+          sToken = response.saToken;
           getDocumentInfo(fileId, token, type);
           getGroups(sToken);
           getCollaborators(fileId, token);
