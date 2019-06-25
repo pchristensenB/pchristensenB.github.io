@@ -39,6 +39,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
   <script>
     var preview = new Box.ContentPreview();
+    var explorer = new Box.ContentExplorer();
+
     var params = new URLSearchParams(window.location.search);
     var token;
     var sToken;
@@ -120,6 +122,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           }
          });
         $("#saveAll").attr("disabled", false);
+        if(type=='files') {
+          preview.hide();
+            preview.show(fileId, token, {
+              container: '#docView',
+              showDownload: true,
+                contentSidebarProps: {
+                  hasMetadata: true,
+                  hasSkills: true,
+                  hasProperties: true,
+                  hasAccessStats: true,
+                  hasActivityFeed: true,
+                  defaultView: 'activityFeed'
+              }
+            });
+          }
+          else {
+            explorer.clearCache();
+          }
       }));
       $.ajax({
         method: 'get',

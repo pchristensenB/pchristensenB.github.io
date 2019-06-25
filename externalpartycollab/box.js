@@ -24,7 +24,6 @@ function getDocumentInfo(id, token, type) {
         }
         else {
           $("#docInfo").html("Folder:" + response.name);
-          var explorer = new Box.ContentExplorer();
           explorer.show(id, token, {
               container: '#docView',
           });
