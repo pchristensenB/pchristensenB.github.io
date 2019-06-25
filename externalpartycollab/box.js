@@ -9,7 +9,6 @@ function getDocumentInfo(id, token, type) {
       console.log(response);
       if (type == 'files') {
         $("#docInfo").html("Document:" + response.name);
-        var preview = new Box.ContentPreview();
         preview.show(id, token, {
             container: '#docView',
             showDownload: true,
@@ -146,6 +145,8 @@ function getCollaborators(fileId, token) {
         $("#saveAll").show();
       });
         $("#saveAll").hide();
+        preview.hide();
+        preview.refresh();
     },
     error: function(err) {
       console.log(JSON.stringify(err));
