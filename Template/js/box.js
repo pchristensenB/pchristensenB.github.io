@@ -18,9 +18,9 @@
     }
 
   return sessionStorage.getItem("accessToken");
-  };
-function writeUpdate() {
-  console.log("token updated from generator");
+  }
+function writeUpdate(text) {
+  console.log("token updated from generator:" + text);
 }
 
  function getToken(urlParams,callback,page) {

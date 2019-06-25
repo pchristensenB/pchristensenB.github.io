@@ -11,18 +11,20 @@
     -->
 
     <!-- Latest version of the uploader css for your locale -->
-    <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/7.2.0/en-US/uploader.css" />
+    <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/10.1.0/en-US/uploader.css" />
 </head>
 <body>
     <div class="container" style="height:600px"></div>
     <!-- Latest version of the uploader js for your locale -->
-    <script src="https://cdn01.boxcdn.net/platform/elements/7.2.0/en-US/uploader.js"></script>
+    <script src="https://cdn01.boxcdn.net/platform/elements/10.1.0/en-US/uploader.js"></script>
     <script>
-      	var folderId = '73178909810';
-      	var accessToken = sessionStorage.getItem("accessToken");//'P0ZmktnWELAgxqaNI2VzkBJ32eIU4LLo';
-      	var uploader = new Box.ContentUploader();
-      	uploader.show(folderId, accessToken, {
+    let searchParams = new URLSearchParams(window.location.search)
+    var boxId = searchParams.get("boxId");
+  	var uploader = new Box.ContentUploader();
+      	getToken().then(function(result) {
+          uploader.show(boxId, result, {
             container: '.container'
+          });
         });
     </script>
 </body>

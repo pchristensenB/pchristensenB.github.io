@@ -18,18 +18,20 @@
     <!-- Latest version of the explorer js for your locale -->
     <script src="https://cdn01.boxcdn.net/platform/elements/10.0.0/en-US/explorer.js"></script>
     <script>
-      	var folderId = '73177681191';
-      	var accessToken = sessionStorage.getItem("accessToken");//'ERtaeEtF6SAIf6yBAwFeqKaHBCAAzcox';
-      	var contentExplorer = new Box.ContentExplorer();
-      	contentExplorer.show(folderId, accessToken, {
-            container: '.container',
-            logoUrl: 'logo-small.png',
-            canDownload: true,
-            canDelete: true,
-            canRename: true,
-            canShare: true,
-            canSetShareAccess: true
-        });
+    let searchParams = new URLSearchParams(window.location.search)
+    var boxId=searchParams.get("boxId");
+    var contentExplorer = new Box.ContentExplorer();
+      getAccessToken().then(function(result) {
+        contentExplorer.show(boxId, result, {
+        container: '.container',
+        logoUrl: 'logo-small.png',
+        canDownload: false,
+        canDelete: false,
+        canRename: false,
+        canShare: false
+      });
+
+    });
     </script>
 </body>
 </html>
