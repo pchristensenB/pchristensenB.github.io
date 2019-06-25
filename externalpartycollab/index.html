@@ -47,10 +47,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     if(params.get("ext")!=null && params.get("ext")!='' ) {
       type="files";
       typeS="file";
+      $("#selectPermissions").append('<option value="editor">Editor</option>');
+      $("#selectPermissions").append('<option value="viewer">Viewer</option>');
+
     }
     else {
       type="folders";
       typeS="folder";
+      $("#selectPermissions").append('<option value="editor">Editor</option>');
+      $("#selectPermissions").append('<option value="viewer">Viewer</option>');
+      $("#selectPermissions").append('<option value="previewer">Previewer</option>');
+      $("#selectPermissions").append('<option value="uploader">Uploader</option>');
     }
 
     var readyToRoll = false;
@@ -218,9 +225,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               </select>
           <select class="peters" id="selectPermission">
                   <option value="" disabled="" selected="">Select permission</option>
-                  <option value="Previewer">Previewer</option>
-                  <option value="Viewer">Viewer</option>
-                  <option value="Editor">Editor</option>
+
               </select>
 
           <button id='addAll' disabled class="btn btn-info btn-block my-2" style="background-color:#4285f4 !important" type="submit">Add</button>
