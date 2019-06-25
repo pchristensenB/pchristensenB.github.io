@@ -49,7 +49,7 @@ function getGroups(token) {
       "Authorization": "Bearer " + token
     },
     success: function(response) {
-      var i = 1;
+      var i = 0;
       $.each(response.entries, function(k, data) {
         $('select option:contains("Select group")').text('Select group (' + i + ')');
         if (data.name.startsWith("EXT")) {
@@ -79,7 +79,7 @@ function getUsers(groupId, token) {
       "Authorization": "Bearer " + token
     },
     success: function(response) {
-      var i = 1;
+      var i = 0;
       //console.log(response);
 
       $.each(response.entries, function(k, data) {
