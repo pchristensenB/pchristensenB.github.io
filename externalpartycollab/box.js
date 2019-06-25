@@ -145,8 +145,8 @@ function getCollaborators(fileId, token) {
         $("#saveAll").show();
       });
         $("#saveAll").hide();
-        preview.hide();
-        preview.refresh();
+        //preview.hide();
+        //preview.refresh();
     },
     error: function(err) {
       console.log(JSON.stringify(err));
