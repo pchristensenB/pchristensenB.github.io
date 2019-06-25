@@ -64,6 +64,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     var readyToRoll = false;
     var countDownCalls = -1;
     $(document).ready(function() {
+      if(params.get("ext")!=null && params.get("ext")!='' ) {
+        $("#selectPermission").append('<option value="editor">Editor</option>');
+        $("#selectPermission").append('<option value="viewer">Viewer</option>');
+
+      }
+      else {
+        $("#selectPermission").append('<option value="editor">Editor</option>');
+        $("#selectPermission").append('<option value="viewer">Viewer</option>');
+        $("#selectPermission").append('<option value="previewer">Previewer</option>');
+        $("#selectPermission").append('<option value="uploader">Uploader</option>');
+      }
       $("#saveAll").hide();
       $("#add").on('submit', (function(ev) {
         ev.preventDefault();
