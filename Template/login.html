@@ -27,22 +27,28 @@
       var userLogin = $("#userLogin").val();
       var pwd = $("#passLogin").val();
       var urlParams = "clientId=" + clientId + "&userEmail=" + userLogin + "&password=" + pwd + "&requestedTokens=adminToken~userToken";
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        //"url": "http://localhost:5000/jwttokengenerator?" + urlParams,
-        "url": "https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?" + urlParams,
-        "method": "GET",
-        "headers": {}
-      };
-      $.ajax(settings).done(function(response) {
-        sessionStorage.setItem("accessToken",response.userToken);
-        sessionStorage.setItem("userLogin",userLogin);
-        sessionStorage.setItem("adminAccessToken",response.adminAccessToken);
-        sessionStorage.setItem("urlParams",urlParams);
-        sessionStorage.setItem("ttl",response.ttl);
-        window.location.replace(redirectAfterLoginPage);
+      $.ajax({
+        method: 'get',
+        url: "https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?" + urlParams,
+        crossDomain: true,
+        cache: false,
+        success: function(response) {
+          sessionStorage.setItem("accessToken",response.userToken);
+          sessionStorage.setItem("userLogin",userLogin);
+          sessionStorage.setItem("adminAccessToken",response.adminAccessToken);
+          sessionStorage.setItem("urlParams",urlParams);
+          sessionStorage.setItem("ttl",response.ttl);
+          window.location.replace(redirectAfterLoginPage);
+        },
+        error: function(err) {
+          console.log(JSON.stringify(err));
+          $("#signbutton").show();
+          $("#loader").hide();
+          $("#errormessage").show();
+          $("#errormessage").html(err.responseText);
+        }
       });
+
     }));
   });
 
@@ -75,6 +81,7 @@
 				<div class="group">
 					<input id="signbutton" type="submit" class="button" value="Sign In">
           <img position="relative"  id="loader" src="progressb.gif" style="display:none;" size="50%">
+          <span id="errormessage" style="display:none;color:white;"></span>
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
