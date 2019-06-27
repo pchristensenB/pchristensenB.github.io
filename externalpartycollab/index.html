@@ -236,9 +236,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 
 <body>
+
+
   <img id="loader" src="/externalpartycollab/images/ajax-loader-gif-1.gif" style="display:none;" />
   <div class="container" style="display:none;">
     <div class="row">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark black scrolling-navbar">
+         <a class="navbar-brand" href="#"><strong>HISCOX</strong></a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <ul class="navbar-nav mr-auto">
+           </ul>
+           <ul class="navbar-nav nav-flex-icons">
+           </ul>
+         </div>
+       </nav>
+       </div>
+    <div class="row" style="margin-top:65px;">
       <div class="col-lg-8" id='documentInfo' style="height:800px;" class="border border-light p-5">
         <div id="docInfo"></div>
         <div id="docView" style="height:800px;"></div>
@@ -260,7 +277,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
               </select>
 
-          <button id='addAll' disabled class="btn btn-info btn-block my-2" style="background-color:#4285f4 !important" type="submit">Add</button>
+          <button id='addAll' disabled class="btn btn-info btn-block my-2" style="background-color:#000000 !important" type="submit">Add</button>
 
         </form>
         <form id="save" class="border border-light p-5">
@@ -269,7 +286,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
             </ul>
           </div>
-          <button id='saveAll' class="btn btn-info btn-block my-2" style="background-color:#4285f4 !important" type="submit">Save</button>
+          <button id='saveAll' class="btn btn-info btn-block my-2" style="background-color:#000000 !important" type="submit">Save</button>
           <div id="saveMsg"></div>
         </form>
       </div>

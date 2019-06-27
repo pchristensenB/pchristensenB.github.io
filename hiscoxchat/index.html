@@ -44,7 +44,9 @@ var preview = new Box.Preview();
         preview = new Box.Preview();
         preview.show(params.get('fileId'), response.token, {
           container: '.preview-container',
-          showDownload: true
+          header: 'dark',
+          showDownload: false,
+          logoUrl: 'logo.jpeg'
         });
       },
       error: function(err) {
@@ -57,7 +59,7 @@ var preview = new Box.Preview();
 
 <body style="height:800px;">
   <div style="height:800px;" class="preview-container"></div>
-  <span class="skype-button bubble" data-test="Hiscox" data-color="#000000" data-contact-id="live:peterchristensen31_2"></span>
+  <span class="skype-button bubble" data-test="Hiscox" data-color="#000000" data-contact-id="live:kcorry80"></span>
   <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
 
 
