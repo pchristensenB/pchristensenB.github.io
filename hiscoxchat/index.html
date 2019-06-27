@@ -45,7 +45,8 @@ var preview = new Box.Preview();
         preview.show(params.get('fileId'), response.token, {
           container: '.preview-container',
           header: 'dark',
-          showDownload: true
+          showDownload: false,
+          logoUrl: 'logo.jpeg'
         });
       },
       error: function(err) {
