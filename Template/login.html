@@ -19,6 +19,9 @@
 
   //Change this to change Application context
   $(document).ready(function() {
+    $.get( "http://box-heroku-token-generator/ping", function( data ) {
+      console.log( "hit to start" );
+    });
       sessionStorage.clear();
       $('#userlogin').on('submit', (function(ev) {
       $("#signbutton").hide();

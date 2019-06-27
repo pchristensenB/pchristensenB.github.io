@@ -101,6 +101,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
          });
         $("#saveAll").attr("disabled", false);
+        if(type=='')
         preview.hide();
         preview.show(fileId, token, {
             container: '#docView',
