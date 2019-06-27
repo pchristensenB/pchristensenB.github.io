@@ -11,6 +11,7 @@ function getDocumentInfo(id, token, type) {
         $("#docInfo").html("Document:" + response.name);
         preview.show(id, token, {
             container: '#docView',
+            header: 'dark',
             showDownload: true,
             contentSidebarProps: {
               hasMetadata: true,
