@@ -12,21 +12,35 @@
   <!-- Alternatively, use polyfills hosted on the Box CDN
     <script src="https://cdn01.boxcdn.net/polyfills/bluebird/3.5.1/bluebird.min.js"></script>
     -->
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
 
-  <!-- Latest version of Box Content Preview for en-US locale -->
-  <script src="https://cdn01.boxcdn.net/platform/preview/1.53.1/en-US/preview.js"></script>
-  <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/preview/1.53.1/en-US/preview.css" />
+    <link href="https://cdn01.boxcdn.net/platform/elements/10.1.0/en-US/preview.css" rel="stylesheet" type="text/css"></link>
+
+
+    <script src="https://cdn01.boxcdn.net/polyfills/core-js/2.5.3/core.min.js"></script>
+    <script src="https://cdn01.boxcdn.net/platform/elements/10.1.0/en-US/preview.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 </head>
 
 
 <script>
-var preview = new Box.Preview();
+var preview = new Box.ContentPreview();
   var lamdbaURL = 'https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator';
   var params = new URLSearchParams(window.location.search);
   var clientId = 'spdrql2rm149ip4n6ju4fgeuoby6wcml';
   $(document).ready(function() {
+    $(".copy").click(function(ev) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val("http://dev.box-portal-hiscox/file/" + params.get("fileId")).select();
+        document.execCommand("copy");
+        $temp.remove();
+    });
     $.ajax({
       method: 'get',
       url: lamdbaURL,
@@ -41,12 +55,24 @@ var preview = new Box.Preview();
       cache: false,
       success: function(response) {
         console.log("success:" + JSON.stringify(response));
-        preview = new Box.Preview();
-        preview.show(params.get('fileId'), response.token, {
+        preview = new Box.ContentPreview();
+        preview.show(params.get('fileId'), params.get('token'), {
           container: '.preview-container',
           header: 'dark',
           showDownload: false,
-          logoUrl: 'logo.jpeg'
+          logoUrl: 'logo.jpeg',
+          contentSidebarProps: {
+            detailsSidebarProps: {
+              hasNotices: true,
+              hasProperties: true,
+              hasAccessStats: true,
+              hasVersions: true
+            },
+            hasActivityFeed: true,
+            hasSkills: true,
+            hasMetadata: true
+          }
+
         });
       },
       error: function(err) {
@@ -56,10 +82,30 @@ var preview = new Box.Preview();
     });
   });
 </script>
+<style>
+.DraftEditor-editorContainer {
+  width: 250px;
+  height: 36px;
+}
+.aright {
+   width:100px;
 
-<body style="height:800px;">
-  <div style="height:800px;" class="preview-container"></div>
-  <span class="skype-button bubble" data-test="Hiscox" data-color="#000000" data-contact-id="live:kcorry80"></span>
+    padding:5px;
+    position:fixed;
+    right:250px;
+    top:0px;
+    cursor:copy;
+}
+</style>
+<body >
+  <div style="height:800px;margin-right:370px;" class="preview-container"></div>
+  <div class="aright">
+    <span  class='badge badge-danger badge-pill copy'>Copy portal link</span>
+  </div>
+  <span class="skype-button bubble" data-test="Hiscox" data-color="#000000" data-contact-id="live:kcorry80">
+
+
+  </span>
   <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
 
 

@@ -29,7 +29,7 @@
       ev.preventDefault();
       var userLogin = $("#userLogin").val();
       var pwd = $("#passLogin").val();
-      var urlParams = "clientId=" + clientId + "&userEmail=" + userLogin + "&password=" + pwd + "&requestedTokens=adminToken~userToken";
+      var urlParams = "clientId=" + clientId + "&userEmail=" + userLogin + "&password=" + pwd;
       $.ajax({
         method: 'get',
         url: "https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?" + urlParams,
@@ -39,7 +39,7 @@
           sessionStorage.setItem("accessToken",response.userToken);
           sessionStorage.setItem("userLogin",userLogin);
           sessionStorage.setItem("adminAccessToken",response.adminAccessToken);
-          sessionStorage.setItem("urlParams",urlParams);
+          sessionStorage.setItem("key",response.key);
           sessionStorage.setItem("ttl",response.ttl);
           window.location.replace(redirectAfterLoginPage);
         },
