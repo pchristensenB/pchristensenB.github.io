@@ -56,7 +56,7 @@ var preview = new Box.ContentPreview();
       success: function(response) {
         console.log("success:" + JSON.stringify(response));
         preview = new Box.ContentPreview();
-        preview.show(params.get('fileId'), params.get('token'), {
+        preview.show(params.get('fileId'),response.token, {
           container: '.preview-container',
           header: 'dark',
           showDownload: false,
