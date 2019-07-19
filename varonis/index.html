@@ -99,7 +99,7 @@ var preview = new Box.ContentPreview();
 
          if(folderId==data.item.id) {
            appendIt=true;
-           p.append($("<li class='pf' id='u_" + folderId + "'>"+data.accessible_by.login + " (" + data.role + ")</li>"));
+           p.append($("<li class='pf' id='u_" + folderId + "'>"+data.accessible_by.login + " (" + data.role + ") <span  class='badge badge-primary badge-pill remove'>x</span></li>"));
          }
          });
          if(appendIt) {
