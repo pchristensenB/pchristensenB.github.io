@@ -82,7 +82,9 @@ var preview = new Box.ContentPreview();
          }
 
        });
-
+       $(".remove").click(function(event) {
+         console.log("remove clicked");
+       });
      }});
  }
  function  getCollaborators(folderId,parentId) {
@@ -120,6 +122,11 @@ var preview = new Box.ContentPreview();
  }
  </style>
 <body>
+  <form>
+    <input type=checkbox id="check"/>
+    <label for=check>By checking this you confirm that you have reviewed the collaborators in the report</label>
+  </form>
+  <hr/>
    <ul class="init" id=""></ul>
 </body>
 </html>
