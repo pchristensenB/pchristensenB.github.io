@@ -72,14 +72,23 @@
 					                  },
 												    contentOpenWithProps: {
 						             			show: true
-						         				},
-														apiHost:'https://api1.box.com'
+						         				}
 
 					                },
 													requestInterceptor: testRequestInterceptor
 					            });
-											console.log(contentExplorer.component.api);
 
+										contentExplorer.addListener('select', (item) => {
+											console.log("item selected:" + item[0]);
+											var divs = document.getElementsByTagName('div');
+											for(i=0;i<divs.length;i++) {
+												//console.log(divs[i].className);
+												if(divs[i].className.includes('bce-item-row-selected')) {
+													console.log("this is my row - click it");
+													$(".bce-item-row-selected").find("button").trigger("click");
+												}
+											}
+										});
 											contentExplorer.addListener('preview', (item) => {
 												console.log("pr");
 
