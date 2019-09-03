@@ -85,7 +85,12 @@
 												//console.log(divs[i].className);
 												if(divs[i].className.includes('bce-item-row-selected')) {
 													console.log("this is my row - click it");
-													$(".bce-item-row-selected").find("button").trigger("click");
+												//$(".bce-item-row-selected").find("button").trigger("click");
+												try {
+													contentExplorer.component.setState({ isPreviewModalOpen: true });
+												}
+												catch(error) {
+													console.error(error);												}
 												}
 											}
 										});
