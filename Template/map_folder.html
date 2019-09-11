@@ -147,36 +147,35 @@
     var contentExplorer;
     var contentPreview;
     var curInfoWindow;
-    var camImage = '/Template/img/photo.png';
-    var vidImage = '/Template/img/video.png';
-    var docImage = '/Template/img/doc.png';
+    var icon = 'img/icons/';
     var curSW;
     var curNE;
 
-    var photoMarkerIcon = {
-      url: camImage,
-      scaledSize: new google.maps.Size(40, 40),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(22, 65)
-    };
-    var videoMarkerIcon = {
-      url: './Template/img/video.png',
-      scaledSize: new google.maps.Size(40, 40),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(22, 65)
-    };
-    var docMarkerIcon = {
-      url: docImage,
-      scaledSize: new google.maps.Size(40, 40),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(22, 65)
-    };
+
     var googleAPI = "AIzaSyCG5ojHo9enpA5mRRcmhPf0BOHwTMIAyAA";
     var myLatLng = {
       lat: lat,
       lng: lng
     };
+    function checkImage(imageSrc, good, bad) {
+    var img = new Image();
+    img.onload = good;
+    img.onerror = bad;
+    img.src = imageSrc;
+}
 
+  function getGenericIcon(name) {
+    var blank = "img/icons/blank.png";
+    var iconUrl = icon + name.split('.').pop().substring(0,3) + '.png';
+    //checkImage(iconUrl, function(){console.log("found image"); }, function(){ console.log("no image");iconUrl=blank; } );
+    console.log("icon:" + iconUrl);
+    return  {
+      url: iconUrl,
+      scaledSize: new google.maps.Size(40, 40),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(22, 65)
+    }
+  }
 
     class boxfile {
 
@@ -186,15 +185,7 @@
         this.lng = lng;
         this.id = id;
         this.marker;
-        this.markerIcon;
-        if (this.name.endsWith(".jpg") || this.name.endsWith(".jpeg") || this.name.endsWith(".png")) {
-          this.markerIcon = photoMarkerIcon;
-        } else if (this.name.endsWith(".mp4") || this.name.endsWith(".avi")) {
-          this.markerIcon = videoMarkerIcon;
-        }
-        else {
-          this.markerIcon=docMarkerIcon;
-        }
+        this.markerIcon=getGenericIcon(name);
         var self = this;
         var marker = new MarkerWithLabel({
           animation: google.maps.Animation.DROP,
