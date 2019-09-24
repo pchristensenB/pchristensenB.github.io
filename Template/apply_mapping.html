@@ -138,9 +138,10 @@
   //***** the map will show all files in this folder with the gps gpsCoordinates metadata template attached
   let searchParams = new URLSearchParams(window.location.search)
   var boxId=searchParams.get("boxId");
-  var lat=51.7;
-  var lng=0;
-    var startFolderId = boxId;
+  var zoomLevel=parseFloat(searchParams.get("zoomLevel"));
+  var lat=parseFloat(searchParams.get("lat"),10);
+  var lng=parseFloat(searchParams.get("lng"),10);
+  var startFolderId = boxId;
 
   //***********
     var accessToken;
@@ -169,40 +170,19 @@
   var applied=0;
   var failedApplied=0;
     $(document).ready(function() {
-      getAccessToken().then(function(result) {
-        console.log("t:" + result);
-        accessToken=result;
-        $.ajax({
-          url: 'https://api.box.com/2.0/folders/' + startFolderId +  '/items?fields=id,name,metadata.enterprise.gpsCoordinates',
-          type: 'get',
-          headers: {
-            "Authorization":"Bearer " + result,
-            "Content-Type":"application/json"
-          },
-          dataType: 'json',
-          success: function(response) {
-            console.log(response)
-            $.each(response.entries, function(k, data) {
-              var glyph='<i class="glyphicon glyphicon-thumbs-down"></i>';
-              if(data.metadata) {
-                glyph='<i class="glyphicon glyphicon-thumbs-up"></i>';
-              }
-              var listItem = $("<li class='list-group-item place' id='boxfileslist_" + data.id + "'> " + glyph + " " + data.name + "</li>");
-              $("#listboxfiles").append(listItem);
 
-            });
-
-          }});
-        });
-      $(".loaderE").hide();
 
       map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
+        zoom: zoomLevel,
         center: myLatLng
       });
 
 
       map.addListener('bounds_changed', function() {
+        var c = map.getCenter();
+        $("#lat").text("Center latitude:" + c.lat());
+        $("#lng").text("Center longitude:" + c.lng());
+        $("#z").text("Zoom Level:" + map.getZoom());
         //console.log("SW" + map.getBounds().getSouthWest().lat());
         //console.log("SW" + map.getBounds().getSouthWest().lng());
         //console.log("NE"+ map.getBounds().getNorthEast().lat());
@@ -219,10 +199,41 @@
         console.log(ev);
           processGPS(true);
       }));
+      loadData();
 
     });
+function loadData() {
+  $("#listboxfiles").empty();
+  getAccessToken().then(function(result) {
+    console.log("t:" + result);
+    accessToken=result;
+    $.ajax({
+      url: 'https://api.box.com/2.0/folders/' + startFolderId +  '/items?fields=id,name,metadata.enterprise.gpsCoordinates',
+      type: 'get',
+      headers: {
+        "Authorization":"Bearer " + result,
+        "Content-Type":"application/json"
+      },
+      dataType: 'json',
+      success: function(response) {
+        console.log(response)
+        $.each(response.entries, function(k, data) {
+          var glyph='<i class="glyphicon glyphicon-thumbs-down"></i>';
+          if(data.metadata) {
+            glyph='<i class="glyphicon glyphicon-thumbs-up"></i>';
+          }
+          var listItem = $("<li class='list-group-item place' id='boxfileslist_" + data.id + "'> " + glyph + " " + data.name + "</li>");
+          $("#listboxfiles").append(listItem);
 
+        });
+
+      }});
+    });
+  $(".loaderE").hide();
+}
     function processGPS(shouldDelete) {
+      $("#listboxfiles").empty();
+
       console.log(shouldDelete);
       var url;
       $(".loaderE").show();
@@ -246,9 +257,15 @@
         $.each(response.entries, function(k, data) {
           if(shouldDelete) {
               deleteGPSFromFile(data.id);
+              var glyph='<i class="glyphicon glyphicon-thumbs-down"></i>';
+              var listItem = $("<li class='list-group-item place' id='boxfileslist_" + data.id + "'> " + glyph + " " + data.name + "</li>");
+              $("#listboxfiles").append(listItem);
           }
           else {
             applyGpsToFile(data.id);
+            var glyph='<i class="glyphicon glyphicon-thumbs-up"></i>';
+            var listItem = $("<li class='list-group-item place' id='boxfileslist_" + data.id + "'> " + glyph + " " + data.name + "</li>");
+            $("#listboxfiles").append(listItem);
           }
         });
 
@@ -268,14 +285,16 @@
         data: data,
         dataType: 'json',
         success: function(response) {
-          console.log(response)
+          //console.log(response)
           applied++;
           $("#appl").html("Applied to " + applied + " docs");
+
         },
       error: function() {
         failedApplied++;
         $("#fappl").html("Failed to apply to " + failedApplied + " docs");
       }});
+      applied=0;
     }
     function deleteGPSFromFile(id) {
       $.ajax({
@@ -290,6 +309,7 @@
 
         }
         });
+        applied=0;
     }
     function getRandomLat() {
       var min = map.getBounds().getNorthEast().lat();
@@ -326,6 +346,9 @@
               <label>Delete GPS on all files</label>
               <button id="delete" class="glyphicon glyphicon-play-circle submitbutton" type="submit" value="Delete GPS to all files" ></button>
             </form>
+            <div id="lat"></div>
+            <div id="lng"></div>
+            <div id="z"></div>
 
           </div>
           <br/>

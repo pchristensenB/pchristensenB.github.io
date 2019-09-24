@@ -8,6 +8,7 @@
 
   <!-- polyfill.io only loads the polyfills your browser needs -->
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Intl"></script>
+  <script src="config.json"></script>
   <script src="js/box.js"></script>
   <!-- Alternatively, use polyfill hosted on the Box CDN
     <script src="https://cdn01.boxcdn.net/polyfills/core-js/2.5.3/core.min.js"></script>
@@ -29,7 +30,7 @@
       getAccessToken().then(function(result) {
         contentExplorer.show(boxId, result, {
         container: '.container',
-        logoUrl: 'logo-small.png',
+        logoUrl: 'sidebar-image.jpeg',
         canDownload: false,
         canDelete: false,
         canRename: false,

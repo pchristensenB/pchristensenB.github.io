@@ -52,9 +52,10 @@ var navigation=[
       "boxId":"0"
   },
   {
-      "page":"openwith.html",
-      "title":"OPENWITH",
-      "boxId":"0"
+    "page":"move.html",
+    "title":"MOVE",
+    "boxId":"0",
+    "boxId2":"0",
   },
   {
       "page":"uploader.html",
@@ -65,8 +66,9 @@ var navigation=[
         "page":"map_folder.html",
         "title":"MAP",
         "boxId":"81642016647",
-        "latitude":51.4934,
-        "longitude":0.0098
+        "latitude":51.533772570045016,
+        "longitude":-0.09330533022541276,
+        "zoomLevel":10
     }
 
 
