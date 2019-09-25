@@ -5,6 +5,8 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
 <head>
+  <meta http-equiv="Cache-control" content="no-cache">
+
   <meta charset="UTF-8">
   <title>Box Platform - Template Application</title>
 
@@ -19,8 +21,8 @@
 
   //Change this to change Application context
   $(document).ready(function() {
-    $.get( "https://box-heroku-token-generator.herokuapp.com/index.html", function( data ) {
-      console.log( "hit to start" );
+    $.get( "https://box-heroku-token-generator.herokuapp.com/ping", function( data ) {
+      console.log( "Prelogin startup time" + data );
     });
       sessionStorage.clear();
       $('#userlogin').on('submit', (function(ev) {
@@ -33,6 +35,7 @@
       $.ajax({
         method: 'get',
         url: "https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?" + urlParams,
+        //url: "http://localhost:5000/jwttokengenerator?" + urlParams,
         crossDomain: true,
         cache: false,
         success: function(response) {
@@ -41,6 +44,7 @@
           sessionStorage.setItem("adminAccessToken",response.adminAccessToken);
           sessionStorage.setItem("key",response.key);
           sessionStorage.setItem("ttl",response.ttl);
+          sessionStorage.setItem("urlParams",urlParams);
           window.location.replace(redirectAfterLoginPage);
         },
         error: function(err) {

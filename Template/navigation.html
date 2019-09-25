@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta http-equiv="Cache-control" content="no-cache">
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,7 +26,7 @@
        $.each(navigation, function(k, data) {
          console.log(k + ":" + data.boxId);
          active = (k==0?"active":"");
-         $(".navbar-nav").append('<li class="nav-item ' + active + '"><a class="nav-link waves-effect waves-light" href="' + data.page + '?boxId=' + data.boxId + '" target="main">' + data.title + '<span class="sr-only">(current)</span></a></li>');
+         $(".navbar-nav").append('<li class="nav-item ' + active + '"><a class="nav-link waves-effect waves-light" href="' + data.page + '?boxId=' + data.boxId + '&boxId2=' + data.boxId2 + '&latitude=' + data.latitude + '&longitude=' + data.longitude + '&zoomLevel=' + data.zoomLevel + '" target="main">' + data.title + '<span class="sr-only">(current)</span></a></li>');
        })
     });
    </script>
@@ -110,6 +111,9 @@
       <form class="form-inline">
         <div class="md-form my-0">
           <input class="form-control mr-sm-2" type="text" placeholder="SEARCH" aria-label="Search">
+
+            <a class="nav-link waves-effect waves-light" href="login.html" target="_top">LOGOUT</a>
+
         </div>
       </form>
     </div>
