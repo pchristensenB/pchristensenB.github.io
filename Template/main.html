@@ -9,11 +9,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
+let searchParams = new URLSearchParams(window.location.search)
+var page=searchParams.get("page");
+
   $(document).ready(function() {
-    $.each(navigation, function(k, data) {
-       $("#main").attr("src",data.page + "?boxId=" + data.boxId);
-       return false;
-    });
+    if(page!=null) {
+      $.each(navigation, function(k, data) {
+        if(data.page==page) {
+           $("#main").attr("src",data.page + "?boxId=" + data.boxId);
+           return false;
+         }
+      })
+    }
+    else {
+      $.each(navigation, function(k, data) {
+         $("#main").attr("src",data.page + "?boxId=" + data.boxId);
+         return false;
+      })
+    };
   });
 
 </script>

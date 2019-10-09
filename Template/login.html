@@ -18,7 +18,9 @@
 <script type="text/javascript" src="config.json"></script>
 
 <script>
-
+let searchParams = new URLSearchParams(window.location.search)
+var page=searchParams.get("page");
+console.log(page);
   //Change this to change Application context
   $(document).ready(function() {
     $.get( "https://box-heroku-token-generator.herokuapp.com/ping", function( data ) {
@@ -45,7 +47,7 @@
           sessionStorage.setItem("key",response.key);
           sessionStorage.setItem("ttl",response.ttl);
           sessionStorage.setItem("urlParams",urlParams);
-          window.location.replace(redirectAfterLoginPage);
+          window.location.replace(redirectAfterLoginPage + (page==null?"":"?page=" + page));
         },
         error: function(err) {
           console.log(JSON.stringify(err));
