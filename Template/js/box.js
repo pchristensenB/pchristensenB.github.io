@@ -50,3 +50,15 @@ function login(page,urlParams) {
 function redirect(page) {
   window.location.replace(page);
 }
+function getPageData() {
+  var path = window.location.pathname;
+  var page = path.split("/").pop();
+  var pageData = [];
+  $.each(navigation, function(k, data) {
+    console.log(page==data.page);
+    if(page==data.page) {
+      pageData = data;
+    }
+  });
+  return pageData;
+}

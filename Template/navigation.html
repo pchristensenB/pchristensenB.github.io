@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 
 <head>
@@ -26,7 +26,8 @@
        $.each(navigation, function(k, data) {
          console.log(k + ":" + data.boxId);
          active = (k==0?"active":"");
-         $(".navbar-nav").append('<li class="nav-item ' + active + '"><a class="nav-link waves-effect waves-light" href="' + data.page + '?boxId=' + data.boxId + '&boxId2=' + data.boxId2 + '&latitude=' + data.latitude + '&longitude=' + data.longitude + '&zoomLevel=' + data.zoomLevel + '" target="main">' + data.title + '<span class="sr-only">(current)</span></a></li>');
+         //var urlParam = '?boxId=' + data.boxId + '&boxId2=' + data.boxId2 + '&latitude=' + data.latitude + '&longitude=' + data.longitude + '&zoomLevel=' + data.zoomLevel + '&templateKey=' + data.templateKey  + '&eid=' + data.eid;
+         $(".navbar-nav").append('<li class="nav-item ' + active + '"><a class="nav-link waves-effect waves-light" href="' + data.page + '" target="main">' + data.title + '<span class="sr-only">(current)</span></a></li>');
        })
     });
    </script>

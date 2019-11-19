@@ -20,8 +20,8 @@
 <body>
     <div class="preview-container" style="height:90vh; width:100vw;" align="center";></div>
     <script>
-    let searchParams = new URLSearchParams(window.location.search)
-    var boxId=searchParams.get("boxId");
+    var pageData = getPageData();
+    var boxId=pageData.boxId;
 
         var preview = new Box.Preview();
         getAccessToken().then(function(result) {

@@ -52,6 +52,11 @@ var navigation=[
       "boxId":"0"
   },
   {
+      "page":"openwith.html",
+      "title":"OPENWITH",
+      "boxId":"0"
+  },
+  {
     "page":"move.html",
     "title":"MOVE",
     "boxId":"0",
@@ -62,6 +67,14 @@ var navigation=[
       "title":"UPLOADER",
       "boxId":"0"
   },
+  {
+      "page":"metadataform.html",
+      "title":"FORM",
+      "boxId":"92328338950",
+      "templateKey":"invoiceStrucutured",
+      "eid":"47757585"
+  },
+
   {
         "page":"map_folder.html",
         "title":"MAP",

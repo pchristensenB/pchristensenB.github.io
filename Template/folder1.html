@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="Cache-control" content="No-Cache">
   <title>Box Platform - Template Application</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -24,13 +25,13 @@
   <script src="https://cdn01.boxcdn.net/platform/elements/10.0.0/en-US/explorer.js"></script>
   <script>
     //var folderId = '73553726252';
-    let searchParams = new URLSearchParams(window.location.search)
-    var boxId=searchParams.get("boxId");
+    var pageData = getPageData();
+    var boxId=pageData.boxId;
     var contentExplorer = new Box.ContentExplorer();
       getAccessToken().then(function(result) {
         contentExplorer.show(boxId, result, {
         container: '.container',
-        logoUrl: 'sidebar-image.jpeg',
+        //logoUrl: 'sidebar-image.jpeg',
         canDownload: false,
         canDelete: false,
         canRename: false,

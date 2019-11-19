@@ -20,10 +20,9 @@
 <body>
 
   <script>
-  let searchParams = new URLSearchParams(window.location.search)
-
-    const folderIdA = searchParams.get("boxId");
-    const folderIdB = searchParams.get("boxId2");
+    var pageData = getPageData();
+    const folderIdA = pageData.boxId;
+    const folderIdB = pageData.boxId2;
     const explorerA = new Box.ContentExplorer();
     const explorerB = new Box.ContentExplorer();
     var sourceId;

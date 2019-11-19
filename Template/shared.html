@@ -18,8 +18,8 @@
     <!-- Latest version of the explorer js for your locale -->
     <script src="https://cdn01.boxcdn.net/platform/elements/10.0.0/en-US/explorer.js"></script>
     <script>
-    let searchParams = new URLSearchParams(window.location.search)
-    var boxId=searchParams.get("boxId");
+    var pageData = getPageData();
+    var boxId=pageData.boxId;
     var contentExplorer = new Box.ContentExplorer();
       getAccessToken().then(function(result) {
         contentExplorer.show(boxId, result, {

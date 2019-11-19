@@ -132,11 +132,12 @@
 
   //***** please enter the starting folder mapping ***
   //***** the map will show all files in this folder with the gps gpsCoordinates metadata template attached
-  let searchParams = new URLSearchParams(window.location.search)
-  var boxId=searchParams.get("boxId");
-  var zoomLevel=parseFloat(searchParams.get("zoomLevel"));
-  var lat=parseFloat(searchParams.get("latitude"),10);
-  var lng=parseFloat(searchParams.get("longitude"),10);
+  var pageData = getPageData();
+
+  var boxId=pageData.boxId;
+  var zoomLevel=parseFloat(pageData.zoomLevel,10);
+  var lat=parseFloat(pageData.latitude,10);
+  var lng=parseFloat(pageData.longitude,10);
   var startFolderId = boxId;
 
   //***********
@@ -144,8 +145,6 @@
     var markersArray = [];
     var markersArrayFiles = [];
     var cases = new Map();
-    var currentCaseList;
-    var currentBoxFileList;
     var map;
     var contentExplorer;
     var contentPreview;

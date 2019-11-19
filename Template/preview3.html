@@ -19,8 +19,8 @@
     <script>
       var contentPreview = new Box.ContentPreview();
 
-      let searchParams = new URLSearchParams(window.location.search)
-      var boxId = searchParams.get("boxId");
+      var pageData = getPageData();
+      var boxId=pageData.boxId;
 
       var preview = new Box.ContentPreview();
       getAccessToken().then(function(result) {

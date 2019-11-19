@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <meta charset="utf-8" />
+<meta http-equiv="Cache-control" content="No-Cache">
 <title>Box Platform - Template Application</title>
 <!DOCTYPE html>
 
@@ -17,10 +18,11 @@
   <body>
     <div class="container" style="height:90vh; width:100vw;"></div>
     <script>
+      var pageData = getPageData();
       var contentExplorer = new Box.ContentExplorer();
       //get folder id
       let searchParams = new URLSearchParams(window.location.search)
-      var boxId = searchParams.get("boxId");
+      var boxId = pageData.boxId
 
       //load explorer with token
       var contentExplorer = new Box.ContentExplorer();

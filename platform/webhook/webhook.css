@@ -1,0 +1,16 @@
+.folderChooser {
+  height:400px;
+}
+
+.custom-control-label {
+  width:150px;
+}
+#webhookPayload {
+  height:500px;
+}
+#events {
+  font-size: 10px;
+}
+.wloader,.eloader {
+  display:none;
+}

@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="Cache-control" content="No-Cache">
   <title>Box Platform - Template Application</title>
 
   <!-- polyfill.io only loads the polyfills your browser needs -->
@@ -28,8 +29,8 @@
   <!-- Latest version of the explorer js for your locale -->
   <script>
     //get folder id
-    let searchParams = new URLSearchParams(window.location.search)
-    var boxId=searchParams.get("boxId");
+    var pageData = getPageData();
+    var boxId=pageData.boxId;
 
     //load explorer with token
     var contentExplorer = new Box.ContentExplorer();
