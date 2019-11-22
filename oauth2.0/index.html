@@ -21,7 +21,6 @@
         data: {authCode:params.get('auth'),id:params.get('id'),clientId:params.get('clientId')},
         crossDomain: true,
         cache: false,
-        ,
         success: function(response) {
           console.log(response);
           $("#text").append("<li>AuthCode: " + params.get('auth') + "</li>");
