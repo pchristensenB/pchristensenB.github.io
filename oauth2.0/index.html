@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Box OAuth2.0 Template</title>
+  <!-- for-mobile-apps -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+  <script>
+
+    $(document).ready(function() {
+      var params = new URLSearchParams(window.location.search);
+
+      $.ajax({
+        method: 'get',
+        url: "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator",
+        data: {authCode:params.get('auth'),id:params.get('id'),clientId:params.get('clientId')},
+        crossDomain: true,
+        cache: false,
+
+        },
+        success: function(response) {
+          console.log(response);
+          $("#text").append("<li>AuthCode: " + params.get('auth') + "</li>");
+          $("#text").append("<li>ClientId: " + params.get('auth') + "</li>");
+          $("#text").append("<li>Token: " +response.token + "</li>");
+          $("#text").append("<li>Refresh Token: " + response.refreshToken + "</li>");
+        },
+        error: function(err) {
+          console.log(JSON.stringify(err));
+          console.log("error:" + err.message);
+
+        }
+      });
+
+    });
+
+
+  </script>
+
+</head>
+
+<body>
+
+
+  <ul id="text"></ul>
+</html>
