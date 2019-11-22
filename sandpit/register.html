@@ -115,7 +115,9 @@ function getMessage(id) {
 
 }
 
+
   $(document).ready(function() {
+
     $("#loadExisting").click(function(ev) {
       $('#myModal').modal("show");
     });
@@ -207,6 +209,10 @@ function getMessage(id) {
       ev.preventDefault();
       uploadFiles(this);
     }));
+    var params = new URLSearchParams(window.location.search);
+    var page = params.get("page");
+    console.log(page);
+    $("#" + page).trigger("click");
   });
 
   function uploadFiles(form, type) {
@@ -262,9 +268,9 @@ function getMessage(id) {
     <div class="row">
       <div class="col-8">
         <ul class="tabs">
-          <li class="tab-link current" data-tab="tab-1">JWT Config file upload</li>
-          <li class="tab-link" data-tab="tab-2">JWT with Skills upload</li>
-          <li class="tab-link" data-tab="tab-3">OAuth 2.0 client/secret</li>
+          <li class="tab-link current" data-tab="tab-1" id="jwt">JWT Config file upload</li>
+          <li class="tab-link" data-tab="tab-2" id="jwtskills">JWT with Skills upload</li>
+          <li class="tab-link" data-tab="tab-3" id="oauth2">OAuth 2.0 client/secret</li>
         </ul>
         <form id="uploadfilesJWT" action="#" method="post">
           <input type="hidden" value="jwt" name="type" />
