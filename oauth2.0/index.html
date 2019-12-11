@@ -15,13 +15,16 @@
 
     $(document).ready(function() {
       var params = new URLSearchParams(window.location.search);
-
+      var code = params.get('auth');
+      if(code==null) {
+        code = params.get('code');
+      }
       $.ajax({
         method: 'get',
         url: "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator",
         //url:"https://dik4ogwqph.execute-api.eu-west-2.amazonaws.com/default/box-node-token-generator",
 
-      data: {authCode:params.get('auth'),id:params.get('id'),clientId:params.get('clientId')},
+      data: {authCode:code,id:params.get('id'),clientId:params.get('clientId')},
         crossDomain: true,
         cache: false,
         success: function(response) {
