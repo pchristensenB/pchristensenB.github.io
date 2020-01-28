@@ -145,7 +145,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         method: 'get',
         url: "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator",
         //url:"https://dik4ogwqph.execute-api.eu-west-2.amazonaws.com/default/box-node-token-generator",
-        data: {authCode:params.get('auth'),id:params.get('id'),clientId:params.get('clientId')},
+        data: {authCode:params.get('auth'),id:params.get('id'),clientId:params.get('clientId'),saClientId:params.get('saClientId')},
         crossDomain: true,
         cache: false,
         beforeSend: function() {
