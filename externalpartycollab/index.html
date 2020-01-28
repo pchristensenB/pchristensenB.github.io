@@ -162,7 +162,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           token = response.token;
           sToken = response.saToken;
           getDocumentInfo(fileId, token, type);
-          getGroups(sToken);
+          getGroups(token);
           getCollaborators(fileId, token);
         },
         error: function(err) {
