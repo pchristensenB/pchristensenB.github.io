@@ -54,7 +54,7 @@
           gaccessToken = response.token;
           loadBookmarks();
           $("#preview-container").show();
-          console.log("selected item:" + sessionStorage.getItem('selectedId'));
+          console.log("gaccessToken:" + gaccessToken);
           preview.show(gfileId, gaccessToken, {
             container: '.preview-container',
             showDownload: false
