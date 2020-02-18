@@ -142,8 +142,10 @@
           $("#spinner").attr("src", "tick.png");
           $("#spinner").fadeOut(1500, function (ev) {
             $("#save-bookmark").show();
-
           });
+          var el = document.querySelector('.badge-success');
+          el.classList.remove('badge-success');
+          el.classList.add('badge-primary');
           console.log(response);
           i++;
 
