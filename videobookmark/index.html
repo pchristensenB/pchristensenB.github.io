@@ -111,9 +111,6 @@
           if ($(this).attr('uid')) {
             if (!$(this).is(":hidden")) {
               data += delim + '{"text":"' + $(this).attr('bk') + '","type":"text",';
-              //var bkName = $('#v_' + $(this).attr('uid'));
-              //var startSpan = $('#start_' + $(this).attr('uid'));
-              //var endSpan = $('#end_' + $(this).attr('uid'));
               data += '"appears":[{"start":' + $('#start_' + $(this).attr('uid')).text() + ',"end":' + $('#end_' + $(this).attr('uid')).text() + '}]}';
               delim = ",";
             }
@@ -170,9 +167,7 @@
         },
         cache: false,
         success: function (response) {
-          console.log(response);
           $.each(response.cards[0].entries, function (k, data) {
-            console.log(data);
             $(".bookmarks").append("<li uid=" + i + " id=v_" + i + " class='list-group-item d-flex justify-content-between align-items-center ital' bk='" + data.text + "'>" + data.text + "</span><span id='start_" + i + "' class='badge badge-primary badge-pill'>" + data.appears[0].start + "</span><span id='end_" + i + "' class='badge badge-warning badge-pill'>" + data.appears[0].end + "</span><span  class='badge badge-primary badge-pill remove'>x</span></li>")
             i++;
           });

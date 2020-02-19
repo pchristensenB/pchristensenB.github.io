@@ -29,6 +29,13 @@
 
 
 <script>
+  var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+  function linkify(text) {
+    var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    return text.replace(urlRegex, function(url) {
+        return '<a href="' + url + '" target=_new>' + url + '</a>';
+    });
+}
 function checkMessages() {
     $.ajax({
       method: 'get',
@@ -45,7 +52,7 @@ function checkMessages() {
 
         //$("#init"),append("<li>"+response.messsage + "</li>");
       $.each(JSON.parse(response), function(k, data) {
-          $(".init").append("<li>"+data + "</li>");
+          $(".init").append("<li>"+linkify(data) + "</li>");
         })
       },
       error: function(err) {
@@ -63,6 +70,6 @@ window.setInterval(function() {
 <body>
 
   <hr/>
-   <ul class="init" id=""></ul>
+   <ol class="init" id=""></ol>
 </body>
 </html>
