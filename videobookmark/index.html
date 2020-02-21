@@ -25,7 +25,7 @@
     var params = new URLSearchParams(window.location.search);
     var token;
     var sToken;
-    var gfileId = params.get("id");//'616602480087';//sessionStorage.getItem('selectedId');
+    var gfileId = params.get("id");//'620881957539';
     var gaccessToken = 'Cbnn4g38xhmZwvGu2m5M0VOcSLaaGi2T';//sessionStorage.getItem('accessToken');
     var inPause = false;
     var i = 0;
@@ -36,7 +36,7 @@
       $.ajax({
         method: 'get',
         url: "https://bl2vhdoqzh.execute-api.eu-west-2.amazonaws.com/default/box-tokengenerator",
-        //url:"https://dik4ogwqph.execute-api.eu-west-2.amazonaws.com/default/box-node-token-generator",
+        //url:"https://pchristensenb.github.io/Template/login.html",
         data: { authCode: params.get('auth'), id: params.get('id'), clientId: params.get('clientId') },
         crossDomain: true,
         cache: false,
@@ -65,7 +65,6 @@
 
           });
           preview.addListener('pause', (data) => {
-            //set random Value
             if (inPause) {
               $("#bookmarkendtime").val(Math.round(preview.viewer.mediaEl.currentTime * 100) / 100);
             }
@@ -91,10 +90,12 @@
       });
 
       $("#submitbutton-bookmark").on('click', function (e) {
+        i++;
         $(".bookmarks").append("<li uid=" + i + " id=v_" + i + " class='list-group-item d-flex justify-content-between align-items-center ital' bk='" + $("#bookmarkname").val() + "'>" + $("#bookmarkname").val() + "</span><span id='start_" + i + "' class='badge badge-success badge-pill'>" + $("#bookmarkstarttime").val() + "</span><span id='end_" + i + "' class='badge badge-success badge-pill'>" + $("#bookmarkendtime").val() + "</span><span  class='badge badge-success badge-pill remove'>x</span></li>")
         $("#bookmarkstarttime").val("0.00");
         $("#bookmarkendtime").val("0.00");
-
+        $("#bookmarkname").val("")
+         inPause=false; 
         $(".remove").click(function (event) {
           console.log("remove clicked");
           $(this).parent('li').removeClass('d-flex').hide('slow');
