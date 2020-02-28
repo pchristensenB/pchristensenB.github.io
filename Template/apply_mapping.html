@@ -112,8 +112,8 @@
   <script src="https://cdn01.boxcdn.net/platform/preview/1.53.1/en-US/preview.js"></script>
   <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/preview/1.53.1/en-US/preview.css" />
 
-  <script src="https://cdn01.boxcdn.net/platform/elements/6.0.0/en-US/explorer.js"></script>
-  <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/6.0.0/en-US/explorer.css" />
+  <script src="https://cdn01.boxcdn.net/platform/elements/11.0.0/en-US/explorer.js"></script>
+  <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/11.0.0/en-US/explorer.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
   <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
@@ -209,7 +209,7 @@ function loadData() {
     console.log("t:" + result);
     accessToken=result;
     $.ajax({
-      url: 'https://api.box.com/2.0/folders/' + startFolderId +  '/items?fields=id,name,metadata.enterprise.gpsCoordinates',
+      url: 'https://api.box.com/2.0/folders/' + startFolderId +  '/items?fields=id,name,type,metadata.enterprise.gpsCoordinates',
       type: 'get',
       headers: {
         "Authorization":"Bearer " + result,
@@ -239,7 +239,7 @@ function loadData() {
       var url;
       $(".loaderE").show();
       var useThisFolder = startFolderId;
-      url = 'https://api.box.com/2.0/folders/' + startFolderId + '/items?fields=name,id&type=file';
+      url = 'https://api.box.com/2.0/folders/' + startFolderId + '/items?fields=name,id,type';
       console.log(url);
       var settings = {
         "async": true,
@@ -257,13 +257,13 @@ function loadData() {
         $("#fappl").show();
         $.each(response.entries, function(k, data) {
           if(shouldDelete) {
-              deleteGPSFromFile(data.id);
+              deleteGPSFromFile(data.id,data.type);
               var glyph='<i class="glyphicon glyphicon-thumbs-down"></i>';
               var listItem = $("<li class='list-group-item place' id='boxfileslist_" + data.id + "'> " + glyph + " " + data.name + "</li>");
               $("#listboxfiles").append(listItem);
           }
           else {
-            applyGpsToFile(data.id);
+            applyGpsToFile(data.id,data.type);
             var glyph='<i class="glyphicon glyphicon-thumbs-up"></i>';
             var listItem = $("<li class='list-group-item place' id='boxfileslist_" + data.id + "'> " + glyph + " " + data.name + "</li>");
             $("#listboxfiles").append(listItem);
@@ -273,11 +273,11 @@ function loadData() {
       });
       $(".loaderE").hide();
     }
-    function applyGpsToFile(id) {
+    function applyGpsToFile(id,type) {
       var data = "{\"latitudeNumber\": " + getRandomLat() + "," +
         "\"longitudeNumber\": " + getRandomLng() + "}";
       $.ajax({
-        url: 'https://api.box.com/2.0/files/' + id +  '/metadata/enterprise/gpsCoordinates',
+        url: 'https://api.box.com/2.0/' + type + 's/' + id +  '/metadata/enterprise/gpsCoordinates',
         type: 'post',
         headers: {
           "Authorization":"Bearer " + accessToken,
@@ -297,9 +297,9 @@ function loadData() {
       }});
       applied=0;
     }
-    function deleteGPSFromFile(id) {
+    function deleteGPSFromFile(id,type) {
       $.ajax({
-        url: 'https://api.box.com/2.0/files/' + id +  '/metadata/enterprise/gpsCoordinates',
+        url: 'https://api.box.com/2.0/' + type + 's/' + id +  '/metadata/enterprise/gpsCoordinates',
         type: 'delete',
         headers: {
           "Authorization":"Bearer " + accessToken

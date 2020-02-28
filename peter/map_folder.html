@@ -166,15 +166,7 @@
     img.src = imageSrc;
 }
 
-  function getGenericIcon(name,type) {
-    if(type=='folder') {
-      return  {
-      url: "img/icons/folder.png",
-      scaledSize: new google.maps.Size(40, 40),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(22, 65)
-    }
-    }
+  function getGenericIcon(name) {
     var blank = "img/icons/blank.png";
     var iconUrl = icon + name.split('.').pop().substring(0,3) + '.png';
     //checkImage(iconUrl, function(){console.log("found image"); }, function(){ console.log("no image");iconUrl=blank; } );
@@ -189,14 +181,13 @@
 
     class boxfile {
 
-      constructor(name, id, lat, lng,boxtype) {
+      constructor(name, id, lat, lng) {
         this.name = name;
         this.lat = lat;
         this.lng = lng;
         this.id = id;
-        this.boxtype=boxtype;
         this.marker;
-        this.markerIcon=getGenericIcon(name,boxtype);
+        this.markerIcon=getGenericIcon(name);
         var self = this;
         var marker = new MarkerWithLabel({
           animation: google.maps.Animation.DROP,
@@ -227,26 +218,14 @@
           infoWindow.setContent($infoWindowContent[0]);
           infoWindow.open(map, marker);
           google.maps.event.addListener(infoWindow, 'domready', function() {
-            if(self.boxtype=='folder') {
-              if (contentExplorer) {
-                contentExplorer.hide();
-                contentExplorer.clearCache();
-              }
-              contentExplorer = new Box.ContentExplorer();
-              contentExplorer.show(self.id, sessionStorage.getItem('accessToken'), {
-                container: '.content_' + self.id,
-              });
+            if (contentPreview) {
+              contentPreview.hide();
+              //contentPreview.clearCache();
             }
-            else {
-              if (contentPreview) {
-                contentPreview.hide();
-                //contentPreview.clearCache();
-              }
-              contentPreview = new Box.Preview();
-              contentPreview.show(self.id, sessionStorage.getItem('accessToken'), {
-                container: '.content_' + self.id,
-              });
-            }
+            contentPreview = new Box.Preview();
+            contentPreview.show(self.id, sessionStorage.getItem('accessToken'), {
+              container: '.content_' + self.id,
+            });
           });
           //select case
           if (currentBoxFileList) {
@@ -301,7 +280,7 @@
       var url;
       $(".loaderE").show();
       var useThisFolder = startFolderId;
-      url = 'https://api.box.com/2.0/folders/' + startFolderId + '/items?fields=name,id,type,metadata.enterprise.case,metadata.enterprise.gpsCoordinates';
+      url = 'https://api.box.com/2.0/folders/' + startFolderId + '/items?fields=name,id,metadata.enterprise.case,metadata.enterprise.gpsCoordinates&type=file';
       console.log(url);
       var settings = {
         "async": true,
@@ -317,7 +296,7 @@
         var i = 0;
         $.each(response.entries, function(k, data) {
           if(data.metadata && checkMap(data.metadata.enterprise.gpsCoordinates,useMap)) {
-            var bf = new boxfile(data.name, data.id, data.metadata.enterprise.gpsCoordinates.latitudeNumber, data.metadata.enterprise.gpsCoordinates.longitudeNumber,data.type);
+            var bf = new boxfile(data.name, data.id, data.metadata.enterprise.gpsCoordinates.latitudeNumber, data.metadata.enterprise.gpsCoordinates.longitudeNumber);
             var listItem = $("<li class='list-group-item place' id='boxfileslist_" + bf.id + "'><i class='glyphicon glyphicon-document'></i> " + bf.name + "</li>");
             listItem.on("click", function(event) {
               google.maps.event.trigger(bf.marker, 'click', {
