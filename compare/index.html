@@ -35,7 +35,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           data: {authCode:params.get('auth'),id:params.get('id'),clientId:params.get('clientId')},
           crossDomain: true,
           timeout:120000,
-          dataType:'jsonp',
           cache: false,
           beforeSend: function() {
               $('#loader').show();
