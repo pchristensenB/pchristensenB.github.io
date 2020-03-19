@@ -45,22 +45,24 @@
 
     });
     function runReport(token,id) {
-      $.ajax({
-        method: 'get',
-        url:"https://box-java-sandpit.herokuapp.com/csmetadata?token=" + token + "&id=" + id,
-        crossDomain: true,
-        cache: false,
-        success: function(response) {
-          $("#main").text(response);
-          
-        },
-        error: function(err) {
-          console.log(JSON.stringify(err));
-          console.log("error:" + err.message);
-          $("#main").innerHTML(JSON.stringify(err));
+      window.location.href = "https://box-java-sandpit.herokuapp.com/csmetadata?token=" + token + "&id=" + id;
 
-        }
-      });
+     // $.ajax({
+      //  method: 'get',
+      //  url:"https://box-java-sandpit.herokuapp.com/csmetadata?token=" + token + "&id=" + id,
+      //  crossDomain: true,
+      //  cache: false,
+      //  success: function(response) {
+       //   $("#main").text(response);
+          
+        //},
+       // error: function(err) {
+       //   console.log(JSON.stringify(err));
+         // console.log("error:" + err.message);
+         // $("#main").innerHTML(JSON.stringify(err));
+
+        //}
+     // });
     }
 
   </script>
@@ -71,7 +73,7 @@
 
 <div style="padding:50px" id="main">
 <img src="/Template/img/ajax-loader_t.gif" id="loader"></img>
-Generating metadata report - please wait
+Generating metadata report - please wait and it will download shortly
 </div>
  
 </html>
