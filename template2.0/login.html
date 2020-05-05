@@ -20,7 +20,7 @@
   <script>
     let searchParams = new URLSearchParams(window.location.search)
     var page = searchParams.get("page");
-    url = searchParams.get("tokenURL")==null?"https://box-tokengenerator-v2.herokuapp.com/tokengenerator":searchParams.get("tokenURL");
+    url = searchParams.get("tokenURL")==null?"https://box-tokengenerator-v2.herokuapp.com":searchParams.get("tokenURL");
     $(document).ready(function () {
       //To wake up heroku app
       $.get(url + "/ping", function (data) {

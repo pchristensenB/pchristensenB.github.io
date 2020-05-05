@@ -28,7 +28,7 @@ function writeUpdate(text) {
 
 function getToken(urlParams, callback, page) {
   return $.ajax({
-   url: url + '?',
+   url: url + '/tokengenerator?',
     headers: {},
     type: 'get',
     data: sessionStorage.getItem("key"),
