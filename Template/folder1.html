@@ -16,29 +16,49 @@
     -->
 
   <!-- Latest version of the explorer css for your locale -->
-  <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/10.0.0/en-US/explorer.css" />
+  <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/11.0.2/en-US/explorer.css" />
 </head>
 
 <body>
   <div class="container" style="height:90vh; width:100vw;"></div>
   <!-- Latest version of the explorer js for your locale -->
-  <script src="https://cdn01.boxcdn.net/platform/elements/10.0.0/en-US/explorer.js"></script>
+  <script src="https://cdn01.boxcdn.net/platform/elements/11.0.2/en-US/explorer.js"></script>
   <script>
-    //var folderId = '73553726252';
     var pageData = getPageData();
-    var boxId=pageData.boxId;
-    var contentExplorer = new Box.ContentExplorer();
-      getAccessToken().then(function(result) {
-        contentExplorer.show(boxId, result, {
-        container: '.container',
-        //logoUrl: 'sidebar-image.jpeg',
-        canDownload: true,
-        canDelete: true,
-        canRename: true,
-        canShare: true
-      });
+    var boxId = pageData.boxId;
+    var testResponseInterceptor = (config /* https://github.com/axios/axios#response-config */) => {
+      console.log(JSON.stringify(config));
+      if (config.response.status) {
+        if (config.response.status == '401') {
+          console.log("Hello 401 my old friend");
+        }
+        else {
+          console.log("NOT 401 ");
+        }
+      }
+      else {
+        console.log("NO status on response ");
+      }
 
+      return config;
+    };
+    sourceInterceptor = (response) => {
+      const responseString = JSON.stringify(response);
+      const is401 = responseString.match(/401/g);
+      console.log(is401);
+    }
+    var contentExplorer = new Box.ContentExplorer();
+    contentExplorer.show(boxId, '1235gh7c4hC2YuDfm3uYaBHDrFHmhw8AY2y', {
+      container: '.container',
+      logoUrl: 'logo-small.png',
+      canDownload: true,
+      canDelete: true,
+      canRename: true,
+      canShare: true,
+      responseInterceptor: testResponseInterceptor
     });
+    //});
+
   </script>
 </body>
 

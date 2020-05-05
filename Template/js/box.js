@@ -14,6 +14,7 @@
     else if(timeLeft<=10) {
       //Token expired - get new and await result
       console.log("calling with await as token is dead");
+      //showRefreshModal();
       await getToken(sessionStorage.getItem("urlParams"),writeUpdate,'get sync and wait');
     }
 
@@ -51,12 +52,14 @@ function redirect(page) {
   window.location.replace(page);
 }
 function getPageData() {
+  let searchParams = new URLSearchParams(window.location.search);
   var path = window.location.pathname;
+  var title = searchParams.get("title");
   var page = path.split("/").pop();
   var pageData = [];
   $.each(navigation, function(k, data) {
     console.log(page==data.page);
-    if(page==data.page) {
+    if(page==data.page && title==data.title) {
       pageData = data;
     }
   });

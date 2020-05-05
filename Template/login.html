@@ -37,8 +37,8 @@ console.log(page);
       var urlParams = "clientId=" + clientId + "&userEmail=" + userLogin + "&password=" + pwd;
       $.ajax({
         method: 'get',
-        url: "https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?" + urlParams,
-        //url: "http://localhost:5000/jwttokengenerator?" + urlParams,
+       // url: "https://box-heroku-token-generator.herokuapp.com/jwttokengenerator?" + urlParams,
+        url: "http://localhost:3000/tokengenerator?" + urlParams,
         crossDomain: true,
         cache: false,
         success: function(response) {

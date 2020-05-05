@@ -27,10 +27,10 @@ var navigation=[
       "boxId":"0"
   },
   {
-      "page":"folder3.html",
-      "title":"FOLD3",
-      "boxId":"0"
-  },
+    "page":"tree_local.html",
+    "title":"TREEVIEW",
+    "boxId":"110480609206"
+},
   {
       "page":"preview1.html",
       "title":"PREV1",
@@ -41,21 +41,7 @@ var navigation=[
       "title":"PREV2",
       "boxId":"0"
   },
-  {
-      "page":"preview3.html",
-      "title":"PREV3",
-      "boxId":"0"
-  },
-  {
-      "page":"preview4.html",
-      "title":"PREV4",
-      "boxId":"0"
-  },
-  {
-      "page":"openwith.html",
-      "title":"OPENWITH",
-      "boxId":"0"
-  },
+
   {
     "page":"move.html",
     "title":"MOVE",
@@ -71,7 +57,7 @@ var navigation=[
       "page":"metadataform.html",
       "title":"FORM",
       "boxId":"92328338950",
-      "templateKey":"invoiceStrucutured",
+      "templateKey":"case",
       "eid":"47757585"
   },
 
@@ -83,6 +69,14 @@ var navigation=[
         "longitude":-0.09330533022541276,
         "zoomLevel":10
     }
+    ,
 
-
+    {
+          "page":"search.html",
+          "title":"SEARCH",
+          "boxId":"102801900236",
+          "templateKey":"case",
+          "eid":"47757585"
+      }
+     
 ];
