@@ -27,8 +27,9 @@ function writeUpdate(text) {
 }
 
 function getToken(urlParams, callback, page) {
+  console.log("renwing from:" + sessionStorage.getItem("tokenURL"));
   return $.ajax({
-   url: url + '/tokengenerator?',
+   url:  sessionStorage.getItem("tokenURL") + '/tokengenerator?',
     headers: {},
     type: 'get',
     data: sessionStorage.getItem("key"),
