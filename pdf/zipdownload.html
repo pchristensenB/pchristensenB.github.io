@@ -93,7 +93,8 @@
             });
 
             $.ajax({
-                url: 'http://localhost:5000/pdfmerge?accessToken=' + accessToken + '&ids=' +ids,
+               // url: 'http://localhost:5000/pdfmerge?accessToken=' + accessToken + '&ids=' +ids,
+               url: 'https://box-java-sandpit.herokuapp.com/pdfmerge?accessToken=' + accessToken + '&ids=' +ids,
                 type: 'get',
                 success: function (response) {
                     console.log(response);
