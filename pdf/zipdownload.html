@@ -12,8 +12,7 @@
 
     <!-- polyfill.io only loads the polyfills your browser needs -->
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Intl"></script>
-    <script src="config.json"></script>
-    <script src="js/box.js"></script>
+
     <!-- Alternatively, use polyfill hosted on the Box CDN
     <script src="https://cdn01.boxcdn.net/polyfills/core-js/2.5.3/core.min.js"></script>
     -->
@@ -53,7 +52,10 @@
             error: function (err) {
                 console.log(JSON.stringify(err));
                 console.log("error:" + err.message);
-
+                filePicker.show('116954381026', accessToken, {
+                    container: '.fileChooser'
+                });
+                addListeners();
             }
         });
         $(".swap").click(function (event) {
@@ -82,22 +84,19 @@
 
         $(".zipper").click(function (event) {
             console.log("zipper clicked");
-            var ids = [];
+            var ids = '';
+            var number=0;
+            var delim=''
             $(".list-group-item").each(function (index) {
-                ids.push({ 'id': $(this).attr('id').substring(1), 'n': number++ });
+                ids +=delim + $(this).attr('id').substring(1)
+                delim='~';
             });
-            var payload = {
-                "items": ids,
-            }
-            console.log(JSON.stringify(payload));
 
             $.ajax({
-                url: 'http://localhost:5000/pdfmerger?accessToken=' + accessToken,
-                type: 'post',
-                data: JSON.stringify(payload),
+                url: 'http://localhost:5000/pdfmerge?accessToken=' + accessToken + '&ids=' +ids,
+                type: 'get',
                 success: function (response) {
                     console.log(response);
-                    window.location.href = response.download_url;
                 }
             })
         });
