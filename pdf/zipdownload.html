@@ -44,10 +44,10 @@
             success: function (response) {
                 console.log(response);
                 accessToken = response.token;
-                filePicker.show(boxId, result, {
-                container: '.fileChooser'
-            });
-            addListeners();
+                filePicker.show(params.get('id'), accessToken, {
+                    container: '.fileChooser'
+                });
+                addListeners();
 
             },
             error: function (err) {
@@ -92,7 +92,7 @@
             console.log(JSON.stringify(payload));
 
             $.ajax({
-                url: 'http://localhost:5000/pdfmerger?accessToken='+accessToken,
+                url: 'http://localhost:5000/pdfmerger?accessToken=' + accessToken,
                 type: 'post',
                 data: JSON.stringify(payload),
                 success: function (response) {
