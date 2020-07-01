@@ -85,6 +85,7 @@
         $(".zipper").click(function (event) {
             console.log("zipper clicked");
             $("#loader").show();
+            $(".zipper").hide();
             var ids = '';
             var number=0;
             var delim=''
@@ -99,7 +100,7 @@
                 type: 'get',
                 success: function (response) {
                     console.log(response);
-                    $(".zipper").hide();
+                    
                     $("#loader").hide();
                     $("#zipperMsg").text("PDFs merged and result saved in Box Folder")
                 }
@@ -149,7 +150,7 @@
             </div>
             <div class="col-md-4">
                 <button type="button" class="btn btn-primary zipper">Create and save merged PDF</button>
-                <img  id="loader" src="img/custom/progress_vertical_green.gif" style="display:none;" />
+                <img  id="loader" src="/template2.0/img/custom/progress_vertical_green.gif" style="display:none;" />
                 
                 <div id="zipperMsg" style="height:500px;"></div>
 
