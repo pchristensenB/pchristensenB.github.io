@@ -7,6 +7,9 @@
     <title>Box Platform - Template Application</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
@@ -24,9 +27,11 @@
 <script>
     var filePicker = new Box.FilePicker();
     //var folderPicker = new Box.FolderPicker();
-    var accessToken = "";
+    var accessToken = "Z0w3n8RTAgoPNNOhBbWEVXR0I5abZIQ0";
     var timer;
     $(document).ready(function () {
+        $( "#msg" ).sortable();
+        $( "#msg" ).disableSelection();
         var params = new URLSearchParams(window.location.search);
         var code = params.get('auth');
         if (code == null) {
