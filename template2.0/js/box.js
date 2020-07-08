@@ -9,7 +9,7 @@ async function getAccessToken() {
   //Update token if less than 4 mins left
   if (timeLeft < 240 && timeLeft > 10) {
     console.log("calling normally as we still have time");
-    getToken(sessionStorage.getItem("urlParams"), writeUpdate, 'get async');
+    getToken(sessionStorage.getItem("key"), writeUpdate, 'get async');
   }
   else if (timeLeft <= 10) {
     //Token expired - get new and await result
@@ -29,14 +29,12 @@ function writeUpdate(text) {
 function getToken(urlParams, callback, page) {
   console.log("renwing from:" + sessionStorage.getItem("tokenURL"));
   return $.ajax({
-   url:  sessionStorage.getItem("tokenURL") + '/tokengenerator?',
+   url:  sessionStorage.getItem("tokenURL") + '/tokengenerator?key=' + sessionStorage.getItem("key"),
     headers: {},
     type: 'get',
-    data: sessionStorage.getItem("key"),
     success: function (response) {
       console.log("accessToken:" + response.userToken);
       sessionStorage.setItem("accessToken", response.userToken);
-      sessionStorage.setItem("userLogin", userLogin);
       sessionStorage.setItem("userName", response.userName);
       sessionStorage.setItem("key", response.key);
       sessionStorage.setItem("ttl", response.ttl);

@@ -80,7 +80,19 @@
   var templateKey = pageData.templateKey;
   var contentUploader = new Box.ContentUploader();
   var fields = [];
+  var newFolderId;
   $(document).ready(function() {
+      $("#loader").hide();
+
+      var changeId = (config) => {
+      console.log(config.method);
+			if(config.method=='post') {
+        var tempAttr =JSON.parse(config.data.attributes); 
+        tempAttr.parent.id=newFolderId;
+        config.data.attributes = JSON.stringify(tempAttr);
+      }
+			return config;
+		};
     $('body').on('focus', ".datepicker", function() {
       $(this).datepicker({
         "dateFormat": "yy-mm-dd"
@@ -88,8 +100,13 @@
       //  $(this).datetimepicker();
     });
     $("#uploadfiles").on('submit', function(ev) {
-      $(".btn-primary").trigger("click");
       ev.preventDefault();
+      $("#loader").show();
+      $("#submit").hide();
+      //contentUploader.rootFolderId='116751117003';
+      createFolder().then(function(result) {
+        $(".btn-primary").trigger("click");
+      });      
     });
     getAccessToken().then(function(result) {
       accessToken = result;
@@ -107,7 +124,6 @@
               let cField = createMTField(data);
               console.log(cField);
               fields.push(cField);
-
               cField.postProcess();
             }
           });
@@ -123,16 +139,19 @@
         }
       });
       contentUploader.show(boxId, result, {
-        container: '.pcontainer'
+        container: '.pcontainer',
+        requestInterceptor: changeId
+
       });
     });
     contentUploader.addListener('onBeforeUpload', function(file) {
-      console.log(contentUploader);
-      contentUploader.id='116751117003';
       console.log("Before upload");
+      console.log(file);
+    });
+    contentUploader.addListener('OnInteraction', function(file) {
+      console.log("interaction");
     });
     contentUploader.addListener('complete', function(file) {
-      console.log(contentUploader);
       console.log("complete:" + JSON.stringify(file));
       var counter = 0;
       var target = file.length;
@@ -147,7 +166,7 @@
             console.log("string or enum check " + data.boxKey);
             formdata += delim + "\"" + data.boxKey + "\":\"" + $("#" + data.elementId).val() + "\"";
           } else if (data.dataType == 'Number') {
-            console.log("numbret checl" + data.boxKey);
+            console.log("number check" + data.boxKey);
             formdata += delim + "\"" + data.boxKey + "\":" + $("#" + data.elementId).val();
           } else if (data.dataType == 'Date') {
             console.log("date check" + data.boxKey);
@@ -179,6 +198,30 @@
       });
     });
   });
+  async function createFolder() {
+    var newFolderName='newname';
+    var data =  '{"name":"' + newFolderName + '","parent":{"id":"' + boxId + '"}}';
+    var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": "https://api.box.com/2.0/folders",
+          "method": "POST",
+          "headers": {
+            "Authorization": "Bearer " + accessToken,
+            "Content-Type": "application/json",
+            "Cache-Control": "no-cache"
+          },
+          "processData": false,
+          "data":data
+        };
+
+        $.ajax(settings).done(function(response) {
+          console.log(response.id);
+          newFolderId= response.id;
+
+        });
+
+  }
 </script>
 
 <body>
@@ -195,6 +238,7 @@
     <br>
       <form id="uploadfiles" action="#" method="get">
         <input type="submit" id="submit" value="Upload to Box" >
+        <img  id="loader" src="img/custom/progress_vertical_green.gif"  >
 
       </form>
     </div>

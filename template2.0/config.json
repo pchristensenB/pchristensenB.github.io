@@ -1,8 +1,7 @@
-//Client ID
 var clientId="bn2iyg37p78jkowrp0io0nc2ln0be3wt";
 
 //Main page
-var redirectAfterLoginPage="/template2.0/main_vertical.html";
+var redirectAfterLoginPage="/boxlocal.0/main_vertical.html";
 
 //Navigation
 var navigation=[
@@ -18,8 +17,8 @@ var navigation=[
       "boxId":"0"
   },
   {
-      "page":"folder2.html",
-      "title":"FOLDER 2",
+      "page":"folder3.html",
+      "title":"FOLDER 3",
       "boxId":"0"
   },
   {
@@ -30,15 +29,21 @@ var navigation=[
   {
       "page":"preview1.html",
       "title":"PREVIEW 1",
-      "boxId":"428392560865"
+      "boxId":"666393650356"
   },
   {
       "page":"preview2.html",
       "title":"PREVIEW 2",
-      "boxId":"0"
+      "boxId":"666393650356"
   },
   {
-    "page":"zipdownloader.html",
+    "page":"sign.html",
+    "title":"SIGN",
+    "boxId":"666393650356",
+    "targetFolderId":"113511488301"
+},
+  {
+    "page":"zipdownload.html",
     "title":"ZIP DOWNLOADER",
     "boxId":"0"
 },
@@ -54,23 +59,17 @@ var navigation=[
       "boxId":"0"
   },
   {
-      "page":"metadataform.html",
+      "page":"https://peter-demo.app.box.com/f/fc0a2a975dd7431bb9681e528a69b4b7",
+      "title":"FILE REQUEST UPLOAD"
+  },
+  {
+      "page":"metadataformWithFolder.html",
       "title":"UPLOAD FORM",
-      "boxId":"92328338950",
+      "boxId":"116751117003",
       "templateKey":"case",
       "eid":"47757585"
   },
-
-  {
-        "page":"map_folder.html",
-        "title":"MAP",
-        "boxId":"81642016647",
-        "latitude":51.533772570045016,
-        "longitude":-0.09330533022541276,
-        "zoomLevel":10
-    }
-    ,
-
+  {"page":"map_folder.html","title":"MAP","boxId":"81642016647","latitude":51.152899277243236,"longitude":0.8391592693839822,"zoomLevel":10},
     {
           "page":"search.html",
           "title":"SEARCH",

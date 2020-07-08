@@ -28,17 +28,24 @@
             $("#container1").attr("src", "https://pchristensenb.github.io/template2.0/img/custom/progress_vertical_green.gif");
 
             if(searchParams.get("complete")) {
-                $("#complete").text("Signed, thanks");
+                $("#complete").text("Signed and stored, thanks");
             }
             else {
                 $.ajax({
-                    url: 'http://localhost:5000/sign?email=pchristensen+docusign@boxdemo.com&name=Peter Christensen',
+                    url: 'http://localhost:5000/sign?folderId=' + pageData.targetFolderId + '&action=sign&email=pchristensen+docusign@boxdemo.com&name=Peter Christensen&token=' + sessionStorage.getItem("accessToken"),
                     headers: {},
                     type: 'get',
                     data: {},
                     success: function (response) {
                         console.log("url:" + response);
-                        $("#container1").attr("src", response);
+                        if(response=='Signed, all good') {
+                            $("#container1").attr("src", "");
+                            $("#container1").hide();
+                            $("#complete").text(response);
+                        }
+                        else {
+                            $("#container1").attr("src", response);
+                        }
                     },
                     error: function (xhr, status, error) {
                         console.log(JSON.stringify(xhr));
@@ -51,8 +58,9 @@
     </script>
 
     <body>
+            <div id="complete"></div>
+
         <iframe name="container1" id="container1" style="height:90vh; width:100vw;border:0"></iframe>
-        <div id="complete"></div>
     </body>
 </head>
 
