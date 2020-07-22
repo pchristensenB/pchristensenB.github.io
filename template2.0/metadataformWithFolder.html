@@ -199,7 +199,7 @@
     });
   });
   async function createFolder() {
-    var newFolderName='newname';
+    var newFolderName=$("#" + pageData.fieldForFolderName).val();
     var data =  '{"name":"' + newFolderName + '","parent":{"id":"' + boxId + '"}}';
     var settings = {
           "async": true,

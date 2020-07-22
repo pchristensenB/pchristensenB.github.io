@@ -1,7 +1,7 @@
 var clientId="bn2iyg37p78jkowrp0io0nc2ln0be3wt";
 
 //Main page
-var redirectAfterLoginPage="/boxlocal.0/main_vertical.html";
+var redirectAfterLoginPage="/template2.0/main_vertical.html";
 
 //Navigation
 var navigation=[
@@ -67,15 +67,18 @@ var navigation=[
       "title":"UPLOAD FORM",
       "boxId":"116751117003",
       "templateKey":"case",
+      "fieldForFolderName":"caseid",
       "eid":"47757585"
   },
   {"page":"map_folder.html","title":"MAP","boxId":"81642016647","latitude":51.152899277243236,"longitude":0.8391592693839822,"zoomLevel":10},
     {
-          "page":"search.html",
-          "title":"SEARCH",
-          "boxId":"102801900236",
+          "page":"mdquery.html",
+          "title":"QUERY",
+          "boxId":"63843176586",
           "templateKey":"case",
-          "eid":"47757585"
+          "eid":"47757585",
+          "query":"name like :arg1",
+          "query_params": { "arg1":"Case 5 - Train trouble"}
       }
      
 ];

@@ -31,19 +31,17 @@
     var contentExplorer = new Box.ContentExplorer();
     getAccessToken().then(function (result) {
       const mdQuery = {
-        from: "enterprise_210762180.imdb", // 973933 is Enterprise ID and mdBasedContentExplorer is metadata template key
-        query: "director= :arg2",
-        query_params: { arg1: 8.9 ,arg2:"Peter Christensen"},
+        from: "enterprise_"+pageData.eid + "." + pageData.templateKey,
+        query: pageData.query,
+        query_params:pageData.query_params,
         ancestor_folder_id: boxId
       };
 
       // The metadata fields/columns to view - must be valid field names from the metadata template
       const metadataColumnsToShow = [
-        { name: "Year", canEdit: true },
-        { name: "director", canEdit: true },
-        { name: "runtime", canEdit: true },
-        { name: "imdbRating", canEdit: true },
-        { name: "country", canEdit: true }
+        { name: "name", canEdit: true },
+        { name: "caseID", canEdit: true }
+        
       ];
 
       const defaultView = "metadata";
