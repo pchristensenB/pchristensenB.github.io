@@ -1,7 +1,7 @@
 var clientId="bn2iyg37p78jkowrp0io0nc2ln0be3wt";
 
 //Main page
-var redirectAfterLoginPage="/template2.0/main_vertical.html";
+var redirectAfterLoginPage="/template2.0/main.html";
 
 //Navigation
 var navigation=[
@@ -14,7 +14,7 @@ var navigation=[
   {
       "page":"folder1.html",
       "title":"FOLDER 1",
-      "boxId":"0"
+      "boxId":"75440175138"
   },
   {
       "page":"folder3.html",
