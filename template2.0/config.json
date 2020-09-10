@@ -14,11 +14,11 @@ var navigation=[
   {
       "page":"folder1.html",
       "title":"FOLDER 1",
-      "boxId":"75440175138"
+      "boxId":"0"
   },
   {
-      "page":"folder3.html",
-      "title":"FOLDER 3",
+      "page":"folder2.html",
+      "title":"FOLDER 2",
       "boxId":"0"
   },
   {
@@ -63,15 +63,22 @@ var navigation=[
       "title":"FILE REQUEST UPLOAD"
   },
   {
-      "page":"metadataformWithFolder.html",
+      "page":"metadataform.html",
       "title":"UPLOAD FORM",
       "boxId":"116751117003",
       "templateKey":"case",
-      "fieldForFolderName":"caseid",
       "eid":"47757585"
   },
-  {"page":"map_folder.html","title":"MAP","boxId":"81642016647","latitude":51.152899277243236,"longitude":0.8391592693839822,"zoomLevel":10},
+  {
+      "page":"map_folder.html",
+      "title":"MAP",
+      "boxId":"81642016647",
+      "latitude":51.152899277243236,
+      "longitude":0.8391592693839822,
+      "zoomLevel":10
+    },
     {
+        //Experimental stage
           "page":"mdquery.html",
           "title":"QUERY",
           "boxId":"63843176586",
