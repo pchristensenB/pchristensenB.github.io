@@ -27,7 +27,7 @@
     var nodeId;
     $(document).ready(function () {
       $("img").on('error', function () {
-        $(this).attr("src", "http://0.0.0.0:8000/Template/img/icons16/_blank.png");
+        $(this).attr("src", "./img/icons16/_blank.png");
       });
       getAccessToken().then(function (result) {
         accessToken = result;
@@ -99,30 +99,30 @@
     }
     function getRootIcon(collabs, extOwned) {
       if (extOwned) {
-        return ',"icon":"http://0.0.0.0:8000/Template/img/iconsbox/foldere.svg"';
+        return ',"icon":"./img/iconsbox/foldere.svg"';
       } else if (collabs) {
-        return ',"icon":"http://0.0.0.0:8000/Template/img/iconsbox/folderc.svg"';
+        return ',"icon":"./img/iconsbox/folderc.svg"';
       }
       else {
-        return ',"icon":"http://0.0.0.0:8000/Template/img/iconsbox/folder.svg"';
+        return ',"icon":"./img/iconsbox/folder.svg"';
       }
     }
     function getIcon(element) {
       if (element.type == 'file') {
-        return ',"icon":"http://0.0.0.0:8000/Template/img/iconsbox/' + element.name.split('.').pop().toLowerCase() + '.svg"';
+        return ',"icon":"./img/iconsbox/' + element.name.split('.').pop().toLowerCase() + '.svg"';
       }
       else if (element.type == 'folder') {
         if (element.is_externally_owned) {
-          return ',"icon":"http://0.0.0.0:8000/Template/img/iconsbox/foldere.svg"';
+          return ',"icon":"./img/iconsbox/foldere.svg"';
         } else if (element.has_collaborations) {
-          return ',"icon":"http://0.0.0.0:8000/Template/img/iconsbox/folderc.svg"';
+          return ',"icon":"./img/iconsbox/folderc.svg"';
         }
         else {
-          return ',"icon":"http://0.0.0.0:8000/Template/img/iconsbox/folder.svg"';
+          return ',"icon":"./img/iconsbox/folder.svg"';
         }
       }
       else if (element.type == 'web_link') {
-        return ',"icon":"http://0.0.0.0:8000/Template/img/iconsbox/bookmark.svg"';
+        return ',"icon":"./img/iconsbox/bookmark.svg"';
 
       }
       return '';
