@@ -16,14 +16,13 @@
     -->
 
   <!-- Latest version of the explorer css for your locale -->
-  <link rel="stylesheet" href="mt/explorer.css" />
-  <link rel="stylesheet" href="css/style.css" />
-</head>
+  <head>
+      <script src="https://cdn01.boxcdn.net/platform/elements/12.0.0/en-US/explorer.js"></script>
+      <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/elements/12.0.0/en-US/explorer.css" />
 
 <body>
   <div class="container" style="height:90vh; width:100vw;"></div>
   <!-- Latest version of the explorer js for your locale -->
-  <script src="mt/explorer.js"></script>
   <script>
     //var folderId = '73553726252';
     var pageData = getPageData();
@@ -34,13 +33,17 @@
         from: "enterprise_"+pageData.eid + "." + pageData.templateKey,
         query: pageData.query,
         query_params:pageData.query_params,
-        ancestor_folder_id: boxId
+        ancestor_folder_id: boxId,
+        fields: [
+            'name',
+            'metadata.enterprise_'+pageData.eid + '.' +  pageData.templateKey + '.caseID',
+      ]
       };
 
       // The metadata fields/columns to view - must be valid field names from the metadata template
       const metadataColumnsToShow = [
         { name: "name", canEdit: true },
-        { name: "caseID", canEdit: true }
+        { name: 'metadata.enterprise_'+pageData.eid + '.' +  pageData.templateKey + '.caseID', canEdit: true }
         
       ];
 

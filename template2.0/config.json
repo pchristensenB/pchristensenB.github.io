@@ -76,16 +76,6 @@ var navigation=[
       "latitude":51.152899277243236,
       "longitude":0.8391592693839822,
       "zoomLevel":10
-    },
-    {
-        //Experimental stage
-          "page":"mdquery.html",
-          "title":"QUERY",
-          "boxId":"63843176586",
-          "templateKey":"case",
-          "eid":"47757585",
-          "query":"name like :arg1",
-          "query_params": { "arg1":"Case 5 - Train trouble"}
-      }
+    }
      
 ];

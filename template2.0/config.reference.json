@@ -80,5 +80,22 @@ var navigation=[
           "templateKey":"case",
           "eid":"47757585"
       }
+      ,
+    {
+        //Experimental stage
+          "page":"mdquery.html",
+          "title":"MT QUERY",
+          "boxId":"63843176586",
+          "templateKey":"case",
+          "eid":"47757585",
+          "query":"name = :arg1",
+          "query_params": { "arg1":"Case 5 - Train trouble"},
+          "fields":[
+            "name",
+            "metadata.enterprise_'+pageData.eid + '.' +  pageData.templateKey + '.caseID",
+            "metadata.enterprise_'+pageData.eid + '.' +  pageData.templateKey + '.name"
+            ]
+            
+      }
      
 ];
