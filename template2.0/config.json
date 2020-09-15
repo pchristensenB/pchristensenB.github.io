@@ -36,12 +36,7 @@ var navigation=[
       "title":"PREVIEW 2",
       "boxId":"666393650356"
   },
-  {
-    "page":"sign.html",
-    "title":"SIGN",
-    "boxId":"666393650356",
-    "targetFolderId":"113511488301"
-},
+
   {
     "page":"zipdownload.html",
     "title":"ZIP DOWNLOADER",
