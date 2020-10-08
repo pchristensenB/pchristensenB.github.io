@@ -88,6 +88,7 @@
       console.log(config.method);
 			if(config.method=='post') {
         var tempAttr =JSON.parse(config.data.attributes); 
+        console.log("Parent "+newFolderId);
         tempAttr.parent.id=newFolderId;
         config.data.attributes = JSON.stringify(tempAttr);
       }
@@ -105,7 +106,7 @@
       $("#submit").hide();
       //contentUploader.rootFolderId='116751117003';
       createFolder().then(function(result) {
-        $(".btn-primary").trigger("click");
+        console.log("Created folder:"+newFolderId);
       });      
     });
     getAccessToken().then(function(result) {
@@ -218,6 +219,9 @@
         $.ajax(settings).done(function(response) {
           console.log(response.id);
           newFolderId= response.id;
+          $(".btn-primary").trigger("click");
+
+          return newFolderId;
 
         });
 
