@@ -69,6 +69,10 @@
         $.ajax(settings).done(function(response) {
           console.log(response);
           $(".loader").hide();
+          $("#msg").text("Move operation successful");
+          $('#msg').fadeIn('slow').delay(2000).hide(0);
+          $("#msg").text("").show();
+
           //Show undo button and create settings for undo
           undoSettings = {
             "async": true,
@@ -210,9 +214,10 @@
 
 
   <div class="container-fluid">
-	<div class="row">
-
-	</div>
+      <div class="row">
+          <div class="col col-sm-16" style="text-align: center;" id="msg">
+            </div>
+      </div>
 	<div class="row mtm mbl">
 		<div class="col col-md-5">
 

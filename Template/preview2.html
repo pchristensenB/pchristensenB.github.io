@@ -25,11 +25,20 @@
 
         var preview = new Box.Preview();
         getAccessToken().then(function(result) {
-          preview.show(boxId, result, {
-            container: '.preview-container',
-            logoUrl: 'logo-small.png',
-            showDownload: 'false',
-            header: 'dark'
+        preview.show(boxId, result, {
+          container: '.preview-container',
+          contentSidebarProps: {
+            detailsSidebarProps: {
+              hasNotices: true,
+              hasProperties: true,
+              hasAccessStats: true,
+              hasVersions: true
+            },
+            hasActivityFeed: true,
+            hasSkills: true,
+            hasMetadata: true
+          },
+          hasHeader: true
         });
       })
     </script>

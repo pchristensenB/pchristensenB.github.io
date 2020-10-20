@@ -58,6 +58,9 @@
 
             $(".zipper").click(function (event) {
                 console.log("zipper clicked");
+                $(".zipper").prop('disabled', true);
+                $(".zipper").text("Downloading..");
+
                 var ids = [];
                 $(".list-group-item").each(function (index) {
                     ids.push({ 'id': $(this).attr('id').substring(1), 'type': $(this).attr('type') });
@@ -136,12 +139,19 @@
                         console.log(response);
                         //{total_file_count: 1, downloaded_file_count: 0, skipped_file_count: 0, skipped_folder_count: 0, state: "in_progress"}
                         //{total_file_count: 1, downloaded_file_count: 1, skipped_file_count: 0, skipped_folder_count: 0, state: "succeeded"}
-                        var stat = "State:" + response.state + ", file count:" + response.total_file_count + ", dl file count:" + response.downloaded_file_count; 
-                        $("#zipperMsg").append("<span>" +stat+ "</span><br/>");
+                        //var stat = "State:" + response.state + ", file count:" + response.total_file_count + ", dl file count:" + response.downloaded_file_count; 
+                        
+                        //$("#zipperMsg").append("<span>" +stat+ "</span><br/>");
                         if (response.state == 'succeeded') {
+                            $(".zipper").text("Create and download zip file");
+                            $(".zipper").prop('disabled', false);
+                            $("#msg").empty();
                             clearInterval(timer);
-
                         }
+                        else {
+                            $(".zipper").text("Downloading..");
+                        }
+
 
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -177,7 +187,7 @@
 
             </div>
             <div class="col-md-4">
-                <button type="button" class="btn btn-primary zipper">Call Zipper</button>
+                <button type="button" class="btn btn-primary zipper">Create and download zip file</button>
                 <div id="zipperMsg" style="height:500px;"></div>
             </div>
         </div>
