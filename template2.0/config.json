@@ -19,7 +19,7 @@ var navigation=[
   {
       "page":"folder2.html",
       "title":"FOLDER 2",
-      "boxId":"0"
+      "boxId":"123252675567"
   },
   {
     "page":"tree_local.html",
@@ -29,7 +29,7 @@ var navigation=[
   {
       "page":"preview1.html",
       "title":"PREVIEW 1",
-      "boxId":"666393650356"
+      "boxId":"797741954625"
   },
   {
       "page":"preview2.html",
@@ -58,11 +58,15 @@ var navigation=[
       "title":"FILE REQUEST UPLOAD"
   },
   {
-      "page":"metadataform.html",
-      "title":"UPLOAD FORM",
-      "boxId":"116751117003",
-      "templateKey":"case",
-      "eid":"47757585"
+      "page":"mdq.html",
+      "title":"METADATA VIEW",
+      "boxId":"63843176586",
+      "eid":"47757585",
+      "template":"case",
+      "columns":"name,caseStatus,documentType,region",
+      "filters":"caseStatus,reqion,documentType,name,caseDueDate",
+      "caseid":"A122,A123,A141,A188,B567,C111,D1233,C001,P001,H117",
+      "name":"Arthur Dent,Rick Deckard,Ralph Endymion,Hari Seldon,Salvor Hardin,William Mandella"
   },
   {
       "page":"map_folder.html",
