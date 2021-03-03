@@ -19,7 +19,7 @@ var navigation=[
   {
       "page":"folder2.html",
       "title":"FOLDER 2",
-      "boxId":"123252675567"
+      "boxId":"0"
   },
   {
     "page":"tree_local.html",
@@ -49,10 +49,17 @@ var navigation=[
     "boxId2":"0",
   },
   {
+    "page":"sign.html",
+    "title":"SIGN",
+    "boxId":"716678385542",
+    "targetFolderId":"129125351346",
+  },
+  {
       "page":"uploader.html",
       "title":"UPLOADER",
       "boxId":"0"
   },
+  
   {
       "page":"https://peter-demo.app.box.com/f/fc0a2a975dd7431bb9681e528a69b4b7",
       "title":"FILE REQUEST UPLOAD"
