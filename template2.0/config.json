@@ -13,12 +13,7 @@ var navigation=[
   
   {
       "page":"folder1.html",
-      "title":"FOLDER 1",
-      "boxId":"0"
-  },
-  {
-      "page":"folder2.html",
-      "title":"FOLDER 2",
+      "title":"FOLDER",
       "boxId":"0"
   },
   {
@@ -28,13 +23,8 @@ var navigation=[
 },
   {
       "page":"preview1.html",
-      "title":"PREVIEW 1",
+      "title":"PREVIEW",
       "boxId":"797741954625"
-  },
-  {
-      "page":"preview2.html",
-      "title":"PREVIEW 2",
-      "boxId":"666393650356"
   },
 
   {
@@ -50,9 +40,15 @@ var navigation=[
   },
   {
     "page":"signrequest.html",
-    "title":"SIGN",
-    "boxId":"716678385542",
-    "targetFolderId":"129125351346",
+    "title":"SIGN REQ",
+    "boxId":"130954787289",
+    "targetFolderId":"130954426794",
+  },
+  {
+    "page":"signdooku.html",
+    "title":"SIGN DOOKU",
+    "boxId":"130954787289",
+    "targetFolderId":"130954426794",
   },
   {
       "page":"uploader.html",

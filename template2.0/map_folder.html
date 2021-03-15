@@ -146,7 +146,8 @@ function getGenericIconURL(name,type) {
               contentPreview = new Box.Preview();
               contentPreview.show(self.id, sessionStorage.getItem('accessToken'), {
                 container: '.content_' + self.id,
-                logoUrl: 'img/custom/logo-small.png'
+                logoUrl: 'img/custom/logo-small.png',
+                header:'none'
               });
             }
           });
