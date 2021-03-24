@@ -37,7 +37,9 @@
                 filePicker.hide();
                  getAccessToken().then(function (result) {
                     folderPicker.show(boxId, result, {
-                    container: '.fileChooser'
+                    container: '.fileChooser',
+                    logoUrl: 'img/custom/logo-small.png'
+
                  });
                 });
                 addListeners();
@@ -47,7 +49,9 @@
                 folderPicker.hide();
                 getAccessToken().then(function (result) {
                         filePicker.show(boxId, result, {
-                        container: '.fileChooser'
+                        container: '.fileChooser',
+                        logoUrl: 'img/custom/logo-small.png'
+
                  });
                 });
                 addListeners();

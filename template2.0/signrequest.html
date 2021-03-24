@@ -25,6 +25,7 @@
     var filePicker = new Box.FilePicker();
     var pageData = getPageData();
     var accessToken;
+    var hostName = location.protocol + '://' + location.host;
     $(document).ready(function () {
         getAccessToken().then(function (result) {
             accessToken=result;
@@ -32,12 +33,11 @@
                 logoUrl: 'img/custom/logo-small.png',
                 container: '.fileChooser',
                 maxSelectable: 1,
-                extensions: ['pdf'],
+                extensions: ['pdf','docx'],
                 canSetShareAccess: false,
                 canCreateNewFolder: false,
                 canUpload: false,
                 canPreview:true
-
             });
         });
         addListeners();
@@ -51,7 +51,7 @@
                 $.ajax({
                     method: 'get',
                     url: 'https://pcsignrequesttest.herokuapp.com/getsignurl?token=' +accessToken + '&name=' + data.name + '&documentId=' + data.id + '&folderId='+pageData.targetFolderId+'&email='+sessionStorage.getItem("userLogin"),
-                    //url: 'http://localhost:3000/getsignurl?token=' +accessToken + '&name=' + data.name + '&documentId=' + data.id + '&folderId='+pageData.targetFolderId+'&email='+sessionStorage.getItem("userLogin"),
+                    //url: 'http://localhost:3000/getsignurl?token=' +accessToken + '&name=' + data.name + '&documentId=' + data.id + '&folderId='+pageData.targetFolderId+'&email='+sessionStorage.getItem("userLogin") + '&userName=' +sessionStorage.getItem("userName") + '&hostName=' + hostName,
                     dataType: 'json',
                     crossDomain: true,
                     cache: false,
@@ -82,7 +82,7 @@
 
             </div>
             <div class="col-md-7" id="sign">
-                <img src="ajax-loader (3).gif" id="loader" style="display:none;margin-top:100px;margin-left:100px;"></img>
+                <img src="img/custom/ajax-loader-sign.gif" id="loader" style="display:none;margin-top:100px;margin-left:100px;"></img>
                 <iframe style="display:none;" frameborder=0 src="" id="reqsign" height="800px" width="1000px" />
             </div>
         </div>
