@@ -51,7 +51,7 @@
                 $("#loader").show();
                 $.ajax({
                     method: 'get',
-                    url: 'https://box-java-sandpit.herokuapp.com/genericsign?fileId=' + data.id + '&fileName=' + data.name + '&folderId=' + pageData.targetFolderId + '&action=sign&email=pchristensen+docusign@boxdemo.com&name=' +sessionStorage.getItem("userName") + '&token=' + sessionStorage.getItem("accessToken"),
+                    url: 'https://box-java-sandpit.herokuapp.com/genericsign?hostName=' + hostName + '&fileId=' + data.id + '&fileName=' + data.name + '&folderId=' + pageData.targetFolderId + '&action=sign&email=pchristensen+docusign@boxdemo.com&name=' +sessionStorage.getItem("userName") + '&token=' + sessionStorage.getItem("accessToken"),
                     //url: 'http://localhost:5000/genericsign?fileId=' + data.id + '&fileName=' + data.name + '&folderId=' + pageData.targetFolderId + '&action=sign&email=pchristensen+docusign@boxdemo.com&name=' +sessionStorage.getItem("userName") + '&token=' + sessionStorage.getItem("accessToken") + '&hostName=' + hostName,
                     dataType: 'json',
                     crossDomain: true,

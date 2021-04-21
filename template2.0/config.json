@@ -39,6 +39,7 @@ var navigation=[
     "boxId2":"0",
   },
   {
+    //Templates - https://peter-demo.box.com/s/6uu9k93otq9f53s8stsm4tusbxai48aq
     "page":"signrequest.html",
     "title":"SIGN REQ",
     "boxId":"130954787289",
