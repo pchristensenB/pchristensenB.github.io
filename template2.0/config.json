@@ -45,12 +45,7 @@ var navigation=[
     "boxId":"130954787289",
     "targetFolderId":"130954426794",
   },
-  {
-    "page":"signdooku.html",
-    "title":"SIGN DOOKU",
-    "boxId":"130954787289",
-    "targetFolderId":"130954426794",
-  },
+ 
   {
       "page":"uploader.html",
       "title":"UPLOADER",
