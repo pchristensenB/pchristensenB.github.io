@@ -7,11 +7,11 @@ var showSignUp = true;
 //Add here the ids of any group you want the new user added to on creation
 //This will help if you load a specific folder for the user on login
 //comma separated liist like this ["12345676","123456789"]
-var newUserGroupIds = [];
+var newUserGroupIds = ["8483639218"];
 //Add here any folderIds you want the new user added to on creation (currently as editor) 
 ////This will help if you load a specific folder for the user on login
 //comma separated liist like this ["12345676","123456789"]
-var newUserFolderIds=[];
+var newUserFolderIds=["143824983827"];
 
 //Navigation
 var navigation=[
