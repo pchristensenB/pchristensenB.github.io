@@ -10,7 +10,7 @@
   <meta http-equiv="Cache-control" content="no-store">
 
   <meta charset="UTF-8">
-  <title>Box Platform - Template Application</title>
+  <title>Box Platform Template</title>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
 
   <link rel="stylesheet" href="css/custom_style.css">
@@ -19,6 +19,7 @@
   <script type="text/javascript" src="js/box.js"></script>
 
   <script>
+    var userLogin;
     let searchParams = new URLSearchParams(window.location.search)
     var page = searchParams.get("page");
     var url = searchParams.get("tokenURL")==null?"https://box-tokengenerator-v2.herokuapp.com":searchParams.get("tokenURL");
@@ -27,14 +28,48 @@
       $.get(url + "/ping", function (data) {
         console.log("Prelogin startup time" + data);
       });
+      if(!showSignUp) {
+        $(".signup").hide();
+      }
+      else {
+        $("#userEmailUp").val("");
+      }
       //clear previously saved credentials
       sessionStorage.clear();
+      $('#usersignup').on('submit', (function (ev) {
+        $("#errormessage2").hide();
+        $("#signupbutton").hide();
+        $("#loader2").show();
+        ev.preventDefault();
+        userLogin = $("#userLoginUp").val();
+        var email = $("#userEmailUp").val();
+        var password = $("#passLoginUp").val();
+        var urlParams = "password="+ password + "&clientId=" + clientId + "&userEmail=" + email + "&userName=" + userLogin + (newUserFolderIds?"&folderIds=" + newUserFolderIds.join():"") + (newUserGroupIds?"&groupIds=" + newUserGroupIds.join():"");
+        $.ajax({
+          method: 'get',
+          url: url + "/appusercreation?" + urlParams,
+          crossDomain: true,
+          cache: false,
+          success: function (response) {
+            console.log("success creation:" + response);
+            handleResponse(response);
+          },
+          error: function (err) {
+            console.log(JSON.stringify(err));
+            $("#signupbutton").show();
+            $("#loader2").hide();
+            $("#errormessage2").show();
+            $("#errormessage2").html(err.responseText);
+          }
+        });
+      }));
       $('#userlogin').on('submit', (function (ev) {
         $("#errormessage").hide();
         $("#signbutton").hide();
         $("#loader").show();
+        
         ev.preventDefault();
-        var userLogin = $("#userLogin").val();
+        userLogin = $("#userLogin").val();
         var pwd = $("#passLogin").val();
         var urlParams = "clientId=" + clientId + "&userEmail=" + userLogin + "&password=" + pwd;
         $.ajax({
@@ -43,14 +78,7 @@
           crossDomain: true,
           cache: false,
           success: function (response) {
-            sessionStorage.setItem("accessToken", response.userToken);
-            sessionStorage.setItem("userLogin", userLogin);
-            sessionStorage.setItem("userName", response.userName);
-            sessionStorage.setItem("key", response.key);
-            sessionStorage.setItem("ttl", response.ttl);
-            sessionStorage.setItem("tokenURL",url);
-
-            window.location.replace(redirectAfterLoginPage + (page == null ? "" : "?page=" + page));
+           handleResponse(response);
           },
           error: function (err) {
             console.log(JSON.stringify(err));
@@ -63,6 +91,15 @@
 
       }));
     });
+    function handleResponse(response) {
+      sessionStorage.setItem("accessToken", response.userToken);
+      sessionStorage.setItem("userLogin", userLogin);
+      sessionStorage.setItem("userName", response.userName);
+      sessionStorage.setItem("key", response.key);
+      sessionStorage.setItem("ttl", response.ttl);
+      sessionStorage.setItem("tokenURL",url);
+      window.location.replace('main.html' + (page == null ? "" : "?page=" + page));
+    }
 
   </script>
 </head>
@@ -73,10 +110,38 @@
     <div class="login-html">
       <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
       <label for="tab-1" class="tab">Sign In</label>
-      <input id="tab-2" type="radio" name="tab" class="sign-up">
-      <label for="tab-2" class="tab"></label>
+      <input id="tab-2" type="radio" name="tab" class="sign-up signup">
+      <label for="tab-2" class="tab signup">Sign Up</label>
 
       <div class="login-form">
+        <div class="sign-up-htm">
+          <form id='usersignup' method="get" action="#">
+            <p></p>
+            <div class="group">
+              <label for="userEmailUp" class="label">Email (username)</label>
+              <input id="userEmailUp" type="text" class="input" value=" ">
+            </div>
+            <div class="group">
+              <label for="userLoginUp" class="label">Name</label>
+              <input id="userLoginUp" type="text" class="input">
+            </div>
+            <div class="group">
+              <label for="passLoginUp" class="label">Password</label>
+              <input id="passLoginUp" type="password" class="input" data-type="password">
+            </div>
+           
+            <div class="group">
+              <input id="signupbutton" type="submit" class="button" value="Sign Up">
+              <div style="text-align: center;width:385px;">
+                <img  id="loader2" src="img/custom/progress_horizontal.gif"  style="display:none;">
+              </div>
+              <span id="errormessage2" style="display:none;color:white;"></span>
+            </div>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+            </div>
+          </form>
+          </div>
         <div class="sign-in-htm">
           <form id='userlogin' method="get" action="#">
             <p></p>
@@ -96,7 +161,7 @@
             <div class="group">
               <input id="signbutton" type="submit" class="button" value="Sign In">
               <div style="text-align: center;width:385px;">
-                <img  id="loader" src="img/custom/progress_horizontal.gif"  >
+                <img  id="loader" src="img/custom/progress_horizontal.gif" >
               </div>
               <span id="errormessage" style="display:none;color:white;"></span>
             </div>

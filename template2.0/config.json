@@ -1,7 +1,17 @@
 var clientId="bn2iyg37p78jkowrp0io0nc2ln0be3wt";
 
-//Main page
-var redirectAfterLoginPage="/template2.0/main.html";
+//Change this to true to show the signup option 
+//signing up will create an app user with the name and email as the external_app_user_id = the email needs to be unique!
+var showSignUp = true;
+
+//Add here the ids of any group you want the new user added to on creation
+//This will help if you load a specific folder for the user on login
+//comma separated liist like this ["12345676","123456789"]
+var newUserGroupIds = [];
+//Add here any folderIds you want the new user added to on creation (currently as editor) 
+////This will help if you load a specific folder for the user on login
+//comma separated liist like this ["12345676","123456789"]
+var newUserFolderIds=[];
 
 //Navigation
 var navigation=[
@@ -12,7 +22,7 @@ var navigation=[
   },
   
   {
-      "page":"folder1.html",
+      "page":"folder2.html",
       "title":"FOLDER",
       "boxId":"0"
   },
@@ -24,24 +34,12 @@ var navigation=[
   {
       "page":"preview1.html",
       "title":"PREVIEW",
-      "boxId":"797741954625"
-  },
-
-  {
-    "page":"zipdownload.html",
-    "title":"ZIP DOWNLOADER",
-    "boxId":"0"
-},
-  {
-    "page":"move.html",
-    "title":"MOVE",
-    "boxId":"0",
-    "boxId2":"0",
+      "boxId":"796076315249"
   },
   {
     //Templates - https://peter-demo.box.com/s/6uu9k93otq9f53s8stsm4tusbxai48aq
     "page":"signrequest.html",
-    "title":"SIGN REQ",
+    "title":"BOX SIGN",
     "boxId":"130954787289",
     "targetFolderId":"130954426794",
   },
@@ -51,11 +49,7 @@ var navigation=[
       "title":"UPLOADER",
       "boxId":"0"
   },
-  
-  {
-      "page":"https://peter-demo.app.box.com/f/fc0a2a975dd7431bb9681e528a69b4b7",
-      "title":"FILE REQUEST UPLOAD"
-  },
+
   {
       "page":"mdq.html",
       "title":"METADATA VIEW",

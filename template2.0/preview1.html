@@ -30,7 +30,20 @@
             logoUrl: 'img/custom/logo-small.png',
             showDownload: 'true',
             header: 'light',
-            showAnnotations: 'true',
+            showAnnotations: 'false',
+            viewers: {
+            Image: {
+              annotations: {
+                enabled: false
+              }
+            },
+            Document: {
+              annotations: {
+                enabled: true,
+                enabledTypes: ["point","draw","highlight"]
+              }
+            }
+          }
 
             //collection: ['441529924393','441527196748']
         });

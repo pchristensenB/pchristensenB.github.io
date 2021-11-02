@@ -1,6 +1,9 @@
 <html>
 <title>Box Platform - Template Application</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Font Awesome -->
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-2/css/all.min.css">
 
 <style>
 
@@ -14,9 +17,16 @@
   }
 
 </style>
+<script>$(document).ready(function() {
+  $("#username").text(sessionStorage.getItem("userName"));
+  $("#username").prop('title',sessionStorage.getItem("userLogin"));
+});</script>
+
 <body style="background-color:#FFFFFF">
 <img src="img/custom/template_app_logo.png" alt="Site Logo" align="top">
-<div id="user" style="float:right;margin-right:20px;color:#ccb7ca;">
+<div id="user" style="float:right;margin-right:20px;">
+  <i class="far fa-user" id="us"></i>
+  <span id="username"></span>
 </div>
 </body>
 </html>
