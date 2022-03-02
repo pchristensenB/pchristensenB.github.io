@@ -59,6 +59,7 @@
                         console.log("success:" + response);
                         $("#loader").hide();
                         $("#reqsign").show();
+                        $("#popout").html("Having trouble loading the Box Sign form below? Click <a href='" + response.url + "' target=_new'>here</a> to open in a new tab");
                         $("#reqsign").attr("src", response.url);
                         $("#ch").hide();
                     }
@@ -81,7 +82,7 @@
                 </div>
 
             </div>
-            <div class="col-md-7" id="sign">
+            <div class="col-md-7" id="sign"><span id='popout'></span>
                 <img src="img/custom/ajax-loader-sign.gif" id="loader" style="display:none;margin-top:100px;margin-left:100px;"></img>
                 <iframe style="display:none;" frameborder=0 src="" id="reqsign" height="800px" width="1000px" />
             </div>
