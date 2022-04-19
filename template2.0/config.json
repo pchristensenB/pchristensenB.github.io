@@ -7,11 +7,11 @@ var showSignUp = true;
 //Add here the ids of any group you want the new user added to on creation
 //This will help if you load a specific folder for the user on login
 //comma separated liist like this ["12345676","123456789"]
-var newUserGroupIds = ["8483639218"];
+var newUserGroupIds = ["8869166911"];
 //Add here any folderIds you want the new user added to on creation (currently as editor) 
 ////This will help if you load a specific folder for the user on login
 //comma separated liist like this ["12345676","123456789"]
-var newUserFolderIds=["143824983827"];
+var newUserFolderIds=["154875143317"];
 
 //Navigation
 var navigation=[
@@ -22,9 +22,9 @@ var navigation=[
   },
   
   {
-      "page":"folder2.html",
+      "page":"folder1_t.html",
       "title":"FOLDER",
-      "boxId":"0"
+      "boxId":"154875143317"
   },
   {
     "page":"tree_local.html",
@@ -49,6 +49,11 @@ var navigation=[
       "title":"UPLOADER",
       "boxId":"0"
   },
+  {
+    "page":"zipdownload.html",
+    "title":"ZIP UPLOADER",
+    "boxId":"123972940976"
+},
 
   {
       "page":"mdq.html",
