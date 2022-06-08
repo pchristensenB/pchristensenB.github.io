@@ -22,14 +22,14 @@ var navigation=[
   },
   
   {
-      "page":"folder1_t.html",
+      "page":"folder2.html",
       "title":"FOLDER",
-      "boxId":"154875143317"
+      "boxId":"123972940976"
   },
   {
     "page":"tree_local.html",
     "title":"TREEVIEW",
-    "boxId":"0"
+    "boxId":"123972940976"
 },
   {
       "page":"preview1.html",
@@ -47,7 +47,7 @@ var navigation=[
   {
       "page":"uploader.html",
       "title":"UPLOADER",
-      "boxId":"0"
+      "boxId":"123972940976"
   },
   {
     "page":"zipdownload.html",
