@@ -62,8 +62,8 @@
                 $.ajax({
                     method: 'post',
                     //url:"https://89w694ee39.execute-api.eu-west-2.amazonaws.com/default/box-token-generator-mdq?"+urlParams,
-                    url: "https://box-tokengenerator-v2.herokuapp.com/mdqtokenjson?token=" + result + "&id=" + pageData.boxId,
-                    //url: "http://localhost:3000/mdqtokenjson?token="+result+"&id="+pageData.boxId,
+                    //url: "https://box-tokengenerator-v2.herokuapp.com/mdqtokenjson?token=" + result + "&id=" + pageData.boxId,
+                    url: "http://localhost:3000/mdqtokenjson?token="+result+"&id="+pageData.boxId,
                     crossDomain: true,
                     cache: false,
                     data: pageData,
@@ -161,12 +161,14 @@
             if (buildFilters) {
                 currentColumns=col;
                 $.each(filters, function (index, filter) {
-                    if (firstFilter == null) {
-                        firstFilter = filter.key;
-                    }
-                    $("#filters").append(getHTMLForFilter(filter));
-                    if (filter.type == 'date') {
-                        $("#" + filter.key).datepicker({ "dateFormat": dateFormat, changeYear: true });
+                    if(filter!=null) {
+                        if (firstFilter == null) {
+                            firstFilter = filter.key;
+                        }
+                        $("#filters").append(getHTMLForFilter(filter));
+                        if (filter.type == 'date') {
+                            $("#" + filter.key).datepicker({ "dateFormat": dateFormat, changeYear: true });
+                        }
                     }
                 });
             }
@@ -238,10 +240,10 @@
                         }
                     }
                 }
-                else if (isNaN($('#' + filter.key).val())) {
+                else if ($('#' + filter.key).val()!='' && filter.type=='string') {
                     query_params += delim + '"' + filter.key + '":"' + $('#' + filter.key).val() + '"';
                 }
-                else {
+                else if($('#' + filter.key).val()!='' && filter.type=='float') {
                     query_params += delim + '"' + filter.key + '":' + $('#' + filter.key).val() + '';
                 }
                 delim = " , ";
