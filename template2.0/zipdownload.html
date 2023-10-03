@@ -38,7 +38,8 @@
                  getAccessToken().then(function (result) {
                     folderPicker.show(boxId, result, {
                     container: '.fileChooser',
-                    logoUrl: 'img/custom/logo-small.png'
+                    logoUrl: 'img/custom/logo-small.png',
+                    canSetShareAccess:false
 
                  });
                 });
@@ -50,7 +51,8 @@
                 getAccessToken().then(function (result) {
                         filePicker.show(boxId, result, {
                         container: '.fileChooser',
-                        logoUrl: 'img/custom/logo-small.png'
+                        logoUrl: 'img/custom/logo-small.png',
+                        canSetShareAccess:false
 
                  });
                 });

@@ -121,9 +121,10 @@
         cache: false,
         success: function(response) {
           $.each(response.fields, function(k, data) {
-            if (data.hidden != 'false') {
+            console.log(data.key + "::" + data.hidden + "::" + (data.hidden));
+            if (!data.hidden) {
               let cField = createMTField(data);
-              console.log(cField);
+              
               fields.push(cField);
               cField.postProcess();
             }
@@ -242,7 +243,7 @@
     <br>
       <form id="uploadfiles" action="#" method="get">
         <input type="submit" id="submit" value="Upload to Box" >
-        <img  id="loader" src="img/custom/progress_vertical_green.gif"  >
+        <img  id="loader" src="img/custom/progress_vertical_ajax.gif"  >
 
       </form>
     </div>

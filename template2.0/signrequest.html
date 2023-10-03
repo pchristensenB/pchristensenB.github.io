@@ -59,9 +59,9 @@
                         console.log("success:" + response);
                         $("#loader").hide();
                         $("#reqsign").show();
-                        $("#popout").html("If the Box sign window didn't open please enable popup windows for this address");
-                        //$("#reqsign").attr("src", response.url);
-                        window.open(response.url, '_blank').focus();
+                        //$("#popout").html("If the Box sign window didn't open please enable popup windows for this address");
+                        $("#reqsign").attr("src", response.url);
+                        //window.open(response.url, '_blank').focus();
                         $("#ch").hide();
                     }
                 });
