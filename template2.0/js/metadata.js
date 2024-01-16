@@ -8,6 +8,7 @@ class StandardMTField {
     this.boxDisplayName=boxDisplayName;
     this.placeholder=placeholder;
     this.dataType=dataType;
+    this.options=null;
   };
   getElementId() {
     return elementId;
@@ -33,15 +34,19 @@ class StandardMTField {
   }
   postProcess() {
 
+    
+  }
+  setOptions(options) {
+  }
+  getOptions() {
+    return this.options;
   }
 };
 class EnumMTField extends StandardMTField {
   setOptions(options) {
     this.options = options;
   }
-  getOptions() {
-    return this.options;
-  }
+  
   getHTMLDisplay() {
     var html =  '<label for="' + this.boxKey + '">' +this.boxDisplayName + '</label>' +
     '<select class="form-control"  style="height:35px" id="' + this.boxKey + '" required>';
@@ -112,21 +117,26 @@ function getMetadataFieldsAsArray(token,templateKey,eid) {
 }
 
 function searchMe(accessToken,dataTable,columns,searchForm,fields) {
+  console.log(searchForm);
   dataTable.clear();
   var search = $("#searchText").val();
   var filters = "{";
   var delim="";
   //https://api.box.com/2.0/search?mdfilters=[{"templateKey":"entitlement", "scope":"enterprise", "filters":{"markedForReview": "Yes"}}]&fields=id,name,owned_by
   var mdfilters = 'mdfilters=[{%22templateKey%22:%22' + templateKey + '", %22scope%22:%22enterprise%22,%22filters%22:';
-  $("#search input").each(function() {
+  $("#search input,select").each(function() {
     var inputId=$(this).attr("id");
     var inputVal=$(this).val();
-    if(inputVal!='' && inputId!='searchText' && !inputId.startsWith("TTT")) {
+    console.log(inputId + ":" + inputVal);
+    if(inputVal!='' && inputId!='searchText' && !inputId.startsWith("TTT") && inputVal!='NOT') {
+      
+
       var keyV = "%22" + inputId+ "%22";
       var val;// =  "%22" + $(this).val()+ "%22";
       $.each(fields,function(k,f) {
+
         if(f.elementId==inputId ) {
-          if(f.dataType=='String') {
+          if(f.dataType=='String' || f.dataType=='Enum') {
             val = "%22" + inputVal+ "%22";
           }
           else if(f.dataType=='Number') {
@@ -161,8 +171,23 @@ function searchMe(accessToken,dataTable,columns,searchForm,fields) {
     }
   }
    
-function getInputFieldForCol(colObj) {
-  console.log(colObj.type);
+function getInputFieldForCol(colObj,fields) {
+  if(colObj.type=='Enum') {
+    var html =  '<select class="mtvalues"  style="height:35px;width:400px" id="' + colObj.data + '" required>';
+    var options;
+    $.each(fields,function(n,ff) {
+      if(ff.elementId==colObj.data) {
+        options=ff.options;
+      }
+    });
+    html+='<option value=NOT>Select value</option>';
+    $.each(options, function( id, key ) {
+      html+='<option value="' + key.key + '">' + key.key + '</option>';
+    });
+    html+='</select>';
+    return html;
+  }
+  else 
   if(colObj.type=='String') {
     return '<input class="mtvalues" type="text" id="' + colObj.data + '" placeholder="Input text.."/>';
   }
@@ -178,7 +203,7 @@ function searchBox(limit,processed,mdfilters,templateKey,accessToken,first,dataT
   var retVal=0;
   $.ajax({
     method: 'get',
-    url: "https://api.box.com/2.0/search?limit=" + limit + "&offset=" + processed + "&" + mdfilters + "&fields=id,name,metadata.enterprise." + templateKey,
+    url: "https://api.box.com/2.0/search?type=file&limit=" + limit + "&offset=" + processed + "&" + mdfilters + "&fields=id,name,metadata.enterprise." + templateKey,
     crossDomain: true,
     headers: {
       "Authorization": "Bearer " + accessToken

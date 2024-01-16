@@ -80,7 +80,7 @@
             "name": colObj.boxDisplayName,
             "type": colObj.dataType
           });
-          if (colObj.dataType == 'String') {
+          if (colObj.dataType == 'String' || colObj.dataType == 'Enum') {
             columnDefs.push({
               targets: i++,
               type: 'string',
@@ -99,7 +99,7 @@
               targets: i++,
               type: 'date',
               className: 'dt-body-nowrap',
-              render: function (data) { return moment(data).format('YYYY-MM-DD') }
+              render: function (data) { if(data!=null && data!='') {return moment(data).format('YYYY-MM-DD')} else {return ''} }
             })
           }
         });
@@ -111,7 +111,7 @@
           if (colObj.name != 'boxId' && colObj.data != 'boxName') {
             var lab = (colObj.type == 'Number' || colObj == 'Date') ? colObj.name + " (range)" : colObj.name;
             $("#dropdownFormSet").append('<div style="display:inline-block;min-width:460px;margin-left:10px;"><label for="' + colObj.data + '">' + lab + ':</label><br><br>' +
-              getInputFieldForCol(colObj) + '</div>')
+              getInputFieldForCol(colObj,fields) + '</div>')
           }
         })
         console.log(JSON.stringify(columns));
