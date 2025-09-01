@@ -1,4 +1,4 @@
-var clientId="5vlan03o3jzlp81zoom3g6feck7t64k6";
+var clientId="bn2iyg37p78jkowrp0io0nc2ln0be3wt";
 
 //Change this to true to show the signup option 
 //signing up will create an app user with the name and email as the external_app_user_id = the email needs to be unique!
@@ -20,10 +20,15 @@ var navigation=[
       "page":"readme.html",
       "title":"README"
   },
-  
+  {
+    "page":"move.html",
+    "title":"MOVE",
+    "boxId":"260893602728",
+    "boxId2":"205874297489",
+},
   {
       "page":"folder2.html",
-      "title":"FOLDER",
+      "title":"My Docments",
       "boxId":"123972940976"
   },
   {
@@ -74,6 +79,13 @@ var navigation=[
       "filters":"caseStatus,reqion,documentType,name,caseDueDate",
       "caseid":"A122,A123,A141,A188,B567,C111,D1233,C001,P001,H117",
       "name":"Arthur Dent,Rick Deckard,Ralph Endymion,Hari Seldon,Salvor Hardin,William Mandella"
-  }
+  },{
+    "page": "map_folder.html",
+    "title": "MAP",
+    "boxId": "81642016647",
+    "latitude": 51.533772570045016,
+    "longitude": -0.09330533022541276,
+    "zoomLevel": 10
+}
      
 ];
